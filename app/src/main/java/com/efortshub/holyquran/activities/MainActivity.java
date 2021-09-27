@@ -1,8 +1,10 @@
-package com.efortshub.holyquran;
+package com.efortshub.holyquran.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.efortshub.holyquran.R;
 
 public class MainActivity extends AppCompatActivity {
 
