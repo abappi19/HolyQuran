@@ -13,7 +13,6 @@ public class HbConst {
         System.loadLibrary("native-lib");
     }
 
-
     public static native String getBaseUrl();
     public static native String stringFromJNI();
 
