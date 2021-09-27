@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Toast.makeText(MainActivity.this, HbConst.BASE_URL, Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, HbConst.getBaseUrl(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, HbConst.stringFromJNI(), Toast.LENGTH_SHORT).show();
 
 
     }
