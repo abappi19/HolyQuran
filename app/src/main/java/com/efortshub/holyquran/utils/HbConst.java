@@ -10,7 +10,14 @@ package com.efortshub.holyquran.utils;
  **/
 public class HbConst {
 
-    public static final String BASE_URL = "http://192.168.27.109/efortshub/apis/quran/";
+    static {
+        System.loadLibrary("native-lib");
+    }
+
+    public static native String stringFromJNI();
+    public static final String BASE_URL  = stringFromJNI();
+
+
 
 
 }
