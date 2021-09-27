@@ -9,10 +9,10 @@ package com.efortshub.holyquran.utils;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-
     static {
         System.loadLibrary("native-lib");
     }
+
 
     public static native String getBaseUrl();
     public static native String stringFromJNI();
