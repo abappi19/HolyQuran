@@ -6,6 +6,17 @@
     <color name="dark_orange">#3A0E01</color>
     <color name="light_blue">#9AD8E3</color>
     <color name="dark_blue">#092337</color>
+    <color name="light_green">#4DFB9D</color>
+    <color name="dark_green">#00250C</color>
+    <!--
+    <color name="light_grey">#D8D8D8</color>
+    <color name="dark_grey">#434343</color>-->
+
+
+
+
+
+
     <color name="light_grey">#D8D8D8</color>
     <color name="dark_grey">#434343</color>
 </resources>

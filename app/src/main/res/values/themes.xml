@@ -127,4 +127,115 @@
     </style>
 
 
+    <style name="Theme.GreenDark" parent="Theme.MaterialComponents">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/dark_green</item>
+        <item name="colorOnPrimary">@color/dark_green</item>
+        <item name="colorSecondaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/dark_green</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:textColorSecondary">@color/light_green</item>
+        <item name="tint">@color/light_green</item>
+        <item name="android:tint">@color/light_green</item>
+        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorSecondary">@color/light_green</item>
+    </style>
+
+
+    <style name="Theme.GreenLight" parent="Theme.MaterialComponents.Light">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/light_green</item>
+        <item name="colorPrimaryVariant">@color/light_green</item>
+        <item name="colorOnPrimary">@color/light_green</item>
+        <item name="colorSecondaryVariant">@color/light_green</item>
+        <item name="colorOnSecondary">@color/light_green</item>
+        <item name="android:tint">@color/dark_green</item>
+        <item name="tint">@color/dark_green</item>
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textColorSecondary">@color/dark_green</item>
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorSecondary">@color/dark_green</item>
+    </style>
+
+
+    <style name="Theme.TwoBlackBgGreenLightVar" parent="Theme.MaterialComponents">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:textColorSecondary">@color/light_green</item>
+        <item name="tint">@color/light_green</item>
+        <item name="android:tint">@color/light_green</item>
+        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorSecondary">@color/light_green</item>
+    </style>
+
+
+    <style name="Theme.TwoGreyBgGreenLightVar" parent="Theme.MaterialComponents">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/dark_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorOnPrimary">@color/dark_grey</item>
+        <item name="colorSecondaryVariant">@color/dark_grey</item>
+        <item name="colorOnSecondary">@color/dark_grey</item>
+        <item name="android:textColor">@color/light_green</item>
+        <item name="android:textColorSecondary">@color/light_green</item>
+        <item name="tint">@color/light_green</item>
+        <item name="android:tint">@color/light_green</item>
+        <item name="colorPrimary">@color/light_green</item>
+        <item name="colorSecondary">@color/light_green</item>
+    </style>
+
+    <style name="Theme.TwoBlackBgOrangeLIghtVar" parent="Theme.MaterialComponents">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/black</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:textColor">@color/light_orange</item>
+        <item name="android:textColorSecondary">@color/light_orange</item>
+        <item name="tint">@color/light_orange</item>
+        <item name="android:tint">@color/light_orange</item>
+        <item name="colorPrimary">@color/light_orange</item>
+        <item name="colorSecondary">@color/light_orange</item>
+    </style>
+
+
+    <style name="Theme.TwoGreyBgOrangeLIghtVar" parent="Theme.MaterialComponents">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/dark_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorOnPrimary">@color/dark_grey</item>
+        <item name="colorSecondaryVariant">@color/dark_grey</item>
+        <item name="colorOnSecondary">@color/dark_grey</item>
+        <item name="android:textColor">@color/light_orange</item>
+        <item name="android:textColorSecondary">@color/light_orange</item>
+        <item name="tint">@color/light_orange</item>
+        <item name="android:tint">@color/light_orange</item>
+        <item name="colorPrimary">@color/light_orange</item>
+        <item name="colorSecondary">@color/light_orange</item>
+    </style>
+
+
+    <style name="Theme.TwoWhiteBgGreenDarkVAr" parent="Theme.MaterialComponents.Light">
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:background">@color/light_green</item>
+        <item name="colorPrimaryVariant">@color/light_green</item>
+        <item name="colorOnPrimary">@color/light_green</item>
+        <item name="colorSecondaryVariant">@color/light_green</item>
+        <item name="colorOnSecondary">@color/light_green</item>
+        <item name="android:tint">@color/dark_green</item>
+        <item name="tint">@color/dark_green</item>
+        <item name="android:textColor">@color/dark_green</item>
+        <item name="android:textColorSecondary">@color/dark_green</item>
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorSecondary">@color/dark_green</item>
+    </style>
+
+
 </resources>
