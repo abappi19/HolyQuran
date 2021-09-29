@@ -39,8 +39,9 @@ public class SettingsActivity extends AppCompatActivity {
         binding = ActivitySettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        LinearLayoutCompat btnGoBack = findViewById(R.id.btn_go_back);
-        btnGoBack.setOnClickListener(view -> onBackPressed());
+        binding.inclueTitle.tvTitle.setText("Settings");
+        binding.inclueTitle.btnGoBack.setOnClickListener(view -> onBackPressed());
+
 
         loadThemeList();
 
@@ -69,7 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
         int HBGreenLight = R.style. Theme_HBGreenLight;
         int HBTwoBlackBgGreenLightVar = R.style.Theme_HBTwoBlackBgGreenLightVar;
         int HBTwoGreyBgGreenLightVar = R.style. Theme_HBTwoGreyBgGreenLightVar;
-        int HBTwoBlackBgOrangeLIghtVar = R.style.Theme_HBTwoGreyBgOrangeLIghtVar;
+        int HBTwoBlackBgOrangeLIghtVar = R.style.Theme_HBTwoBlackBgOrangeLIghtVar;
         int HBTwoGreyBgOrangeLIghtVar = R.style. Theme_HBTwoGreyBgOrangeLIghtVar;
         int HBTwoWhiteBgGreenDarkVAr = R.style.Theme_HBTwoWhiteBgGreenDarkVAr;
         int HBMidBlueLight = R.style. Theme_HBMidBlueLight;

@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.RowThemeItemBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;
+import com.efortshub.holyquran.utils.HbUtils;
 
 import java.util.List;
 
@@ -73,6 +75,7 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
             binding.themeBtn.setBackgroundColor(colorPrimary);
             binding.themeImg.setColorFilter(colorPrimary);
             binding.themeTv.setTextColor(colorPrimary);
+            binding.themeSwitch.setTextColor(colorPrimary);
             binding.themeTv.setBackgroundColor(colorPrimaryVariant);
             binding.themeSwitch.setBackgroundColor(colorPrimaryVariant);
             binding.themeBtn.setTextColor(colorPrimaryVariant);
@@ -98,6 +101,13 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+
+        if (HbUtils.getSavedTheme(binding.getRoot().getContext()) == theme){
+            binding.btnSetNow.setVisibility(View.GONE);
+        }else binding.btnSetNow.setVisibility(View.VISIBLE);
+
         binding.btnSetNow.setOnClickListener(view -> {
             themeChangeListener.onThemeSelected(theme, myTheme);
         });

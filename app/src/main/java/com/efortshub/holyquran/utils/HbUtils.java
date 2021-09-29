@@ -17,7 +17,6 @@ public class HbUtils {
 
     private static SharedPreferences getSharedPreferences(Context context){
         SharedPreferences sp = context.getSharedPreferences("sp", Context.MODE_PRIVATE);
-
         return sp;
     }
 
