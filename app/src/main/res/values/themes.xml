@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.OrangeDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBOrangeDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_orange</item>
         <item name="colorPrimaryVariant">@color/dark_orange</item>
@@ -15,7 +15,7 @@
     </style>
 
 
-    <style name="Theme.OrangeLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBOrangeLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_orange</item>
         <item name="colorPrimaryVariant">@color/light_orange</item>
@@ -31,7 +31,7 @@
     </style>
 
 
-    <style name="Theme.BlueDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBBlueDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_blue</item>
         <item name="colorPrimaryVariant">@color/dark_blue</item>
@@ -47,7 +47,7 @@
     </style>
 
 
-    <style name="Theme.BlueLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBBlueLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_blue</item>
         <item name="colorPrimaryVariant">@color/light_blue</item>
@@ -63,7 +63,7 @@
     </style>
 
 
-    <style name="Theme.GreyDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBGreyDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="colorPrimaryVariant">@color/dark_grey</item>
@@ -79,7 +79,7 @@
     </style>
 
 
-    <style name="Theme.GreyLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBGreyLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_grey</item>
         <item name="colorPrimaryVariant">@color/light_grey</item>
@@ -95,7 +95,7 @@
     </style>
 
 
-    <style name="Theme.WhiteDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBWhiteDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -111,7 +111,7 @@
     </style>
 
 
-    <style name="Theme.WhiteLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBWhiteLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -127,7 +127,7 @@
     </style>
 
 
-    <style name="Theme.GreenDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBGreenDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_green</item>
         <item name="colorPrimaryVariant">@color/dark_green</item>
@@ -143,7 +143,7 @@
     </style>
 
 
-    <style name="Theme.GreenLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBGreenLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_green</item>
         <item name="colorPrimaryVariant">@color/light_green</item>
@@ -159,7 +159,7 @@
     </style>
 
 
-    <style name="Theme.TwoBlackBgGreenLightVar" parent="Theme.MaterialComponents">
+    <style name="Theme.HBTwoBlackBgGreenLightVar" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -175,7 +175,7 @@
     </style>
 
 
-    <style name="Theme.TwoGreyBgGreenLightVar" parent="Theme.MaterialComponents">
+    <style name="Theme.HBTwoGreyBgGreenLightVar" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="colorPrimaryVariant">@color/dark_grey</item>
@@ -190,7 +190,7 @@
         <item name="colorSecondary">@color/light_green</item>
     </style>
 
-    <style name="Theme.TwoBlackBgOrangeLIghtVar" parent="Theme.MaterialComponents">
+    <style name="Theme.HBTwoBlackBgOrangeLIghtVar" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -206,7 +206,7 @@
     </style>
 
 
-    <style name="Theme.TwoGreyBgOrangeLIghtVar" parent="Theme.MaterialComponents">
+    <style name="Theme.HBTwoGreyBgOrangeLIghtVar" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="colorPrimaryVariant">@color/dark_grey</item>
@@ -222,7 +222,7 @@
     </style>
 
 
-    <style name="Theme.TwoWhiteBgGreenDarkVAr" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBTwoWhiteBgGreenDarkVAr" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -237,7 +237,7 @@
         <item name="colorSecondary">@color/dark_green</item>
     </style>
 
-    <style name="Theme.MidBlueLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBMidBlueLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/mid_blue_light</item>
         <item name="colorPrimaryVariant">@color/mid_blue_light</item>
@@ -252,7 +252,7 @@
         <item name="colorSecondary">@color/mid_blue_dark</item>
     </style>
 
-    <style name="Theme.MidBlueDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBMidBlueDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/mid_blue_dark</item>
         <item name="colorPrimaryVariant">@color/mid_blue_dark</item>
@@ -267,7 +267,7 @@
         <item name="colorSecondary">@color/mid_blue_light</item>
     </style>
 
-    <style name="Theme.LowBlueLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowBlueLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/low_blue_light</item>
         <item name="colorPrimaryVariant">@color/low_blue_light</item>
@@ -282,7 +282,7 @@
         <item name="colorSecondary">@color/low_blue_dark</item>
     </style>
 
-    <style name="Theme.LowBlueDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowBlueDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/low_blue_dark</item>
         <item name="colorPrimaryVariant">@color/low_blue_dark</item>
@@ -297,7 +297,7 @@
         <item name="colorSecondary">@color/low_blue_light</item>
     </style>
 
-    <style name="Theme.LowBlueLightWhite" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowBlueLightWhite" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -312,7 +312,7 @@
         <item name="colorSecondary">@color/low_blue_dark</item>
     </style>
 
-    <style name="Theme.LowBlueDarkBlack" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowBlueDarkBlack" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -328,7 +328,7 @@
     </style>
 
 
-    <style name="Theme.LowBlueLightGrey" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowBlueLightGrey" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_grey</item>
         <item name="colorPrimaryVariant">@color/light_grey</item>
@@ -343,7 +343,7 @@
         <item name="colorSecondary">@color/low_blue_dark</item>
     </style>
 
-    <style name="Theme.LowBlueDarkGrey" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowBlueDarkGrey" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="colorPrimaryVariant">@color/dark_grey</item>
@@ -358,7 +358,7 @@
         <item name="colorSecondary">@color/low_blue_light</item>
     </style>
 
-    <style name="Theme.MidOrangeLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBMidOrangeLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/mid_orange_light</item>
         <item name="colorPrimaryVariant">@color/mid_orange_light</item>
@@ -373,7 +373,7 @@
         <item name="colorSecondary">@color/mid_orange_dark</item>
     </style>
 
-    <style name="Theme.MidOrangeDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBMidOrangeDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/mid_orange_dark</item>
         <item name="colorPrimaryVariant">@color/mid_orange_dark</item>
@@ -388,7 +388,7 @@
         <item name="colorSecondary">@color/mid_orange_light</item>
     </style>
 
-    <style name="Theme.LowOrangeLight" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowOrangeLight" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/low_orange_light</item>
         <item name="colorPrimaryVariant">@color/low_orange_light</item>
@@ -403,7 +403,7 @@
         <item name="colorSecondary">@color/low_orange_dark</item>
     </style>
 
-    <style name="Theme.LowOrangeDark" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowOrangeDark" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/low_orange_dark</item>
         <item name="colorPrimaryVariant">@color/low_orange_dark</item>
@@ -418,7 +418,7 @@
         <item name="colorSecondary">@color/low_orange_light</item>
     </style>
 
-    <style name="Theme.LowOrangeLightWhite" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowOrangeLightWhite" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -433,7 +433,7 @@
         <item name="colorSecondary">@color/low_orange_dark</item>
     </style>
 
-    <style name="Theme.LowOrangeDarkBlack" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowOrangeDarkBlack" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/black</item>
         <item name="colorPrimaryVariant">@color/black</item>
@@ -449,7 +449,7 @@
     </style>
 
 
-    <style name="Theme.LowOrangeLightGrey" parent="Theme.MaterialComponents.Light">
+    <style name="Theme.HBLowOrangeLightGrey" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/light_grey</item>
         <item name="colorPrimaryVariant">@color/light_grey</item>
@@ -464,7 +464,7 @@
         <item name="colorSecondary">@color/low_orange_dark</item>
     </style>
 
-    <style name="Theme.LowOrangeDarkGrey" parent="Theme.MaterialComponents">
+    <style name="Theme.HBLowOrangeDarkGrey" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <item name="android:background">@color/dark_grey</item>
         <item name="colorPrimaryVariant">@color/dark_grey</item>

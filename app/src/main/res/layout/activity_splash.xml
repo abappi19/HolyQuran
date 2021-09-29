@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,6 +21,7 @@
 
 
     <Button
+        android:id="@+id/btn_go_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="click me"/>
