@@ -82,13 +82,13 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
         }catch (Exception e){
             e.printStackTrace();
         }
-  /*      try{
+        try{
             DrawableCompat.setTintList(
                     binding.themeSwitch.getThumbDrawable(),
                     new ColorStateList(
                             new int[][]{
                                     new int[]{android.R.attr.state_checked},
-                                    new int[]{android.R.attr.state_active}},
+                                    new int[]{}},
                             new int[]{
                                     colorPrimary,
                                     Color.GRAY
@@ -97,7 +97,7 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
 
         }catch (Exception e){
             e.printStackTrace();
-        }*/
+        }
         binding.btnSetNow.setOnClickListener(view -> {
             themeChangeListener.onThemeSelected(theme, myTheme);
         });
