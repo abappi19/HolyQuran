@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
@@ -17,6 +19,7 @@ import com.efortshub.holyquran.utils.HbUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -45,12 +48,19 @@ public class SettingsActivity extends AppCompatActivity {
 
         loadThemeList();
 
+        loadFonts();
 
 
 
 
 
 
+
+
+
+    }
+
+    private void loadFonts() {
 
 
 
@@ -126,13 +136,17 @@ public class SettingsActivity extends AppCompatActivity {
         themeList.add(HBLowOrangeLightGrey);
         themeList.add(HBLowOrangeDarkGrey);
 
+        ThemeListAdapter adapter = new ThemeListAdapter(themeList, getTheme(), new ThemeChangeListener() {
+            @Override
+            public void onThemeSelected(int themeId, Resources.Theme theme) {
+                HbUtils.saveTheme(SettingsActivity.this, themeId);
+                recreate();
+            }
 
-        ThemeListAdapter adapter = new ThemeListAdapter(themeList, getTheme(), (themeId, theme) -> {
-
-            HbUtils.saveTheme(SettingsActivity.this, themeId);
-            recreate();
-
-
+            @Override
+            public void scrollToSelectedPosition(int position) {
+                    binding.rvTheme.post(() -> binding.rvTheme.smoothScrollToPosition(position));
+            }
         });
 
         binding.rvTheme.setLayoutManager(new LinearLayoutManager(SettingsActivity.this, RecyclerView.HORIZONTAL, false));

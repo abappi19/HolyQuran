@@ -9,74 +9,16 @@
     tools:context=".activities.SettingsActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
     <include
         android:id="@+id/inclue_title"
         layout="@layout/layout_back_and_title" />
-<!--
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:elevation="5dp"
-        >
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="start|center"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:gravity="start|center">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:clickable="true"
-                android:focusable="true"
-                android:id="@+id/btn_go_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
-
-                >
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-
-                    android:background="@drawable/ic_baseline_arrow_back_24"
-                    />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@drawable/bg_shadow_elevation"
-            />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
--->
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Theme"
+        android:text="@string/txt_theme"
         android:textStyle="bold"
         android:padding="8dp"/>
 
@@ -86,6 +28,163 @@
         android:padding="8dp"
         android:id="@+id/rv_theme"/>
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_fonts"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_arabic"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"/>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/txt_font_size"
+                app:layout_constraintBottom_toBottomOf="@+id/et_font_size_arabic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_font_size_arabic"
+                android:layout_width="0dp"
+                android:gravity="end"
+                android:layout_height="wrap_content"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintHorizontal_bias="1"
+                android:hint="000"
+                android:inputType="number"
+                android:maxLength="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/seek_bar_arabic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/et_font_size_arabic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:min="10"
+            android:max="345"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="@string/txt_font_script_arabic"
+            app:layout_constraintBottom_toBottomOf="@+id/et_font_size_arabic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_script"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/seek_bar_arabic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:singleSelection="true">
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_imlaei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_imlaei"
+                android:textColor="?attr/colorPrimaryVariant"
+                app:chipBackgroundColor="?attr/colorPrimary"
+                app:rippleColor="?attr/colorPrimary"
+                android:checkable="true"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_indopak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_indopak"
+                android:textColor="?attr/colorPrimaryVariant"
+                app:chipBackgroundColor="?attr/colorPrimary"
+                app:rippleColor="?attr/colorPrimary"
+                android:checkable="true"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_uthmani"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_uthmani"
+                android:textColor="?attr/colorPrimaryVariant"
+                app:chipBackgroundColor="?attr/colorPrimary"
+                app:rippleColor="?attr/colorPrimary"
+                android:checkable="true"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_uthmani_simple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_uthmani_simple"
+                android:textColor="?attr/colorPrimaryVariant"
+                app:chipBackgroundColor="?attr/colorPrimary"
+                app:rippleColor="?attr/colorPrimary"
+                android:checkable="true"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+
+        <TextView
+            android:id="@+id/tv_preview_arabic"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_arabic_font_test_imlaei"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="8dp"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_normal"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="8dp"/>
+
+
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </ScrollView>

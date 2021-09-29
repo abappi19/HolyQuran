@@ -106,6 +106,9 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
 
         if (HbUtils.getSavedTheme(binding.getRoot().getContext()) == theme){
             binding.btnSetNow.setVisibility(View.GONE);
+
+            themeChangeListener.scrollToSelectedPosition(position);
+
         }else binding.btnSetNow.setVisibility(View.VISIBLE);
 
         binding.btnSetNow.setOnClickListener(view -> {

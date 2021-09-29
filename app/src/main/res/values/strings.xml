@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">Holy Quran</string>
+    <string name="app_name" translatable="false">Holy Quran</string>
+    <string name="txt_fonts">Fonts</string>
+    <string name="txt_theme">Theme</string>
+    <string name="txt_arabic">Arabic</string>
+    <string name="txt_normal">Normal</string>
+    <string name="txt_font_size">Font Size</string>
+    <string name="txt_arabic_font_test_imlaei" translatable="false">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</string>
+    <string name="txt_arabic_font_test_indopak" translatable="false">  بِسۡمِ اللهِ الرَّحۡمٰنِ الرَّحِيۡمِ صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡنَ</string>
+    <string name="txt_arabic_font_test_uthmani" translatable="false">  بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيم صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَِ </string>
+    <string name="txt_arabic_font_test_uthmani_simple" translatable="false"> بسم الله الرحمن الرحيم صرط الذين انعمت عليهم غير المغضوب عليهم ولا الضالين </string>
+    <string name="txt_font_script_arabic">Script</string>
+    <string name="txt_imlaei">Imlaei</string>
+    <string name="txt_indopak">Indpak</string>
+    <string name="txt_uthmani">Uthmani</string>
+    <string name="txt_uthmani_simple">Uthmani Simple</string>
 </resources>

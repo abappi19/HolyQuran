@@ -23,12 +23,13 @@ public class eFortsHub extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        setTheme(HbUtils.getSavedTheme(getApplicationContext()));
+
 
         CaocConfig.Builder.create()
                 .trackActivities(true) //default: false
                 .minTimeBetweenCrashesMs(2000) //default: 3000
-                .errorActivity(AppCrashActivity.class)
+                .errorDrawable(R.drawable.ic_baseline_report_problem_24)
+                .restartActivity(AppCrashActivity.class)
                 .apply();
 
 

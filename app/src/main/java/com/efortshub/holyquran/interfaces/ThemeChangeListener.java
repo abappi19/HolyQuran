@@ -12,4 +12,6 @@ import android.content.res.Resources;
  **/
 public interface ThemeChangeListener {
     public void onThemeSelected(int themeId, Resources.Theme theme);
+
+    void scrollToSelectedPosition(int position);
 }
