@@ -61,37 +61,43 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
 
         TypedValue typeColorPrimary = new TypedValue();
         myTheme.resolveAttribute(R.attr.colorPrimary, typeColorPrimary, true);
-
         int colorPrimary = typeColorPrimary.data;
 
         TypedValue typeColorPrimaryVariant = new TypedValue();
         myTheme.resolveAttribute(R.attr.colorPrimaryVariant, typeColorPrimaryVariant, true);
-
         int colorPrimaryVariant = typeColorPrimaryVariant.data;
 
-        binding.themeBg.setBackgroundColor(colorPrimaryVariant);
-        binding.themeBtn.setBackgroundColor(colorPrimary);
-        binding.themeImg.setColorFilter(colorPrimary);
-        binding.themeTv.setTextColor(colorPrimary);
-        binding.themeTv.setBackgroundColor(colorPrimaryVariant);
-        binding.themeSwitch.setBackgroundColor(colorPrimaryVariant);
-        binding.themeBtn.setTextColor(colorPrimaryVariant);
-        binding.cv.setCardBackgroundColor(colorPrimaryVariant);
-        binding.themeImg.setBackgroundColor(colorPrimaryVariant);
 
-        DrawableCompat.setTintList(
-                binding.themeSwitch.getThumbDrawable(),
-                new ColorStateList(
-                        new int[][]{
-                                new int[]{android.R.attr.state_checked},
-                                new int[]{}},
-                        new int[]{
-                                colorPrimary,
-                                Color.GRAY
-                        }));
+        try{
+            binding.themeBg.setBackgroundColor(colorPrimaryVariant);
+            binding.themeBtn.setBackgroundColor(colorPrimary);
+            binding.themeImg.setColorFilter(colorPrimary);
+            binding.themeTv.setTextColor(colorPrimary);
+            binding.themeTv.setBackgroundColor(colorPrimaryVariant);
+            binding.themeSwitch.setBackgroundColor(colorPrimaryVariant);
+            binding.themeBtn.setTextColor(colorPrimaryVariant);
+            binding.cv.setCardBackgroundColor(colorPrimaryVariant);
+            binding.themeImg.setBackgroundColor(colorPrimaryVariant);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+  /*      try{
+            DrawableCompat.setTintList(
+                    binding.themeSwitch.getThumbDrawable(),
+                    new ColorStateList(
+                            new int[][]{
+                                    new int[]{android.R.attr.state_checked},
+                                    new int[]{android.R.attr.state_active}},
+                            new int[]{
+                                    colorPrimary,
+                                    Color.GRAY
+                            }));
 
 
-
+        }catch (Exception e){
+            e.printStackTrace();
+        }*/
         binding.btnSetNow.setOnClickListener(view -> {
             themeChangeListener.onThemeSelected(theme, myTheme);
         });
