@@ -68,6 +68,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void loadFonts() {
 
+        //get arabic font details
+
         String fontName = HbUtils.getArabicFontName(this);
         String scriptUrl = HbUtils.getHbjScriptUrl(this);
         String scriptName = HbUtils.getHbjScriptName(this);
@@ -77,8 +79,8 @@ public class SettingsActivity extends AppCompatActivity {
         Typeface fontTypeface = HbUtils.getArabicFont(this);
         int styleTypeface = Typeface.NORMAL;
 
-        //style chip
 
+        //style chip
         if (style.equals("normal")) {
             binding.chipArabicNormal.setChecked(true);
             styleTypeface = Typeface.NORMAL;
@@ -145,7 +147,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onStartTrackingTouch(SeekBar seekBar) { }
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                int fontSize = seekBar.getProgress()+10;
+                int fontSize = binding.seekBarArabic.getProgress()+10;
                 HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName, fontName, style );
                 loadFonts();
             }
@@ -201,6 +203,99 @@ public class SettingsActivity extends AppCompatActivity {
             loadFonts();
 
         });
+
+
+
+
+
+
+
+
+
+
+        //get translated font details
+
+        String translated_fontName = HbUtils.getTranslatedFontName(this);
+        int translated_fontSize = HbUtils.getTranslatedFontSize(this);
+        String translated_style = HbUtils.getTranslatedFontStyle(this);
+        int translated_fontSizeProgress = translated_fontSize-9;
+        Typeface translated_fontTypeface = HbUtils.getTranslatedFont(this);
+        int translated_styleTypeface = Typeface.NORMAL;
+
+
+        //style chip
+        if (translated_style.equals("normal")) {
+            binding.chipTranslationNormal.setChecked(true);
+            translated_styleTypeface = Typeface.NORMAL;
+        } else if (translated_style.equals("bold")) {
+            binding.chipTranslationBold.setChecked(true);
+            translated_styleTypeface = Typeface.BOLD;
+        } else if (translated_style.equals("italic")) {
+            binding.chipTranslationItalic.setChecked(true);
+            translated_styleTypeface = Typeface.ITALIC;
+        }else if (translated_style.equals("bold_italic")) {
+            binding.chipTranslationBoldItalic.setChecked(true);
+            translated_styleTypeface = Typeface.BOLD_ITALIC;
+        }
+
+
+
+
+        binding.chipGroupTranslationFont.setOnCheckedChangeListener((group, checkedId) -> {
+            if (binding.chipTranslationAlQalam.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_al_qalam), translated_style );
+            }else    if (binding.chipTranslationOthmani.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_ar_othmani), translated_style );
+            }else    if (binding.chipTranslationExcelentArabic.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_excelent_arabic), translated_style );
+            }else    if (binding.chipTranslationKitab.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_kitab), translated_style );
+            }else    if (binding.chipTranslationNoorehidayat.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_noorehidayat), translated_style );
+            }else    if (binding.chipTranslationNoorehira.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_noorehira), translated_style );
+            }else    if (binding.chipTranslationNoorehuda.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",getString(R.string.txt_noorehuda), translated_style );
+            }
+            loadFonts();
+
+        });
+
+
+        binding.chipGroupTranslationFontStyle.setOnCheckedChangeListener((group, checkedId) -> {
+            if (binding.chipTranslationNormal.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",translated_fontName, getString(R.string.txt_normal) );
+            }else    if (binding.chipTranslationItalic.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",translated_fontName, getString(R.string.txt_italic) );
+            }else    if (binding.chipTranslationBold.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",translated_fontName, getString(R.string.txt_bold) );
+            }else    if (binding.chipTranslationBoldItalic.isChecked()){
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"",translated_fontName, getString(R.string.txt_bold_italic) );
+            }
+
+            loadFonts();
+
+        });
+
+
+        binding.tvPreviewTranslation.setTextSize(translated_fontSize);
+        binding.seekBarTranslation.setProgress(translated_fontSizeProgress);
+        binding.btnFontSizeTranslation.setText(String.valueOf(translated_fontSize));
+        binding.tvPreviewTranslation.setTypeface(translated_fontTypeface,translated_styleTypeface);
+
+        binding.seekBarTranslation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) { }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                int translated_fontSize = binding.seekBarTranslation.getProgress()+10;
+                HbUtils.saveTranslatedFontSettings(SettingsActivity.this, translated_fontSize+"", translated_fontName, translated_style );
+                loadFonts();
+            }
+        });
+
 
 
 

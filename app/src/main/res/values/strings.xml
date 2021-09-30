@@ -30,6 +30,8 @@
     <string name="txt_font_font">Font</string>
     <string name="txt_preview">Preview</string>
     <string name="txt_style">Style</string>
+    <string name="txt_translation">Translation</string>
+    <string name="txt_preview_translation">This is a preview of tranlated Text.</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ import androidx.core.content.res.ResourcesCompat;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.SettingsActivity;
 import com.efortshub.holyquran.models.ArabicFontSettings;
+import com.efortshub.holyquran.models.TranslatedFontSettings;
 
 /**
  * Created by H. Bappi on  12:04 PM 9/29/21.
@@ -52,6 +53,24 @@ public class HbUtils {
         String fontSize = getSharedPreferences(context).getString("arb_font_size", HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
         String style = getSharedPreferences(context).getString("arb_font_style", HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
         return new ArabicFontSettings(fontSize, script, font, style);
+    }
+
+
+    public static void saveTranslatedFontSettings(Context context, String fontSize, String fontName, String style) {
+        if (fontSize == null) fontSize = "14";
+        if (fontName == null) fontName = "othmani";
+        getSharedPreferences(context).edit().putString("trs_font", fontName).apply();
+        getSharedPreferences(context).edit().putString("trs_font_size", fontSize).apply();
+        getSharedPreferences(context).edit().putString("trs_font_style", style).apply();
+
+    }
+
+
+    private static TranslatedFontSettings getSavedTranslatedFontSetting(Context context) {
+        String font = getSharedPreferences(context).getString("trs_font", HbConst.ARABIC_FONT_DEFAULT_FONT);
+        String fontSize = getSharedPreferences(context).getString("trs_font_size", HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
+        String style = getSharedPreferences(context).getString("trs_font_style", HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
+        return new TranslatedFontSettings(fontSize, font, style);
     }
 
     public static String getHbjScriptUrl(Context context) {
@@ -108,6 +127,44 @@ public class HbUtils {
 
     public static String getArabicFontStyle(Context context) {
         return getSavedArabicFontSetting(context).getStyle();
+    }
+
+
+    public static Typeface getTranslatedFont(Context context) {
+        String fontName = getSavedTranslatedFontSetting(context).getFontName();
+
+        int fontId = R.font.ar_othmani;
+
+        if (fontName.equals("al qalam")) {
+            fontId =  R.font.al_qalam_quran_majed;
+        } else if (fontName.equals("othmani")) {
+            fontId =  R.font.ar_othmani;
+        } else if (fontName.equals("excelent_arabic")) {
+            fontId =  R.font.excelent_arabic_web;
+        } else if (fontName.equals("kitab")) {
+            fontId =  R.font.kitab;
+        } else if (fontName.equals("noorehidayat")) {
+            fontId =  R.font.noorehidayat;
+        } else if (fontName.equals("noorehira")) {
+            fontId =  R.font.noorehira;
+        } else if (fontName.equals("noorehuda")) {
+            fontId =  R.font.noorehuda;
+        }
+
+        return ResourcesCompat.getFont(context, fontId);
+    }
+
+    public static int getTranslatedFontSize(Context context) {
+        return getSavedTranslatedFontSetting(context).getFontSize();
+    }
+
+
+    public static String getTranslatedFontName(Context context) {
+        return getSavedTranslatedFontSetting(context).getFontName();
+    }
+
+    public static String getTranslatedFontStyle(Context context) {
+        return getSavedTranslatedFontSetting(context).getStyle();
     }
 
 }

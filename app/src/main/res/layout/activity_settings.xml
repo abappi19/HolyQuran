@@ -394,11 +394,278 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/txt_normal"
+            android:text="@string/txt_translation"
             android:textStyle="bold"
             android:gravity="center"
             android:textAllCaps="true"
             android:padding="8dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="@string/txt_font_size"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_font_size_translation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/btn_font_size_translation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="000"
+                android:inputType="number"
+                android:clickable="true"
+                android:focusable="true"
+                android:maxLength="3"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toEndOf="@+id/textView1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <SeekBar
+            android:id="@+id/seek_bar_translation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_font_size_translation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:max="55"/>
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/txt_font_font"
+                app:layout_constraintBottom_toBottomOf="@+id/et_font_size_arabic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarSize="1dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_translation_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/seek_bar_arabic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:singleLine="true"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_al_qalam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_al_qalam"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_othmani"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_ar_othmani"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_excelent_arabic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_excelent_arabic"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_kitab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_kitab"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_noorehidayat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_noorehidayat"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_noorehira"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_noorehira"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_noorehuda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_noorehuda"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+
+                </com.google.android.material.chip.ChipGroup>
+
+
+            </HorizontalScrollView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/txt_style"
+                app:layout_constraintBottom_toBottomOf="@+id/et_font_size_arabic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarSize="1dp">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_translation_font_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/seek_bar_arabic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:singleLine="true"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_normal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_normal"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_bold"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_italic"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_translation_bold_italic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txt_bold_italic"
+                        android:textColor="?attr/colorPrimaryVariant"
+                        app:chipBackgroundColor="?attr/colorPrimary"
+                        app:rippleColor="?attr/colorPrimary"
+                        android:checkable="true"/>
+                </com.google.android.material.chip.ChipGroup>
+
+
+            </HorizontalScrollView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/tv_preview_title_trans"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="@string/txt_preview"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:paddingTop="8dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_preview_translation"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_preview_translation"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
 
 
 

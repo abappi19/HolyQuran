@@ -1,13 +1,7 @@
 package com.efortshub.holyquran;
 
-import android.app.Application;
-
 import androidx.multidex.MultiDexApplication;
 
-import com.efortshub.holyquran.activities.AppCrashActivity;
-import com.efortshub.holyquran.utils.HbUtils;
-
-import cat.ereza.customactivityoncrash.activity.DefaultErrorActivity;
 import cat.ereza.customactivityoncrash.config.CaocConfig;
 
 
@@ -33,9 +27,7 @@ public class eFortsHub extends MultiDexApplication {
                 .minTimeBetweenCrashesMs(2000) //default: 3000
                 .errorDrawable(R.drawable.ic_baseline_report_problem_24)
                 .showErrorDetails(true)
-                .restartActivity(AppCrashActivity.class)
                 .apply();
-
 
     }
 
