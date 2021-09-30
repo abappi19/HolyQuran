@@ -2,10 +2,14 @@ package com.efortshub.holyquran.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -62,6 +66,61 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void loadFonts() {
 
+        String fontName = HbUtils.getArabicFontName(this);
+        String scriptUrl = HbUtils.getHbjScriptUrl(this);
+        String scriptName = HbUtils.getHbjScriptName(this);
+        int fontSize = HbUtils.getArabicFontSize(this);
+        String style = HbUtils.getArabicFontStyle(this);
+        int fontSizeProgress = fontSize-9;
+
+
+        binding.tvPreviewArabic.setTextSize(fontSize);
+        binding.seekBarArabic.setProgress(fontSizeProgress);
+        binding.btnFontSizeText.setText(String.valueOf(fontSize));
+
+        binding.tvPreviewArabic.setTypeface(HbUtils.getArabicFont(this));
+
+
+        //style chip
+
+        if (style.equals("normal")) {
+            binding.chipArabicNormal.setChecked(true);
+        } else if (style.equals("bold")) {
+            binding.chipArabicBold.setChecked(true);
+        } else if (style.equals("italic")) {
+            binding.chipArabicItalic.setChecked(true);
+        }
+
+
+        //script chip
+
+        if (scriptName.equals("Imlaei")) {
+            binding.chipImlaei.setChecked(true);
+        } else if (scriptName.equals("Indpak")) {
+            binding.chipIndopak.setChecked(true);
+        } else if (scriptName.equals("Uthmani")) {
+            binding.chipUthmani.setChecked(true);
+        } else if (scriptName.trim().equals("UthmaniSimple")) {
+            binding.chipUthmaniSimple.setChecked(true);
+        }
+
+        //font chip
+
+        if (fontName.equals("al qalam")) {
+            binding.chipAlQalam.setChecked(true);
+        } else if (fontName.equals("othmani")) {
+            binding.chipOthmani.setChecked(true);
+        } else if (fontName.equals("excelent_arabic")) {
+            binding.chipExcelentArabic.setChecked(true);
+        } else if (fontName.equals("kitab")) {
+            binding.chipKitab.setChecked(true);
+        } else if (fontName.equals("noorehidayat")) {
+            binding.chipNoorehidayat.setChecked(true);
+        } else if (fontName.equals("noorehira")) {
+            binding.chipNoorehira.setChecked(true);
+        } else if (fontName.equals("noorehuda")) {
+            binding.chipNoorehuda.setChecked(true);
+        }
 
 
 

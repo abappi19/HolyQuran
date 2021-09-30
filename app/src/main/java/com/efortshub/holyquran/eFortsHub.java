@@ -29,6 +29,7 @@ public class eFortsHub extends MultiDexApplication {
                 .trackActivities(true) //default: false
                 .minTimeBetweenCrashesMs(2000) //default: 3000
                 .errorDrawable(R.drawable.ic_baseline_report_problem_24)
+                .showErrorDetails(true)
                 .restartActivity(AppCrashActivity.class)
                 .apply();
 

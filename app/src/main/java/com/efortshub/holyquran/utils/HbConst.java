@@ -9,14 +9,25 @@ package com.efortshub.holyquran.utils;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
+
     static {
         System.loadLibrary("native-lib");
     }
 
+    //DEFAULT ARABIC FONT INITIALIZATION
+
+    public static final int ARABIC_FONT_DEFAULT_SIZE = 14;
+    public static final String ARABIC_FONT_DEFAULT_FONT = "othmani";
+    public static final String ARABIC_FONT_DEFAULT_SCRIPT = "Imlaei";
+    public static final String ARABIC_FONT_DEFAULT_STYLE = "normal";
+
+
+    //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
+
     public static native String getRestApiBaseUrl();
+    public static native String getBaseHbjUrl();
     public static native String stringFromJNI();
 
-  //  public static final String BASE_URL  = getBaseUrl();
 
 
 
