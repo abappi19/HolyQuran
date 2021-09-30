@@ -3,6 +3,7 @@ package com.efortshub.holyquran.views;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,21 +24,39 @@ public class HbButton extends androidx.appcompat.widget.AppCompatTextView{
         super(context);
         setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
-        setPadding(18,12,18,12);
+        setPadding(20,14,20,14);
+        setGravity(Gravity.CENTER);
+        setClickable(true);
+        setFocusable(true);
     }
 
     public HbButton(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
-        setPadding(18,12,18,12);
+        setPadding(20,14,20,14);
+        setGravity(Gravity.CENTER);
+        setClickable(true);
+        setFocusable(true);
     }
 
     public HbButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
-        setPadding(18,12,18,12);
+        setPadding(20,14,20,14);
+        setGravity(Gravity.CENTER);
+        setClickable(true);
+        setFocusable(true);
+
+
     }
 
+
+    @Override
+    public void setOnClickListener(@Nullable OnClickListener l) {
+        super.setOnClickListener(l);
+
+
+    }
 }

@@ -19,6 +19,9 @@
     <string name="txt_bold"  translatable="false">bold</string>
     <string name="txt_italic"  translatable="false">italic</string>
     <string name="txt_bold_italic"  translatable="false">bold_italic</string>
+    <string name="txt_languages_and_translation" translatable="false">Languages And Tranlations</string>
+    <string name="txt_app_language" translatable="false">App Language</string>
+    <string name="txt_app_translation" translatable="false">Translation</string>
 
 
 
@@ -31,7 +34,7 @@
     <string name="txt_preview">Preview</string>
     <string name="txt_style">Style</string>
     <string name="txt_translation">Translation</string>
-    <string name="txt_preview_translation">This is a preview of tranlated Text.</string>
+    <string name="txt_preview_translation">This is a preview of translated Text.</string>
 
 
 </resources>

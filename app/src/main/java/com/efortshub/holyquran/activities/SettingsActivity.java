@@ -56,10 +56,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         loadFonts();
 
+        loadLanguagesAndTranslations();
 
 
 
+    }
 
+    private void loadLanguagesAndTranslations() {
 
 
 
@@ -236,6 +239,24 @@ public class SettingsActivity extends AppCompatActivity {
         }else if (translated_style.equals("bold_italic")) {
             binding.chipTranslationBoldItalic.setChecked(true);
             translated_styleTypeface = Typeface.BOLD_ITALIC;
+        }
+
+        //font chip
+
+        if (translated_fontName.equals("al qalam")) {
+            binding.chipTranslationAlQalam.setChecked(true);
+        } else if (translated_fontName.equals("othmani")) {
+            binding.chipTranslationOthmani.setChecked(true);
+        } else if (translated_fontName.equals("excelent_arabic")) {
+            binding.chipTranslationExcelentArabic.setChecked(true);
+        } else if (translated_fontName.equals("kitab")) {
+            binding.chipTranslationKitab.setChecked(true);
+        } else if (translated_fontName.equals("noorehidayat")) {
+            binding.chipTranslationNoorehidayat.setChecked(true);
+        } else if (translated_fontName.equals("noorehira")) {
+            binding.chipTranslationNoorehira.setChecked(true);
+        } else if (translated_fontName.equals("noorehuda")) {
+            binding.chipTranslationNoorehuda.setChecked(true);
         }
 
 
