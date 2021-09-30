@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_theme"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 android:padding="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_fonts"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 android:padding="8dp"/>
 
 
@@ -339,6 +341,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_bold"
+                            android:textStyle="bold"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -348,6 +351,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_italic"
+                            android:textStyle="italic"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -357,6 +361,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_bold_italic"
+                            android:textStyle="bold|italic"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -617,6 +622,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_bold"
+                            android:textStyle="bold"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -626,6 +632,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_italic"
+                            android:textStyle="italic"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -635,6 +642,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/txt_bold_italic"
+                            android:textStyle="bold|italic"
                             android:textColor="?attr/colorPrimaryVariant"
                             app:chipBackgroundColor="?attr/colorPrimary"
                             app:rippleColor="?attr/colorPrimary"
@@ -682,6 +690,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_languages_and_translation"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 android:padding="8dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -748,6 +757,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Show Arabic Text"
+                android:layoutDirection="rtl"
+                />
 
 
             <com.efortshub.holyquran.views.HbButton

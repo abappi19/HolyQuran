@@ -11,7 +11,7 @@
         <entry key="app/src/main/res/drawable/bg_widget_focused.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_app_crash.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/layout_back_and_title.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/row_theme_item.xml" value="0.22" />

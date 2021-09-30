@@ -273,7 +273,7 @@
         <item name="colorPrimaryVariant">@color/low_blue_light</item>
         <item name="colorOnPrimary">@color/low_blue_light</item>
         <item name="colorSecondaryVariant">@color/low_blue_light</item>
-        <item name="colorOnSecondary">@color/low_blue_dark</item>
+        <item name="colorOnSecondary">@color/low_blue_light</item>
         <item name="android:tint">@color/low_blue_dark</item>
         <item name="tint">@color/low_blue_dark</item>
         <item name="android:textColor">@color/low_blue_dark</item>
@@ -289,7 +289,7 @@
         <item name="colorOnPrimary">@color/low_blue_dark</item>
         <item name="colorSecondaryVariant">@color/low_blue_dark</item>
         <item name="colorOnSecondary">@color/low_blue_dark</item>
-        <item name="android:tint">@color/low_blue_dark</item>
+        <item name="android:tint">@color/low_blue_light</item>
         <item name="tint">@color/low_blue_light</item>
         <item name="android:textColor">@color/low_blue_light</item>
         <item name="android:textColorSecondary">@color/low_blue_light</item>
@@ -319,7 +319,7 @@
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="android:tint">@color/black</item>
+        <item name="android:tint">@color/low_blue_light</item>
         <item name="tint">@color/low_blue_light</item>
         <item name="android:textColor">@color/low_blue_light</item>
         <item name="android:textColorSecondary">@color/low_blue_light</item>
@@ -350,7 +350,7 @@
         <item name="colorOnPrimary">@color/dark_grey</item>
         <item name="colorSecondaryVariant">@color/dark_grey</item>
         <item name="colorOnSecondary">@color/dark_grey</item>
-        <item name="android:tint">@color/dark_grey</item>
+        <item name="android:tint">@color/low_blue_light</item>
         <item name="tint">@color/low_blue_light</item>
         <item name="android:textColor">@color/low_blue_light</item>
         <item name="android:textColorSecondary">@color/low_blue_light</item>
@@ -364,7 +364,7 @@
         <item name="colorPrimaryVariant">@color/mid_orange_light</item>
         <item name="colorOnPrimary">@color/mid_orange_light</item>
         <item name="colorSecondaryVariant">@color/mid_orange_light</item>
-        <item name="colorOnSecondary">@color/mid_orange_dark</item>
+        <item name="colorOnSecondary">@color/mid_orange_light</item>
         <item name="android:tint">@color/mid_orange_dark</item>
         <item name="tint">@color/mid_orange_dark</item>
         <item name="android:textColor">@color/mid_orange_dark</item>
@@ -394,7 +394,7 @@
         <item name="colorPrimaryVariant">@color/low_orange_light</item>
         <item name="colorOnPrimary">@color/low_orange_light</item>
         <item name="colorSecondaryVariant">@color/low_orange_light</item>
-        <item name="colorOnSecondary">@color/low_orange_dark</item>
+        <item name="colorOnSecondary">@color/low_orange_light</item>
         <item name="android:tint">@color/low_orange_dark</item>
         <item name="tint">@color/low_orange_dark</item>
         <item name="android:textColor">@color/low_orange_dark</item>
@@ -440,7 +440,7 @@
         <item name="colorOnPrimary">@color/black</item>
         <item name="colorSecondaryVariant">@color/black</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="android:tint">@color/black</item>
+        <item name="android:tint">@color/low_orange_light</item>
         <item name="tint">@color/low_orange_light</item>
         <item name="android:textColor">@color/low_orange_light</item>
         <item name="android:textColorSecondary">@color/low_orange_light</item>
@@ -471,7 +471,7 @@
         <item name="colorOnPrimary">@color/dark_grey</item>
         <item name="colorSecondaryVariant">@color/dark_grey</item>
         <item name="colorOnSecondary">@color/dark_grey</item>
-        <item name="android:tint">@color/dark_grey</item>
+        <item name="android:tint">@color/low_orange_light</item>
         <item name="tint">@color/low_orange_light</item>
         <item name="android:textColor">@color/low_orange_light</item>
         <item name="android:textColorSecondary">@color/low_orange_light</item>

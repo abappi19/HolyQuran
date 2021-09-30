@@ -9,32 +9,32 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="light_orange">#FF983D</color>
-    <color name="dark_orange">#271100</color>
+    <color name="light_orange">#E68C1F</color>
+    <color name="dark_orange">#1B0F00</color>
 
-    <color name="light_blue">#1FD2FF</color>
-    <color name="dark_blue">#00113C</color>
+    <color name="light_blue">#36E3E3</color>
+    <color name="dark_blue">#000719</color>
 
-    <color name="light_green">#4DFB9D</color>
-    <color name="dark_green">#00250C</color>
+    <color name="light_green">#0DD327</color>
+    <color name="dark_green">#001700</color>
     <!--
     <color name="light_grey">#D8D8D8</color>
     <color name="dark_grey">#434343</color>-->
 
 
 
-    <color name="mid_blue_dark">#00294E</color>
-    <color name="mid_blue_light">#1EC4D3</color>
+    <color name="mid_blue_dark">#061420</color>
+    <color name="mid_blue_light">#00B7D6</color>
 
-    <color name="low_blue_light">#AAF1FF</color>
-    <color name="low_blue_dark">#0B2233</color>
+    <color name="low_blue_light">#0ED3B5</color>
+    <color name="low_blue_dark">#092322</color>
 
 
-    <color name="mid_orange_dark">#702000</color>
-    <color name="mid_orange_light">#FF9800</color>
+    <color name="mid_orange_dark">#201100</color>
+    <color name="mid_orange_light">#DA8013</color>
 
-    <color name="low_orange_light">#D6A087</color>
-    <color name="low_orange_dark">#3F220B</color>
+    <color name="low_orange_light">#CC9F51</color>
+    <color name="low_orange_dark">#291B02</color>
 
 
 
