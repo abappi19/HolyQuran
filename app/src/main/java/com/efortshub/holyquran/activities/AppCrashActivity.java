@@ -24,12 +24,12 @@ public class AppCrashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        setTheme(R.style.Theme_AppCompat_Light);
+        setTheme(R.style.Theme_HBWhiteLight);
         super.onCreate(savedInstanceState);
         binding = ActivityAppCrashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        HbUtils.saveTheme(this, R.style.Base_Theme_AppCompat_Light);
+        HbUtils.saveTheme(this, R.style.Theme_HBWhiteLight);
 
         startActivity(new Intent(this, SplashActivity.class));
         finish();

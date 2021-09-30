@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.29444444444444445" />
+        <entry key="app/src/main/res/drawable/bg_button_clicable.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/bg_button_disabled.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/bg_shadow_elevation.xml" value="0.3296875" />
+        <entry key="app/src/main/res/drawable/bg_widget_enabled.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/bg_widget_focused.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_app_crash.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />

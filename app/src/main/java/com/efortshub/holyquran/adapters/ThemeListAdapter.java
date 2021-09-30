@@ -3,6 +3,7 @@ package com.efortshub.holyquran.adapters;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.os.Build;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -72,13 +73,23 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
 
         try{
             binding.themeBg.setBackgroundColor(colorPrimaryVariant);
-            binding.themeBtn.setBackgroundColor(colorPrimary);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                binding.themeBtn.setBackgroundTintList(new ColorStateList(new int[][]{
+
+                        new int[]{android.R.attr.state_checked},
+                        new int[]{}
+                },
+                        new int[]{
+                                colorPrimaryVariant,
+                                colorPrimary
+                        }));
+            }
+            binding.themeBtn.setTextColor(colorPrimaryVariant);
             binding.themeImg.setColorFilter(colorPrimary);
             binding.themeTv.setTextColor(colorPrimary);
             binding.themeSwitch.setTextColor(colorPrimary);
             binding.themeTv.setBackgroundColor(colorPrimaryVariant);
             binding.themeSwitch.setBackgroundColor(colorPrimaryVariant);
-            binding.themeBtn.setTextColor(colorPrimaryVariant);
             binding.cv.setCardBackgroundColor(colorPrimaryVariant);
             binding.themeImg.setBackgroundColor(colorPrimaryVariant);
 

@@ -20,10 +20,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
+    <com.efortshub.holyquran.views.HbButton
         android:id="@+id/btn_go_to"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
         android:text="click me"/>
 
     <androidx.appcompat.widget.SwitchCompat

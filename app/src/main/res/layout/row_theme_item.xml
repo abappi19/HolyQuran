@@ -56,17 +56,17 @@
                 android:text="eFortsHub"/>
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/theme_switch"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:checked="true"
                 android:layout_height="5dp"
                 android:text="Switch"
                 android:orientation="vertical"/>
-            <Button
+            <com.efortshub.holyquran.views.HbButton
                 android:id="@+id/theme_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAllCaps="true"
                 android:text="H.Bappi"/>
-
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

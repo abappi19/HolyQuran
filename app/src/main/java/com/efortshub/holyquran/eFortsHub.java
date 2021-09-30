@@ -26,6 +26,9 @@ public class eFortsHub extends MultiDexApplication {
 
 
         CaocConfig.Builder.create()
+                .enabled(true)
+                .showRestartButton(true)
+                .backgroundMode(CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM)
                 .trackActivities(true) //default: false
                 .minTimeBetweenCrashesMs(2000) //default: 3000
                 .errorDrawable(R.drawable.ic_baseline_report_problem_24)
