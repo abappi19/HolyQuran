@@ -60,12 +60,10 @@ public class HbUtils {
 
         if (scriptName.equals("Imlaei")) {
             return baseHbjUrl + "im.hbj";
-        } else if (scriptName.equals("Indpak")) {
+        } else if (scriptName.equals("Indopak")) {
             return baseHbjUrl + "in.hbj";
         } else if (scriptName.equals("Uthmani")) {
             return baseHbjUrl + "ut.hbj";
-        } else if (scriptName.trim().equals("UthmaniSimple")) {
-            return baseHbjUrl + "ut_s.hbj";
         } else return baseHbjUrl + "im.hbj";
 
     }
@@ -111,4 +109,5 @@ public class HbUtils {
     public static String getArabicFontStyle(Context context) {
         return getSavedArabicFontSetting(context).getStyle();
     }
+
 }

@@ -14,12 +14,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.SeekBar;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
 import com.efortshub.holyquran.databinding.ActivitySettingsBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;
 import com.efortshub.holyquran.utils.HbUtils;
+import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,23 +74,23 @@ public class SettingsActivity extends AppCompatActivity {
         int fontSize = HbUtils.getArabicFontSize(this);
         String style = HbUtils.getArabicFontStyle(this);
         int fontSizeProgress = fontSize-9;
-
-
-        binding.tvPreviewArabic.setTextSize(fontSize);
-        binding.seekBarArabic.setProgress(fontSizeProgress);
-        binding.btnFontSizeText.setText(String.valueOf(fontSize));
-
-        binding.tvPreviewArabic.setTypeface(HbUtils.getArabicFont(this));
-
+        Typeface fontTypeface = HbUtils.getArabicFont(this);
+        int styleTypeface = Typeface.NORMAL;
 
         //style chip
 
         if (style.equals("normal")) {
             binding.chipArabicNormal.setChecked(true);
+            styleTypeface = Typeface.NORMAL;
         } else if (style.equals("bold")) {
             binding.chipArabicBold.setChecked(true);
+            styleTypeface = Typeface.BOLD;
         } else if (style.equals("italic")) {
             binding.chipArabicItalic.setChecked(true);
+            styleTypeface = Typeface.ITALIC;
+        }else if (style.equals("bold_italic")) {
+            binding.chipArabicBoldItalic.setChecked(true);
+            styleTypeface = Typeface.BOLD_ITALIC;
         }
 
 
@@ -96,12 +98,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (scriptName.equals("Imlaei")) {
             binding.chipImlaei.setChecked(true);
-        } else if (scriptName.equals("Indpak")) {
+            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_imlaei);
+        } else if (scriptName.equals("Indopak")) {
             binding.chipIndopak.setChecked(true);
+            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_indopak);
         } else if (scriptName.equals("Uthmani")) {
             binding.chipUthmani.setChecked(true);
-        } else if (scriptName.trim().equals("UthmaniSimple")) {
-            binding.chipUthmaniSimple.setChecked(true);
+            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_uthmani);
         }
 
         //font chip
@@ -121,6 +124,83 @@ public class SettingsActivity extends AppCompatActivity {
         } else if (fontName.equals("noorehuda")) {
             binding.chipNoorehuda.setChecked(true);
         }
+
+
+
+
+
+        binding.tvPreviewArabic.setTextSize(fontSize);
+        binding.seekBarArabic.setProgress(fontSizeProgress);
+        binding.btnFontSizeText.setText(String.valueOf(fontSize));
+
+        binding.tvPreviewArabic.setTypeface(fontTypeface,styleTypeface);
+
+
+        //initialize all listener
+
+        binding.seekBarArabic.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) { }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                int fontSize = seekBar.getProgress()+10;
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName, fontName, style );
+                loadFonts();
+            }
+        });
+
+
+        binding.chipGroupScript.setOnCheckedChangeListener((group, checkedId) -> {
+            if (binding.chipImlaei.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",getString(R.string.txt_imlaei), fontName, style );
+            }else    if (binding.chipIndopak.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",getString(R.string.txt_indopak), fontName, style );
+            }else    if (binding.chipUthmani.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",getString(R.string.txt_uthmani), fontName, style );
+            }
+            loadFonts();
+
+        });
+
+
+
+        binding.chipGroupFontArabic.setOnCheckedChangeListener((group, checkedId) -> {
+            if (binding.chipAlQalam.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_al_qalam), style );
+            }else    if (binding.chipOthmani.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_ar_othmani), style );
+            }else    if (binding.chipExcelentArabic.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_excelent_arabic), style );
+            }else    if (binding.chipKitab.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_kitab), style );
+            }else    if (binding.chipNoorehidayat.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_noorehidayat), style );
+            }else    if (binding.chipNoorehira.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_noorehira), style );
+            }else    if (binding.chipNoorehuda.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,getString(R.string.txt_noorehuda), style );
+            }
+            loadFonts();
+
+        });
+
+
+        binding.chipGroupFontStyle.setOnCheckedChangeListener((group, checkedId) -> {
+            if (binding.chipArabicNormal.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,fontName, getString(R.string.txt_normal) );
+            }else    if (binding.chipArabicItalic.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,fontName, getString(R.string.txt_italic) );
+            }else    if (binding.chipArabicBold.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,fontName, getString(R.string.txt_bold) );
+            }else    if (binding.chipArabicBoldItalic.isChecked()){
+                HbUtils.saveArabicFontSettings(SettingsActivity.this, fontSize+"",scriptName,fontName, getString(R.string.txt_bold_italic) );
+            }
+
+            loadFonts();
+
+        });
 
 
 
