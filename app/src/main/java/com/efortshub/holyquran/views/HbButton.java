@@ -1,6 +1,7 @@
 package com.efortshub.holyquran.views;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -18,27 +19,26 @@ import com.efortshub.holyquran.R;
  * contact.efortshub@gmail.com
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
-public class HbButton extends androidx.appcompat.widget.AppCompatTextView {
+public class HbButton extends androidx.appcompat.widget.AppCompatTextView{
     public HbButton(@NonNull Context context) {
         super(context);
-
-        setTextColor(R.attr.colorPrimaryVariant);
+        setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
         setPadding(18,12,18,12);
-
     }
 
     public HbButton(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        setTextColor(R.attr.colorPrimaryVariant);
+        setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
         setPadding(18,12,18,12);
     }
 
     public HbButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setTextColor(R.attr.colorPrimaryVariant);
+        setTextAppearance(context, R.style.HbButtonAppearance);
         setBackground(ContextCompat.getDrawable(context, R.drawable.bg_button_clicable));
         setPadding(18,12,18,12);
     }
+
 }

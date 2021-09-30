@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HbButtonAppearance">
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="color">?attr/colorPrimaryVariant</item>
+        <item name="colorAccent">?attr/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">?attr/colorPrimaryVariant</item>
+        <item name="background">@drawable/bg_button_clicable</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="paddingStart">16dp</item>
+        <item name="paddingEnd">16dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="tabPaddingBottom">10dp</item>
+    </style>
+</resources>
