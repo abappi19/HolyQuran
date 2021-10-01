@@ -2,6 +2,8 @@ package com.efortshub.holyquran.activities.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.os.ConfigurationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.adapters.LocaleLanguageListAdapter;
 import com.efortshub.holyquran.databinding.ActivityAppLanguageSettingBinding;
 import com.efortshub.holyquran.utils.HbUtils;
 
@@ -61,7 +64,7 @@ public class AppLanguageSettingActivity extends AppCompatActivity {
         String currentLanguage = currentLocale.getLanguage();
         String currentCountry = currentLocale.getCountry();
         String currentLanguageName = currentLocale.getDisplayLanguage();
-        String currentCountryName = currentLocale.getDisplayLanguage();
+        String currentCountryName = currentLocale.getDisplayCountry();
         binding.includeLang.tvCountryName.setText(currentCountryName);
         binding.includeLang.tvLanguageName.setText(currentLanguageName);
         binding.includeLang.tvCountryLanguageCode.setText(currentLanguage+"-"+currentCountry);
@@ -72,23 +75,19 @@ public class AppLanguageSettingActivity extends AppCompatActivity {
     }
 
     private void loadAvailableLocaleList() {
-
-
-
         Locale[] localeList = Locale.getAvailableLocales();
-
         List<Locale> locales = Arrays.asList(localeList);
 
-        for (Locale l: locales){
-            Log.d(TAG, "onCreate:getCountry  "+l.getCountry());
-            Log.d(TAG, "onCreate:getDisplayCountry  "+l.getDisplayCountry());
-            Log.d(TAG, "onCreate:getDisplayLanguage  "+l.getDisplayLanguage());
-            Log.d(TAG, "onCreate:getDisplayName  "+l.getDisplayName());
-            Log.d(TAG, "onCreate: getLanguage "+l.getLanguage());
+        LocaleLanguageListAdapter adapter = new LocaleLanguageListAdapter(locales);
+        binding.rvLocales.setLayoutManager(new LinearLayoutManager(AppLanguageSettingActivity.this, RecyclerView.VERTICAL, false));
+        binding.rvLocales.setItemViewCacheSize(150);
+        binding.rvLocales.setAdapter(adapter);
 
 
-            Log.d(TAG, "onCreate: hhh\n\n\n\njjj\n\n\n\n");
-        }
+
+
+
+
     }
 
     @Override
