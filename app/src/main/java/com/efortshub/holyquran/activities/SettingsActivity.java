@@ -1,7 +1,9 @@
 package com.efortshub.holyquran.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -10,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.res.Resources;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableWrapper;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.TypedValue;
+import android.view.View;
 import android.widget.SeekBar;
 
 import com.efortshub.holyquran.R;
@@ -23,8 +29,11 @@ import com.efortshub.holyquran.interfaces.ThemeChangeListener;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.google.android.material.chip.ChipGroup;
 
+import org.w3c.dom.Attr;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -51,6 +60,7 @@ public class SettingsActivity extends AppCompatActivity {
         binding.inclueTitle.tvTitle.setText("Settings");
         binding.inclueTitle.btnGoBack.setOnClickListener(view -> onBackPressed());
 
+        loadDropDownListener();
 
         loadThemeList();
 
@@ -60,6 +70,38 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void loadDropDownListener() {
+
+        binding.btnArrowFontArabic.setOnClickListener(view -> {
+            updateShowHideMenu(binding.btnArrowFontArabic, binding.llSecFontArabic, binding.ivArrowFontArabic);
+
+        });
+
+
+        binding.btnArrowFontTranslation.setOnClickListener(view -> {
+            updateShowHideMenu(binding.btnArrowFontTranslation, binding.llSecFontTranslation, binding.ivArrowFontTranslation);
+
+        });
+
+
+    }
+
+    private void updateShowHideMenu(ConstraintLayout btnClicable, LinearLayoutCompat llSection, AppCompatImageView ivArrow ) {
+        if (llSection.getVisibility()==View.VISIBLE){
+            llSection.setVisibility(View.GONE);
+            ivArrow.setImageResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
+            TypedValue typedValue = new TypedValue();
+            getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+            int drawable = typedValue.resourceId;
+
+            btnClicable.setBackground(ContextCompat.getDrawable(SettingsActivity.this, drawable));
+        }else {
+            llSection.setVisibility(View.VISIBLE);
+            ivArrow.setImageResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
+           btnClicable.setBackground(ContextCompat.getDrawable(SettingsActivity.this, R.drawable.bg_widget_active));
+        }
     }
 
     private void loadLanguagesAndTranslations() {
@@ -404,6 +446,8 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+
+        binding.rvTheme.setVisibility(View.VISIBLE);
         binding.rvTheme.setLayoutManager(new LinearLayoutManager(SettingsActivity.this, RecyclerView.HORIZONTAL, false));
         binding.rvTheme.setItemViewCacheSize(100);
         binding.rvTheme.setAdapter(adapter);
