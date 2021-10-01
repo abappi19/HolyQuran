@@ -56,10 +56,11 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
         String country = locale.getCountry();
         String languageName = locale.getDisplayLanguage();
         String countryName = locale.getDisplayCountry();
+        String lc_code = language + "-" + country;
 
         binding.tvCountryName.setText(countryName);
         binding.tvLanguageName.setText(languageName);
-        binding.tvCountryLanguageCode.setText(language+"-"+country);
+        binding.tvCountryLanguageCode.setText(lc_code);
 
 
         binding.btnRoot.setOnClickListener(view -> {
@@ -68,6 +69,8 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
             Configuration config = resources.getConfiguration();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 config.setLocale(locale);
+            }else{
+                config.locale = locale;
             }
             resources.updateConfiguration(config, resources.getDisplayMetrics());
             languageChangeListener.onLanguageChanged(locale);
