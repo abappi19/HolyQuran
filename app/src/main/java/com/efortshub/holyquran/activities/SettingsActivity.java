@@ -10,6 +10,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.AppLanguageSettingActivity;
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
 import com.efortshub.holyquran.databinding.ActivitySettingsBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;
@@ -63,9 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
         loadDropDownListener();
 
         loadThemeList();
-
         loadFonts();
-
         loadLanguagesAndTranslations();
 
 
@@ -79,10 +79,17 @@ public class SettingsActivity extends AppCompatActivity {
 
         });
 
-
         binding.btnArrowFontTranslation.setOnClickListener(view -> {
             updateShowHideMenu(binding.btnArrowFontTranslation, binding.llSecFontTranslation, binding.ivArrowFontTranslation);
 
+        });
+
+
+        binding.btnSelectAppLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SettingsActivity.this, AppLanguageSettingActivity.class));
+            }
         });
 
 

@@ -8,21 +8,20 @@
     <string name="txt_imlaei" translatable="false">Imlaei</string>
     <string name="txt_indopak" translatable="false">Indopak</string>
     <string name="txt_uthmani" translatable="false">Uthmani</string>
-    <string name="txt_al_qalam"  translatable="false">al qalam</string>
-    <string name="txt_ar_othmani"  translatable="false">othmani</string>
-    <string name="txt_excelent_arabic"  translatable="false">excelent_arabic</string>
-    <string name="txt_kitab"  translatable="false">kitab</string>
-    <string name="txt_noorehidayat"  translatable="false">noorehidayat</string>
-    <string name="txt_noorehira"  translatable="false">noorehira</string>
-    <string name="txt_noorehuda"  translatable="false">noorehuda</string>
-    <string name="txt_normal"  translatable="false">normal</string>
-    <string name="txt_bold"  translatable="false">bold</string>
-    <string name="txt_italic"  translatable="false">italic</string>
-    <string name="txt_bold_italic"  translatable="false">bold_italic</string>
+    <string name="txt_al_qalam" translatable="false">al qalam</string>
+    <string name="txt_ar_othmani" translatable="false">othmani</string>
+    <string name="txt_excelent_arabic" translatable="false">excelent_arabic</string>
+    <string name="txt_kitab" translatable="false">kitab</string>
+    <string name="txt_noorehidayat" translatable="false">noorehidayat</string>
+    <string name="txt_noorehira" translatable="false">noorehira</string>
+    <string name="txt_noorehuda" translatable="false">noorehuda</string>
+    <string name="txt_normal" translatable="false">normal</string>
+    <string name="txt_bold" translatable="false">bold</string>
+    <string name="txt_italic" translatable="false">italic</string>
+    <string name="txt_bold_italic" translatable="false">bold_italic</string>
     <string name="txt_languages_and_translation" translatable="false">Languages And Tranlations</string>
     <string name="txt_app_language" translatable="false">App Language</string>
     <string name="txt_app_translation" translatable="false">Translation</string>
-
 
 
     <string name="txt_fonts">Fonts</string>

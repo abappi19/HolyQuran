@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
 
-            <TextView
+            <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_theme"
@@ -38,7 +38,7 @@
                 android:padding="8dp"
                 android:id="@+id/rv_theme"/>
 
-            <TextView
+            <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_fonts"
@@ -56,7 +56,7 @@
                 android:clickable="true"
                 android:focusable="true">
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/ta"
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                     android:clickable="false"
                     android:focusable="false"/>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -129,7 +129,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp">
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
@@ -139,7 +139,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:id="@+id/btn_font_size_text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
                     android:orientation="horizontal">
 
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -251,7 +251,7 @@
                     android:orientation="horizontal">
 
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -361,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -438,7 +438,7 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/tv_preview_title"
                     app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
                     app:layout_constraintStart_toStartOf="parent"
@@ -453,7 +453,7 @@
                     android:paddingTop="8dp"/>
 
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/tv_preview_arabic"
                     app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
                     app:layout_constraintStart_toStartOf="parent"
@@ -479,7 +479,7 @@
                 android:clickable="true"
                 android:focusable="true">
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/ta_translation"
                     android:layout_width="24dp"
                     android:layout_height="wrap_content"
@@ -493,7 +493,7 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/textView2_translation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -520,7 +520,7 @@
                     android:clickable="false"
                     android:focusable="false"/>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -552,7 +552,7 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp">
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:id="@+id/textView1"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
@@ -562,7 +562,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:id="@+id/btn_font_size_translation"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -601,7 +601,7 @@
                     android:orientation="horizontal">
 
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -711,7 +711,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <com.efortshub.holyquran.views.HbTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -788,7 +788,7 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/tv_preview_title_trans"
                     app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
                     app:layout_constraintStart_toStartOf="parent"
@@ -803,7 +803,7 @@
                     android:paddingTop="8dp"/>
 
 
-                <TextView
+                <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/tv_preview_translation"
                     app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
                     app:layout_constraintStart_toStartOf="parent"
@@ -820,7 +820,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-            <TextView
+            <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_languages_and_translation"
@@ -828,69 +828,68 @@
                 android:textSize="20sp"
                 android:padding="8dp"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="4dp">
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:id="@+id/btn_select_app_language"
+                android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/tv_app_langtitle"
-                    android:layout_width="wrap_content"
+
+                <com.efortshub.holyquran.views.HbTextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
                     android:text="@string/txt_app_language"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textStyle="bold"/>
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.efortshub.holyquran.views.HbButton
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintStart_toEndOf="@id/tv_app_langtitle"
-                    android:text="English"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp">
-
-                <TextView
-                    android:id="@+id/tv_app_transitle"
+                <com.efortshub.holyquran.views.HbTextView
+                    android:id="@+id/tv_language_selected_lang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="@string/txt_app_translation"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="12sp"
+                    android:text="English"/>
 
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <com.efortshub.holyquran.views.HbButton
-                    android:layout_width="0dp"
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:id="@+id/btn_select_translation_language"
+                android:padding="8dp">
+
+
+                <com.efortshub.holyquran.views.HbTextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintStart_toEndOf="@id/tv_app_transitle"
-                    android:text="English"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/txt_translation"
+                    android:textStyle="bold"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.efortshub.holyquran.views.HbTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:textSize="12sp"
+                    android:text="Select translation language"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
 
