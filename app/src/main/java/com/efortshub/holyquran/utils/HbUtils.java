@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.efortshub.holyquran.R;
@@ -167,4 +169,18 @@ public class HbUtils {
         return getSavedTranslatedFontSetting(context).getStyle();
     }
 
+    public static boolean RequiredOpenSettings(@NonNull Context context,  @NonNull boolean isRequired) {
+        if (isRequired) {
+            getSharedPreferences(context).edit().putBoolean("restart_required", isRequired).apply();
+            return true;
+        }else{
+            boolean b =  getSharedPreferences(context).getBoolean("restart_required", false);
+            if (b){
+                getSharedPreferences(context).edit().putBoolean("restart_required", false).apply();
+            }
+
+            return b;
+        }
+
+    }
 }

@@ -22,6 +22,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onResume();
         if (oldTheme!=HbUtils.getSavedTheme(this)){
             recreate();
+        }else {
+            if (
+            HbUtils.RequiredOpenSettings(this, false)){
+                startActivity(new Intent(SplashActivity.this, SettingsActivity.class));
+            }
         }
     }
 
