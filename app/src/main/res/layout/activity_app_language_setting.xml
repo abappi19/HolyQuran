@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.settings.AppLanguageSettingActivity">
+    <include android:id="@+id/include_title" layout="@layout/layout_back_and_title"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.efortshub.holyquran.views.HbTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_current_language"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="8dp"/>
+
+
+    <include android:id="@+id/include_lang" layout="@layout/row_language_list_item"/>
+
+    <com.efortshub.holyquran.views.HbTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_available_language"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textSize="20sp"/>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

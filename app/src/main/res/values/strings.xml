@@ -34,6 +34,8 @@
     <string name="txt_style">Style</string>
     <string name="txt_translation">Translation</string>
     <string name="txt_preview_translation">This is a preview of translated Text.</string>
+    <string name="txt_available_language">Available Languages</string>
+    <string name="txt_current_language">Current Language</string>
 
 
 </resources>

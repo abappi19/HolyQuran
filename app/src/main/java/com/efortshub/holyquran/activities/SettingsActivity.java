@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.os.ConfigurationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,6 +36,7 @@ import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -112,6 +114,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void loadLanguagesAndTranslations() {
+        Locale locale = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0);
+        String language = locale.getDisplayLanguage();
+        binding.tvLanguageSelectedLang.setText(language);
 
 
 
