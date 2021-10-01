@@ -29,9 +29,18 @@
         android:padding="8dp"
         android:textSize="20sp"/>
 
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Serch Language"
+        app:iconifiedByDefault="true"
+        android:background="@drawable/bg_button_focused"
+        android:id="@+id/searchBar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_locales"
         android:padding="8dp"
+
         android:background="@drawable/bg_widget_active_border"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
