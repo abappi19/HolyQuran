@@ -11,6 +11,15 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 /**
  * Created by H. Bappi on  12:04 PM 9/29/21.
  * Contact email:
@@ -21,69 +30,168 @@ import com.efortshub.holyquran.models.TranslatedFontSettings;
  **/
 public class HbUtils {
 
+
     private static SharedPreferences getSharedPreferences(Context context) {
-        SharedPreferences sp = context.getSharedPreferences("sp", Context.MODE_PRIVATE);
+        SharedPreferences sp = context.getSharedPreferences(HbConst.KEY_SHARED_PREF_KEY, Context.MODE_PRIVATE);
         return sp;
     }
 
     public static int getSavedTheme(Context context) {
-        return getSharedPreferences(context).getInt("theme", R.style.Base_Theme_AppCompat_Light);
+        return getSharedPreferences(context).getInt(HbConst.KEY_THEME, R.style.Base_Theme_AppCompat_Light);
     }
 
     public static void saveTheme(Context context, int theme) {
-        getSharedPreferences(context).edit().putInt("theme", theme).apply();
+        getSharedPreferences(context).edit().putInt(HbConst.KEY_THEME, theme).apply();
     }
 
 
     public static void saveArabicFontSettings(Context context, String fontSize, String script, String fontName, String style) {
-        if (fontSize == null) fontSize = "14";
-        if (script == null) script = "Imlaei";
-        if (fontName == null) fontName = "othmani";
-        getSharedPreferences(context).edit().putString("arb_script", script).apply();
-        getSharedPreferences(context).edit().putString("arb_font", fontName).apply();
-        getSharedPreferences(context).edit().putString("arb_font_size", fontSize).apply();
-        getSharedPreferences(context).edit().putString("arb_font_style", style).apply();
+        if (fontSize == null) fontSize = HbConst.ARABIC_FONT_DEFAULT_SIZE+"";
+        if (script == null) script = HbConst.ARABIC_FONT_DEFAULT_SCRIPT;
+        if (fontName == null) fontName = HbConst.ARABIC_FONT_DEFAULT_FONT;
+
+        getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_SCRIPT, script).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_FONT, fontName).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_FONT_SIZE, fontSize).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_FONT_STYLE, style).apply();
 
     }
 
 
     private static ArabicFontSettings getSavedArabicFontSetting(Context context) {
-        String script = getSharedPreferences(context).getString("arb_script", HbConst.ARABIC_FONT_DEFAULT_SCRIPT);
-        String font = getSharedPreferences(context).getString("arb_font", HbConst.ARABIC_FONT_DEFAULT_FONT);
-        String fontSize = getSharedPreferences(context).getString("arb_font_size", HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
-        String style = getSharedPreferences(context).getString("arb_font_style", HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
+        String script = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_SCRIPT, HbConst.ARABIC_FONT_DEFAULT_SCRIPT);
+        String font = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT, HbConst.ARABIC_FONT_DEFAULT_FONT);
+        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_SIZE, HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
+        String style = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_STYLE, HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
         return new ArabicFontSettings(fontSize, script, font, style);
     }
 
 
     public static void saveTranslatedFontSettings(Context context, String fontSize, String fontName, String style) {
-        if (fontSize == null) fontSize = "14";
-        if (fontName == null) fontName = "othmani";
-        getSharedPreferences(context).edit().putString("trs_font", fontName).apply();
-        getSharedPreferences(context).edit().putString("trs_font_size", fontSize).apply();
-        getSharedPreferences(context).edit().putString("trs_font_style", style).apply();
+        if (fontSize == null) fontSize = HbConst.ARABIC_FONT_DEFAULT_SIZE+"";
+        if (fontName == null) fontName = HbConst.ARABIC_FONT_DEFAULT_FONT;
+        getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT, fontName).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT_SIZE, fontSize).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT_STYLE, style).apply();
 
     }
 
 
     private static TranslatedFontSettings getSavedTranslatedFontSetting(Context context) {
-        String font = getSharedPreferences(context).getString("trs_font", HbConst.ARABIC_FONT_DEFAULT_FONT);
-        String fontSize = getSharedPreferences(context).getString("trs_font_size", HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
-        String style = getSharedPreferences(context).getString("trs_font_style", HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
+        String font = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT, HbConst.ARABIC_FONT_DEFAULT_FONT);
+        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_SIZE, HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
+        String style = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_STYLE, HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
         return new TranslatedFontSettings(fontSize, font, style);
     }
 
-    public static String getHbjScriptUrl(Context context) {
+    public static String getArabicScriptHbj(Context context) {
         String scriptName =  getSavedArabicFontSetting(context).getFontScriptName();
-        String baseHbjUrl = HbConst.getOfflineHbjBaseUrl();
+        InputStream fis;
 
-        if (scriptName.equals("Imlaei")) {
-            return baseHbjUrl + "im.hbj";
-        } else if (scriptName.equals("Indopak")) {
-            return baseHbjUrl + "in.hbj";
-        } else if (scriptName.equals("Uthmani")) {
-            return baseHbjUrl + "ut.hbj";
-        } else return baseHbjUrl + "im.hbj";
+        try {
+
+            if (scriptName.equals("Imlaei")) {
+                fis = context.getAssets().open(HbConst.OFFLINE_HBJ_IMLAEI);
+            } else if (scriptName.equals("Indopak")) {
+                fis = context.getAssets().open(HbConst.OFFLINE_HBJ_INDOPAK);
+            } else if (scriptName.equals("Uthmani")) {
+                fis = context.getAssets().open(HbConst.OFFLINE_HBJ_UTHMANI);
+            } else
+                fis = context.getAssets().open(HbConst.OFFLINE_HBJ_IMLAEI);
+
+            InputStreamReader insr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(insr);
+            boolean isFirst = true;
+            String str;
+            StringBuilder sb = new StringBuilder();
+            while ((str = bufferedReader.readLine())!=null){
+                if (isFirst)
+                    isFirst = false;
+                else
+                    sb.append('\n');
+                sb.append(str);
+            }
+
+            return sb.toString();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
+
+
+    public static String getRecitationListHbj(Context context) {
+        InputStream fis;
+
+        try {
+            fis = context.getAssets().open(HbConst.OFFLINE_HBJ_IMLAEI);
+
+            InputStreamReader insr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(insr);
+            boolean isFirst = true;
+            String str;
+            StringBuilder sb = new StringBuilder();
+            while ((str = bufferedReader.readLine())!=null){
+                if (isFirst)
+                    isFirst = false;
+                else
+                    sb.append('\n');
+                sb.append(str);
+            }
+
+            return sb.toString();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
+
+
+    public static JSONObject getTranslationListHbj(Context context) {
+        InputStream fis;
+
+        try {
+           fis = context.getAssets().open(HbConst.OFFLINE_HBJ_TRANSLATIONS);
+
+
+            InputStreamReader insr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(insr);
+            boolean isFirst = true;
+            String str;
+            StringBuilder sb = new StringBuilder();
+            while ((str = bufferedReader.readLine())!=null){
+                if (isFirst)
+                    isFirst = false;
+                else
+                    sb.append('\n');
+                sb.append(str);
+            }
+
+            return new JSONObject(sb.toString());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+
 
     }
 
@@ -169,12 +277,12 @@ public class HbUtils {
 
     public static boolean RequiredOpenSettings(@NonNull Context context,  @NonNull boolean isRequired) {
         if (isRequired) {
-            getSharedPreferences(context).edit().putBoolean("restart_required", isRequired).apply();
+            getSharedPreferences(context).edit().putBoolean(HbConst.KEY_REQUIRED_OPEN_SETTINGS, isRequired).apply();
             return true;
         }else{
-            boolean b =  getSharedPreferences(context).getBoolean("restart_required", false);
+            boolean b =  getSharedPreferences(context).getBoolean(HbConst.KEY_REQUIRED_OPEN_SETTINGS, false);
             if (b){
-                getSharedPreferences(context).edit().putBoolean("restart_required", false).apply();
+                getSharedPreferences(context).edit().putBoolean(HbConst.KEY_REQUIRED_OPEN_SETTINGS, false).apply();
             }
 
             return b;

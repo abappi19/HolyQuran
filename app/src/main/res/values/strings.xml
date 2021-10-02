@@ -45,6 +45,8 @@
     <string name="txt_show_translation">Show Translation</string>
     <string name="txt_quran_settings">Quran Settings</string>
     <string name="txt_translation_for_quran">Translation for Quran</string>
+    <string name="txt_current_translation">Current Translation</string>
+    <string name="txt_available_translation">Available Translation</string>
 
 
 </resources>

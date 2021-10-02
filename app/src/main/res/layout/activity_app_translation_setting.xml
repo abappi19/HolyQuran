@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.settings.AppTranslationSettingActivity">
+    <include android:id="@+id/include_title" layout="@layout/layout_back_and_title"/>
+
+    <com.efortshub.holyquran.views.HbTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_current_translation"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:padding="8dp"/>
+
+
+    <include
+        android:id="@+id/include_lang" layout="@layout/row_language_list_item"/>
+
+    <com.efortshub.holyquran.views.HbTextView
+        android:id="@+id/tv_restart_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_restart_request"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <com.efortshub.holyquran.views.HbButton
+        android:id="@+id/btn_restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="@string/txt_restart"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
+
+    <com.efortshub.holyquran.views.HbTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_available_translation"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:textSize="20sp"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:queryHint="Search Language..."
+        app:iconifiedByDefault="false"
+        android:background="@drawable/bg_button_focused"
+        android:id="@+id/searchBar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_translations"
+        android:padding="8dp"
+        android:background="@drawable/bg_widget_active_border"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

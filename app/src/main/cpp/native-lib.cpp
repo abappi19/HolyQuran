@@ -15,7 +15,32 @@ Java_com_efortshub_holyquran_utils_HbConst_getOnlineBaseJsonUrl(JNIEnv *env, jcl
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjBaseUrl(JNIEnv *env, jclass clazz) {
-    std::string hello = "file:///android_asset/hbj/";
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjImlaei(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/im.hbj";
     return env->NewStringUTF(hello.c_str());
 }
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjIndopak(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/in.hbj";
+    return env->NewStringUTF(hello.c_str());}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjUthmani(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/ut.hbj";
+    return env->NewStringUTF(hello.c_str());}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTranslations(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/tr.hbj";
+    return env->NewStringUTF(hello.c_str());}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrEn(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/tr_en.hbj";
+    return env->NewStringUTF(hello.c_str());}
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrBn(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/tr_bn.hbj";
+    return env->NewStringUTF(hello.c_str());}

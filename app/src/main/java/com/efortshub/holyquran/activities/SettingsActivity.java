@@ -26,6 +26,7 @@ import android.widget.SeekBar;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.settings.AppLanguageSettingActivity;
+import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity;
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
 import com.efortshub.holyquran.databinding.ActivitySettingsBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;
@@ -87,13 +88,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
-        binding.btnSelectAppLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SettingsActivity.this, AppLanguageSettingActivity.class));
-            }
-        });
-
 
     }
 
@@ -119,6 +113,11 @@ public class SettingsActivity extends AppCompatActivity {
         binding.tvLanguageSelectedLang.setText(language);
 
 
+        binding.btnSelectAppLanguage.setOnClickListener(view -> startActivity(new Intent(SettingsActivity.this, AppLanguageSettingActivity.class)));
+
+        binding.btnSelectTranslationLanguage.setOnClickListener(view -> startActivity(new Intent(SettingsActivity.this, AppTranslationSettingActivity.class)));
+
+
 
 
     }
@@ -128,7 +127,6 @@ public class SettingsActivity extends AppCompatActivity {
         //get arabic font details
 
         String fontName = HbUtils.getArabicFontName(this);
-        String scriptUrl = HbUtils.getHbjScriptUrl(this);
         String scriptName = HbUtils.getHbjScriptName(this);
         int fontSize = HbUtils.getArabicFontSize(this);
         String style = HbUtils.getArabicFontStyle(this);
