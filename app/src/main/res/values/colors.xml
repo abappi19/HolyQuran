@@ -23,8 +23,11 @@
 
 
 
+    <color name="aqua_blue_dark">#2a2a2a</color>
+    <color name="aqua_blue_light">#96BCB6</color>
+
     <color name="mid_blue_dark">#061420</color>
-    <color name="mid_blue_light">#00B7D6</color>
+    <color name="mid_blue_light">#129EB1</color>
 
     <color name="low_blue_light">#0ED3B5</color>
     <color name="low_blue_dark">#092322</color>
@@ -43,4 +46,7 @@
 
     <color name="light_grey">#D8D8D8</color>
     <color name="dark_grey">#434343</color>
+
+
+
 </resources>

@@ -406,6 +406,8 @@ public class SettingsActivity extends AppCompatActivity {
         int HBLowOrangeDarkBlack = R.style.Theme_HBLowOrangeDarkBlack;
         int HBLowOrangeLightGrey = R.style.Theme_HBLowOrangeLightGrey;
         int HBLowOrangeDarkGrey = R.style.Theme_HBLowOrangeDarkGrey;
+        int Theme_HBAquaBlueDark = R.style.Theme_HBAquaBlueDark;
+        int Theme_HBAquaBlueLight = R.style.Theme_HBAquaBlueLight;
 
 
 
@@ -415,6 +417,8 @@ public class SettingsActivity extends AppCompatActivity {
         themeList.add(HBGreyDark);
         themeList.add(HBTwoBlackBgGreenLightVar);
         themeList.add(HBGreenDark);
+        themeList.add(Theme_HBAquaBlueDark);
+        themeList.add(Theme_HBAquaBlueLight);
         themeList.add(HBMidBlueDark);
         themeList.add(HBOrangeDark);
         themeList.add(HBLowBlueDarkGrey);
