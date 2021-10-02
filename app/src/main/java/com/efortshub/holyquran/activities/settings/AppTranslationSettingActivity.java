@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.adapters.QuranTranslationListAdapter;
 import com.efortshub.holyquran.databinding.ActivityAppTranslationSettingBinding;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbConst;
@@ -75,38 +76,29 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
                         id = jo.get("id")+"";
                         name = jo.get("name")+"";
-                        author_name=  jo.get("author_name")+"";
-                        slug =  jo.get("slug")+"";
                         language_name = jo.get("language_name")+"";
-                        JSONObject jot = jo.getJSONObject("translated_name");
-
-                        translated_name = jot.get("name")+"";
-                        translated_language = jot.get("language_name")+"";
 
                         QuranTranslation quranTranslation = new QuranTranslation(
                                 id,
                                 name,
-                                author_name,
-                                slug,
-                                language_name,
-                                translated_name,
-                                translated_language);
+                                language_name);
 
                         translationList.add(quranTranslation);
 
 
                         Log.d(TAG, "loadAvailableTranslationlist: "+id
                                 +"\n"+name
-                                +" \n"+author_name
-                                +"\n"+slug
                                 +"\n"+language_name
-                                +"\n"+translated_name
-                                +"\n"+translated_language
                                 );
 
 
-
                     }
+
+                    QuranTranslationListAdapter adapter = new QuranTranslationListAdapter(translationList)
+
+
+
+
 
                 }
 
