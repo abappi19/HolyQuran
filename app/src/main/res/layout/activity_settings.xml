@@ -918,7 +918,7 @@
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:textSize="12sp"
-                        android:text="Translation for Quran"/>
+                        android:text="@string/txt_translation_for_quran"/>
 
                 </com.efortshub.holyquran.views.HbTransparentLinearLayout>
 
@@ -930,7 +930,7 @@
             <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Quran Settings"
+                android:text="@string/txt_quran_settings"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:padding="8dp"/>
@@ -944,7 +944,7 @@
                 android:clickable="true"
                 android:textColor="?attr/colorPrimary"
                 android:focusable="true"
-                android:text="Show Arabic Text"
+                android:text="@string/txt_show_arabic_text"
                 android:layoutDirection="rtl"
                 android:background="?attr/selectableItemBackground"
                 android:drawableEnd="@drawable/ic_lang_arabic"
@@ -955,7 +955,7 @@
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Show Translation"
+                android:text="@string/txt_show_translation"
                 android:textColor="?attr/colorPrimary"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="8dp"

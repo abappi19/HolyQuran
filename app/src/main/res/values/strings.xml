@@ -41,6 +41,10 @@
     <string name="txt_hello_world">Hello World!</string>
     <string name="txt_click_me">click me</string>
     <string name="txt_hi_switch">hi switch</string>
+    <string name="txt_show_arabic_text">Show Arabic Text</string>
+    <string name="txt_show_translation">Show Translation</string>
+    <string name="txt_quran_settings">Quran Settings</string>
+    <string name="txt_translation_for_quran">Translation for Quran</string>
 
 
 </resources>
