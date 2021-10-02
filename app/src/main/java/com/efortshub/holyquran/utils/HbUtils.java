@@ -5,11 +5,9 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.activities.SettingsActivity;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
 
@@ -77,7 +75,7 @@ public class HbUtils {
 
     public static String getHbjScriptUrl(Context context) {
         String scriptName =  getSavedArabicFontSetting(context).getFontScriptName();
-        String baseHbjUrl = HbConst.getBaseHbjUrl();
+        String baseHbjUrl = HbConst.getOfflineHbjBaseUrl();
 
         if (scriptName.equals("Imlaei")) {
             return baseHbjUrl + "im.hbj";
