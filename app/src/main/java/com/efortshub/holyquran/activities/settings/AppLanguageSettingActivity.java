@@ -54,7 +54,7 @@ public class AppLanguageSettingActivity extends AppCompatActivity {
         binding = ActivityAppLanguageSettingBinding.inflate(getLayoutInflater());
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
-        binding.includeTitle.tvTitle.setText(getString(R.string.txt_languages_and_translation));
+        binding.includeTitle.tvTitle.setText(getString(R.string.txt_app_language));
         binding.includeTitle.btnGoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

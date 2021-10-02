@@ -15,12 +15,17 @@
         android:text="@string/txt_current_language"
         android:textStyle="bold"
         android:textSize="16sp"
+        android:paddingTop="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"/>
 
 
     <include
-        android:id="@+id/include_lang" layout="@layout/row_language_list_item"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:id="@+id/include_lang" layout="@layout/row_language_list_item"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
 
     <com.efortshub.holyquran.views.HbTextView
         android:id="@+id/tv_restart_request"

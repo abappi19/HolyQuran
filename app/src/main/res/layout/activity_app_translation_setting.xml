@@ -7,7 +7,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.settings.AppTranslationSettingActivity">
-    <include android:id="@+id/include_title" layout="@layout/layout_back_and_title"/>
+    <include
+        android:id="@+id/include_title"
+        layout="@layout/layout_back_and_title"
+
+        />
 
     <com.efortshub.holyquran.views.HbTextView
         android:layout_width="match_parent"

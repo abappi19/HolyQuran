@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,11 +42,33 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
     ActivityAppTranslationSettingBinding binding;
     private static final String TAG = "hhhh";
 
+
+    int oldTheme = R.style.Theme_HBWhiteLight;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (oldTheme!= HbUtils.getSavedTheme(this)){
+            recreate();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        oldTheme = HbUtils.getSavedTheme(this);
+        setTheme(oldTheme);
         super.onCreate(savedInstanceState);
         binding = ActivityAppTranslationSettingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.includeTitle.tvTitle.setText(getString(R.string.txt_app_translation));
+        binding.includeTitle.btnGoBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
 
 
 
