@@ -9,6 +9,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.models.ArabicFontSettings;
+import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
 
 import org.json.JSONException;
@@ -46,9 +47,9 @@ public class HbUtils {
 
 
     public static void saveArabicFontSettings(Context context, String fontSize, String script, String fontName, String style) {
-        if (fontSize == null) fontSize = HbConst.ARABIC_FONT_DEFAULT_SIZE+"";
-        if (script == null) script = HbConst.ARABIC_FONT_DEFAULT_SCRIPT;
-        if (fontName == null) fontName = HbConst.ARABIC_FONT_DEFAULT_FONT;
+        if (fontSize == null) fontSize = HbConst.DEFAULT_ARABIC_FONT_SIZE +"";
+        if (script == null) script = HbConst.DEFAULT_ARABIC_SCRIPT;
+        if (fontName == null) fontName = HbConst.DEFAULT_ARABIC_FONT;
 
         getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_SCRIPT, script).apply();
         getSharedPreferences(context).edit().putString(HbConst.KEY_ARABIC_FONT, fontName).apply();
@@ -59,28 +60,48 @@ public class HbUtils {
 
 
     private static ArabicFontSettings getSavedArabicFontSetting(Context context) {
-        String script = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_SCRIPT, HbConst.ARABIC_FONT_DEFAULT_SCRIPT);
-        String font = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT, HbConst.ARABIC_FONT_DEFAULT_FONT);
-        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_SIZE, HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
-        String style = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_STYLE, HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
+        String script = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_SCRIPT, HbConst.DEFAULT_ARABIC_SCRIPT);
+        String font = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT, HbConst.DEFAULT_ARABIC_FONT);
+        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_SIZE, HbConst.DEFAULT_ARABIC_FONT_SIZE +"");
+        String style = getSharedPreferences(context).getString(HbConst.KEY_ARABIC_FONT_STYLE, HbConst.DEFAULT_ARABIC_FONT_STYLE +"");
         return new ArabicFontSettings(fontSize, script, font, style);
     }
 
 
     public static void saveTranslatedFontSettings(Context context, String fontSize, String fontName, String style) {
-        if (fontSize == null) fontSize = HbConst.ARABIC_FONT_DEFAULT_SIZE+"";
-        if (fontName == null) fontName = HbConst.ARABIC_FONT_DEFAULT_FONT;
+        if (fontSize == null) fontSize = HbConst.DEFAULT_ARABIC_FONT_SIZE +"";
+        if (fontName == null) fontName = HbConst.DEFAULT_ARABIC_FONT;
         getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT, fontName).apply();
         getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT_SIZE, fontSize).apply();
         getSharedPreferences(context).edit().putString(HbConst.KEY_TRANSLATION_FONT_STYLE, style).apply();
 
     }
 
+    public static void saveQuranTranslationId(Context context, QuranTranslation translation) {
+        if (translation==null){
+            translation = new QuranTranslation(HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_NAME);
+        }
+
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_ID, translation.getId().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_NAME, translation.getLanguage_name().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_NAME, translation.getName().trim()).apply();
+
+    }
+
+    public static QuranTranslation getQuranTranslationId(Context context) {
+       String id =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID);
+       String name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_NAME);
+       String language_name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME);
+
+
+         return new QuranTranslation(id, name, language_name);
+    }
+
 
     private static TranslatedFontSettings getSavedTranslatedFontSetting(Context context) {
-        String font = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT, HbConst.ARABIC_FONT_DEFAULT_FONT);
-        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_SIZE, HbConst.ARABIC_FONT_DEFAULT_SIZE +"");
-        String style = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_STYLE, HbConst.ARABIC_FONT_DEFAULT_STYLE+"");
+        String font = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT, HbConst.DEFAULT_ARABIC_FONT);
+        String fontSize = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_SIZE, HbConst.DEFAULT_ARABIC_FONT_SIZE +"");
+        String style = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT_STYLE, HbConst.DEFAULT_ARABIC_FONT_STYLE +"");
         return new TranslatedFontSettings(fontSize, font, style);
     }
 

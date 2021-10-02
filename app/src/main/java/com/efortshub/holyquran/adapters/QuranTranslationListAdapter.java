@@ -8,7 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
+import com.efortshub.holyquran.interfaces.TranslationChangeListener;
 import com.efortshub.holyquran.models.QuranTranslation;
+import com.efortshub.holyquran.utils.HbUtils;
 
 import java.util.List;
 
@@ -23,10 +25,12 @@ import java.util.List;
 public class QuranTranslationListAdapter extends RecyclerView.Adapter{
     RowLanguageListItemBinding binding;
     private List<QuranTranslation> translationList;
+    private TranslationChangeListener translationChangeListener;
 
-    public QuranTranslationListAdapter(List<QuranTranslation> translationList) {
+    public QuranTranslationListAdapter(List<QuranTranslation> translationList, TranslationChangeListener translationChangeListener) {
 
         this.translationList = translationList;
+        this.translationChangeListener = translationChangeListener;
     }
 
     @NonNull
@@ -46,12 +50,13 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         QuranTranslation translation = translationList.get(holder.getAdapterPosition());
-        binding.tvLanguageName.setText(translation.getLanguage_name());
-        binding.tvCountryName.setText(translation.getName());
+        binding.tvCountryName.setText(translation.getLanguage_name());
+        binding.tvCountryName.setAllCaps(true);
+        binding.tvLanguageName.setText(translation.getName());
 
         binding.btnRoot.setOnClickListener(view -> {
-
-
+            HbUtils.saveQuranTranslationId(view.getContext(), translation);
+            translationChangeListener.onTranslationChanged(translation);
 
         });
 

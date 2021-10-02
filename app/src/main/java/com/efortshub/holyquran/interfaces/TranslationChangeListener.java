@@ -1,5 +1,7 @@
 package com.efortshub.holyquran.interfaces;
 
+import com.efortshub.holyquran.models.QuranTranslation;
+
 /**
  * Created by H. Bappi on  7:01 PM 10/2/21.
  * Contact email:
@@ -9,4 +11,5 @@ package com.efortshub.holyquran.interfaces;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public interface TranslationChangeListener {
+    void onTranslationChanged(QuranTranslation quranTranslation);
 }

@@ -9,7 +9,8 @@ package com.efortshub.holyquran.utils;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-
+    public static final String DEFAULT_ARABIC_TRANSLATION_NAME = "Saheeh International";
+    public static final String DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME = "English";
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
@@ -17,7 +18,6 @@ public class HbConst {
     }
 
     public static native String getOnlineBaseJsonUrl();
-    public static native String getOfflineHbjBaseUrl();
     public static native String stringFromJNI();
 
 
@@ -25,24 +25,32 @@ public class HbConst {
     public static native String getOfflineHbjIndopak();
     public static native String getOfflineHbjUthmani();
     public static native String getOfflineHbjTranslations();
-    public static native String getOfflineHbjTrEn();
-    public static native String getOfflineHbjTrBn();
+    public static native String getOfflineHbjTrEn20();
+    public static native String getOfflineHbjTrBn162();
 
 
 
     //DEFAULT ARABIC FONT INITIALIZATION
 
 
-    public static final int ARABIC_FONT_DEFAULT_SIZE = 14;
-    public static final String ARABIC_FONT_DEFAULT_FONT = "othmani";
-    public static final String ARABIC_FONT_DEFAULT_SCRIPT = "Imlaei";
-    public static final String ARABIC_FONT_DEFAULT_STYLE = "normal";
+    public static final int DEFAULT_ARABIC_FONT_SIZE = 14;
+    public static final String DEFAULT_ARABIC_FONT = "othmani";
+    public static final String DEFAULT_ARABIC_SCRIPT = "Imlaei";
+    public static final String DEFAULT_ARABIC_FONT_STYLE = "normal";
+    public static final String DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID = "20";
+
+
+
+
+
+
+
     public static final String OFFLINE_HBJ_IMLAEI = getOfflineHbjImlaei();
     public static final String OFFLINE_HBJ_INDOPAK = getOfflineHbjIndopak();
     public static final String OFFLINE_HBJ_UTHMANI = getOfflineHbjUthmani();
     public static final String OFFLINE_HBJ_TRANSLATIONS = getOfflineHbjTranslations();
-    public static final String OFFLINE_HBJ_TR_EN = getOfflineHbjTrEn();
-    public static final String OFFLINE_HBJ_TR_BN= getOfflineHbjTrBn();
+    public static final String OFFLINE_HBJ_TR_EN = getOfflineHbjTrEn20();
+    public static final String OFFLINE_HBJ_TR_BN= getOfflineHbjTrBn162();
     public static final String ONLINE_JSON_TRANSLATION_URL = getOnlineBaseJsonUrl()+"translations/%s.json";
     public static final String ONLINE_JSON_RECITATION_URL = getOnlineBaseJsonUrl()+"recitations/%s.json";
 
@@ -58,6 +66,10 @@ public class HbConst {
     public static final String KEY_TRANSLATION_FONT_SIZE = "trs_font_size";
     public static final String KEY_TRANSLATION_FONT_STYLE = "trs_font_style";
     public static final String KEY_REQUIRED_OPEN_SETTINGS = "restart_required";
+    public static final String KEY_QURAN_TRANSLATION_LANGUAGE_ID = "quran_trns_id";
+    public static final String KEY_QURAN_TRANSLATION_LANGUAGE_NAME = "quran_trns_lang_name";
+    public static final String KEY_QURAN_TRANSLATION_NAME = "quran_trns_name";
+
 
 
 

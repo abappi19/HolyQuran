@@ -28,7 +28,7 @@ public class TranslatedFontSettings implements Serializable {
             return Integer.parseInt(fontSize);
         }catch (Exception e){
             e.printStackTrace();
-            return HbConst.ARABIC_FONT_DEFAULT_SIZE;
+            return HbConst.DEFAULT_ARABIC_FONT_SIZE;
         }
     }
 

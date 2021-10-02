@@ -36,11 +36,11 @@ Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTranslations(JNIEnv *env
     return env->NewStringUTF(hello.c_str());}
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrEn(JNIEnv *env, jclass clazz) {
-    std::string hello = "hbj/tr_en.hbj";
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrEn20(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/20.hbj";
     return env->NewStringUTF(hello.c_str());}
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrBn(JNIEnv *env, jclass clazz) {
-    std::string hello = "hbj/tr_bn.hbj";
+Java_com_efortshub_holyquran_utils_HbConst_getOfflineHbjTrBn162(JNIEnv *env, jclass clazz) {
+    std::string hello = "hbj/162.hbj";
     return env->NewStringUTF(hello.c_str());}

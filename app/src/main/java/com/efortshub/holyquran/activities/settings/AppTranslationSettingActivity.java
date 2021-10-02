@@ -1,6 +1,8 @@
 package com.efortshub.holyquran.activities.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.QuranTranslationListAdapter;
 import com.efortshub.holyquran.databinding.ActivityAppTranslationSettingBinding;
+import com.efortshub.holyquran.interfaces.TranslationChangeListener;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
@@ -46,7 +49,7 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
 
 
-
+        loadCurrentLanguageId();
         loadAvailableTranslationlist();
 
 
@@ -54,6 +57,16 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
 
     } //end of onCreate.....................
+
+    private void loadCurrentLanguageId() {
+        QuranTranslation quranTranslation = HbUtils.getQuranTranslationId(this);
+        binding.includeLang.tvCountryName.setText(quranTranslation.getLanguage_name());
+        binding.includeLang.tvCountryName.setAllCaps(true);
+        binding.includeLang.tvLanguageName.setText(quranTranslation.getName());
+
+
+
+    }
 
     private void loadAvailableTranslationlist() {
 
@@ -94,10 +107,15 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
                     }
 
-                    QuranTranslationListAdapter adapter = new QuranTranslationListAdapter(translationList)
+                    QuranTranslationListAdapter adapter = new QuranTranslationListAdapter(translationList,
+                            quranTranslation -> {
+                        loadCurrentLanguageId();
+                            });
 
 
-
+                    binding.rvTranslations.setLayoutManager(new LinearLayoutManager(AppTranslationSettingActivity.this, RecyclerView.VERTICAL, false));
+                    binding.rvTranslations.setItemViewCacheSize(150);
+                    binding.rvTranslations.setAdapter(adapter);
 
 
                 }
