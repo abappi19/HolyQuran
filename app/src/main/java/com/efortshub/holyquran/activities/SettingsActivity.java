@@ -78,7 +78,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void loadDropDownListener() {
 
         binding.btnArrowFontArabic.setOnClickListener(view -> {
-            updateShowHideMenu(binding.btnArrowFontArabic, binding.llSecFontArabic, binding.ivArrowFontArabic);
+            updateShowHideMenu(binding.btnArrowFontArabic, binding.llSecFontArabicPreview, binding.ivArrowFontArabic);
 
         });
 

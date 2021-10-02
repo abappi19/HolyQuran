@@ -72,7 +72,7 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
 
 
-        loadCurrentLanguageId();
+        loadCurrentLanguageIds();
         loadAvailableTranslationlist();
 
 
@@ -81,11 +81,16 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
     } //end of onCreate.....................
 
-    private void loadCurrentLanguageId() {
-        QuranTranslation quranTranslation = HbUtils.getQuranTranslationId(this);
-        binding.includeLang.tvLanguageName.setText(quranTranslation.getLanguage_name());
-        binding.includeLang.tvLanguageName.setAllCaps(true);
-        binding.includeLang.tvCountryName.setText(quranTranslation.getName());
+    private void loadCurrentLanguageIds() {
+        QuranTranslation quranTranslation = HbUtils.getQuranTranslationIdPrimary(this);
+        binding.includePrimaryTranslation.tvLanguageName.setText(quranTranslation.getLanguage_name());
+        binding.includePrimaryTranslation.tvLanguageName.setAllCaps(true);
+        binding.includePrimaryTranslation.tvTranslationName.setText(quranTranslation.getName());
+
+        QuranTranslation secondQuranTranslation = HbUtils.getQuranTranslationIdSecondary(this);
+        binding.includeSecondaryTranslation.tvLanguageName.setText(secondQuranTranslation.getLanguage_name());
+        binding.includeSecondaryTranslation.tvLanguageName.setAllCaps(true);
+        binding.includeSecondaryTranslation.tvTranslationName.setText(secondQuranTranslation.getName());
 
 
 
@@ -111,7 +116,8 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
                         String id, name, author_name, slug,  language_name, translated_name, translated_language;
 
                         id = jo.get("id")+"";
-                        name = jo.get("name")+"";
+                        name = jo.get("author_name")+"";
+                        if (name.equals("null")) name = jo.get("name")+"";
                         language_name = jo.get("language_name")+"";
 
                         QuranTranslation quranTranslation = new QuranTranslation(
@@ -132,7 +138,7 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
                     QuranTranslationListAdapter adapter = new QuranTranslationListAdapter(translationList,
                             quranTranslation -> {
-                        loadCurrentLanguageId();
+                        loadCurrentLanguageIds();
                             });
 
 

@@ -9,8 +9,6 @@ package com.efortshub.holyquran.utils;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-    public static final String DEFAULT_ARABIC_TRANSLATION_NAME = "Saheeh International";
-    public static final String DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME = "English";
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
@@ -37,7 +35,12 @@ public class HbConst {
     public static final String DEFAULT_ARABIC_FONT = "othmani";
     public static final String DEFAULT_ARABIC_SCRIPT = "Imlaei";
     public static final String DEFAULT_ARABIC_FONT_STYLE = "normal";
-    public static final String DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID = "20";
+    public static final String DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_ID = "20";
+    public static final String DEFAULT_ARABIC_PRIMARY_TRANSLATION_NAME = "Saheeh International";
+    public static final String DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_NAME = "English";
+    public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_ID = "162";
+    public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_NAME = "Bayaan Foundation";
+    public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_NAME = "Bangla";
 
 
 
@@ -66,9 +69,12 @@ public class HbConst {
     public static final String KEY_TRANSLATION_FONT_SIZE = "trs_font_size";
     public static final String KEY_TRANSLATION_FONT_STYLE = "trs_font_style";
     public static final String KEY_REQUIRED_OPEN_SETTINGS = "restart_required";
-    public static final String KEY_QURAN_TRANSLATION_LANGUAGE_ID = "quran_trns_id";
-    public static final String KEY_QURAN_TRANSLATION_LANGUAGE_NAME = "quran_trns_lang_name";
-    public static final String KEY_QURAN_TRANSLATION_NAME = "quran_trns_name";
+    public static final String KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_ID = "pri_quran_trns_id ";
+    public static final String KEY_QURAN_PRIMARY_TRANSLATION_NAME = "pri_quran_trns_name";
+    public static final String KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_NAME = "pri_quran_trns_lang_name";
+    public static final String KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_ID = "sec_quran_trns_id ";
+    public static final String KEY_QURAN_SECONDARY_TRANSLATION_NAME = "sec_quran_trns_name";
+    public static final String KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_NAME = "sec_quran_trns_lang_name";
 
 
 

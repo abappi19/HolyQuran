@@ -57,7 +57,7 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
         binding.tvTranslationName.setText(translation.getName());
 
         binding.btnRoot.setOnClickListener(view -> {
-            HbUtils.saveQuranTranslationId(view.getContext(), translation);
+            HbUtils.savePrimaryQuranTranslationId(view.getContext(), translation);
             translationChangeListener.onTranslationChanged(translation);
 
         });

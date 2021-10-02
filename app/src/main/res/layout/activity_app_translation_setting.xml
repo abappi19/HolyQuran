@@ -23,7 +23,10 @@
 
 
     <include
-        android:id="@+id/include_lang" layout="@layout/row_language_list_item"/>
+        android:id="@+id/include_primary_translation" layout="@layout/row_quran_translation_list_item"/>
+
+    <include
+        android:id="@+id/include_secondary_translation" layout="@layout/row_quran_translation_list_item"/>
 
     <com.efortshub.holyquran.views.HbTextView
         android:layout_width="match_parent"

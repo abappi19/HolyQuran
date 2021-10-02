@@ -114,16 +114,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll_sec_font_arabic"
+                android:id="@+id/ll_sec_font_arabic_preview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
-                android:padding="8dp"
                 android:visibility="gone"
+                android:padding="8dp"
                 android:background="@drawable/bg_widget_active_border"
                 android:orientation="vertical">
 
@@ -935,6 +934,31 @@
                 android:textSize="16sp"
                 android:padding="8dp"/>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_sec_quran_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                android:padding="8dp"
+                android:background="@drawable/bg_widget_active_border"
+                android:orientation="vertical">
+
+
+                <com.efortshub.holyquran.views.HbTransparentConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+
+                </com.efortshub.holyquran.views.HbTransparentConstraintLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:layout_width="match_parent"
@@ -944,29 +968,47 @@
                 android:clickable="true"
                 android:textColor="?attr/colorPrimary"
                 android:focusable="true"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:text="@string/txt_show_arabic_text"
                 android:layoutDirection="rtl"
                 android:background="?attr/selectableItemBackground"
-                android:drawableEnd="@drawable/ic_lang_arabic"
-                android:drawableRight="@drawable/ic_baseline_translate_24"
                 />
 
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_show_translation"
+                android:text="@string/txt_show_primary_trans"
+                android:textColor="?attr/colorPrimary"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                />
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_show_secondary_trans"
                 android:textColor="?attr/colorPrimary"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:focusable="true"
-                android:drawableEnd="@drawable/ic_baseline_translate_24"
-                android:drawableRight="@drawable/ic_baseline_translate_24"
-                android:drawablePadding="8dp"
                 android:background="?attr/selectableItemBackground"
                 />
+
+
+
 
 
             <com.efortshub.holyquran.views.HbButton

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
@@ -77,26 +78,26 @@ public class HbUtils {
 
     }
 
-    public static void saveQuranTranslationId(Context context, QuranTranslation translation) {
+    public static void savePrimaryQuranTranslationId(Context context, QuranTranslation translation) {
         if (translation==null){
-            translation = new QuranTranslation(HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_NAME);
+            translation = new QuranTranslation(HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_NAME);
         }
 
-        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_ID, translation.getId().trim()).apply();
-        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_NAME, translation.getLanguage_name().trim()).apply();
-        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_TRANSLATION_NAME, translation.getName().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_ID, translation.getId().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_NAME, translation.getLanguage_name().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_NAME, translation.getName().trim()).apply();
 
     }
+    public static void saveSecondaryQuranTranslationId(Context context, QuranTranslation translation) {
+        if (translation==null){
+            translation = new QuranTranslation(HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_NAME);
+        }
 
-    public static QuranTranslation getQuranTranslationId(Context context) {
-       String id =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_ID);
-       String name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_NAME);
-       String language_name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_TRANSLATION_LANGUAGE_NAME);
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_ID, translation.getId().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_NAME, translation.getLanguage_name().trim()).apply();
+        getSharedPreferences(context).edit().putString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_NAME, translation.getName().trim()).apply();
 
-
-         return new QuranTranslation(id, name, language_name);
     }
-
 
     private static TranslatedFontSettings getSavedTranslatedFontSetting(Context context) {
         String font = getSharedPreferences(context).getString(HbConst.KEY_TRANSLATION_FONT, HbConst.DEFAULT_ARABIC_FONT);
@@ -309,5 +310,25 @@ public class HbUtils {
             return b;
         }
 
+    }
+
+    public static QuranTranslation getQuranTranslationIdPrimary(@NonNull Context context) {
+
+        String id =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_ID);
+        String name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_NAME);
+        String language_name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_PRIMARY_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_PRIMARY_TRANSLATION_LANGUAGE_NAME);
+
+
+        return new QuranTranslation(id, name, language_name);
+    }
+
+    public static QuranTranslation getQuranTranslationIdSecondary(@NonNull Context context) {
+
+        String id =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_ID, HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_ID);
+        String name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_NAME, HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_NAME);
+        String language_name =  getSharedPreferences(context).getString(HbConst.KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_NAME, HbConst.DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_NAME);
+
+
+        return new QuranTranslation(id, name, language_name);
     }
 }
