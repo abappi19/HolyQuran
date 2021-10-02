@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
 import com.efortshub.holyquran.databinding.RowQuranTranslationListItemBinding;
 import com.efortshub.holyquran.interfaces.TranslationChangeListener;
@@ -55,6 +56,11 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
         binding.tvLanguageName.setText(translation.getLanguage_name());
         binding.tvLanguageName.setAllCaps(true);
         binding.tvTranslationName.setText(translation.getName());
+
+        if (translation.isDownloaded()){
+            binding.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_done_all_24);
+        }
+
 
         binding.btnRoot.setOnClickListener(view -> {
             HbUtils.savePrimaryQuranTranslationId(view.getContext(), translation);
