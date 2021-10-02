@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_theme"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_fonts"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="8dp"/>
 
 
@@ -68,7 +68,7 @@
                     android:foregroundGravity="center"
                     android:background="@null"
                     android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="16sp"/>
 
                 <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/textView2"
@@ -155,7 +155,7 @@
                         android:focusable="true"
                         android:maxLength="3"
                         android:textStyle="bold"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1"
                         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -496,7 +496,7 @@
                     android:foregroundGravity="center"
                     android:background="@null"
                     android:textStyle="bold"
-                    android:textSize="20sp"/>
+                    android:textSize="16sp"/>
 
                 <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/textView2_translation"
@@ -582,7 +582,7 @@
                         android:focusable="true"
                         android:maxLength="3"
                         android:textStyle="bold"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1"
                         app:layout_constraintStart_toEndOf="@+id/textView1"
@@ -834,7 +834,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_languages_and_translation"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="8dp"/>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -932,7 +932,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txt_quran_settings"
                 android:textStyle="bold"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:padding="8dp"/>
 
 

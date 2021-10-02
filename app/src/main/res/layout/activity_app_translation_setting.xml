@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/txt_current_translation"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:padding="8dp"/>
 
 
@@ -22,31 +22,12 @@
         android:id="@+id/include_lang" layout="@layout/row_language_list_item"/>
 
     <com.efortshub.holyquran.views.HbTextView
-        android:id="@+id/tv_restart_request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_restart_request"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"/>
-
-    <com.efortshub.holyquran.views.HbButton
-        android:id="@+id/btn_restart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="@string/txt_restart"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"/>
-
-    <com.efortshub.holyquran.views.HbTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/txt_available_translation"
         android:textStyle="bold"
         android:padding="8dp"
-        android:textSize="20sp"/>
+        android:textSize="16sp"/>
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"

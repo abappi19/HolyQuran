@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:text="@string/txt_current_language"
         android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="8dp"/>
+        android:textSize="16sp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"/>
 
 
     <include
@@ -45,8 +46,9 @@
         android:layout_height="wrap_content"
         android:text="@string/txt_available_language"
         android:textStyle="bold"
-        android:padding="8dp"
-        android:textSize="20sp"/>
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textSize="16sp"/>
 
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"

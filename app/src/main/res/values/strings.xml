@@ -19,7 +19,7 @@
     <string name="txt_bold" translatable="false">bold</string>
     <string name="txt_italic" translatable="false">italic</string>
     <string name="txt_bold_italic" translatable="false">bold_italic</string>
-    <string name="txt_languages_and_translation" translatable="false">Languages And Tranlations</string>
+    <string name="txt_languages_and_translation" translatable="false">Languages And Translations</string>
     <string name="txt_app_language" translatable="false">App Language</string>
     <string name="txt_app_translation" translatable="false">Translation</string>
 

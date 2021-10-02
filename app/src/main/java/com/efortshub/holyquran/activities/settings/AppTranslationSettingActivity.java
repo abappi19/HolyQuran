@@ -60,9 +60,9 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
     private void loadCurrentLanguageId() {
         QuranTranslation quranTranslation = HbUtils.getQuranTranslationId(this);
-        binding.includeLang.tvCountryName.setText(quranTranslation.getLanguage_name());
-        binding.includeLang.tvCountryName.setAllCaps(true);
-        binding.includeLang.tvLanguageName.setText(quranTranslation.getName());
+        binding.includeLang.tvLanguageName.setText(quranTranslation.getLanguage_name());
+        binding.includeLang.tvLanguageName.setAllCaps(true);
+        binding.includeLang.tvCountryName.setText(quranTranslation.getName());
 
 
 
