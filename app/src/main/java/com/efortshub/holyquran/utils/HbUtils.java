@@ -331,4 +331,20 @@ public class HbUtils {
 
         return new QuranTranslation(id, name, language_name);
     }
+
+    public static boolean getQuranTranslationVisibilityPrimary(Context context) {
+        return getSharedPreferences(context).getBoolean(HbConst.KEY_TRANSLATION_VISIBILITY_PRIMARY, HbConst.DEFAULT_QURAN_TRANSLATION_VISIBILITY_PRIMARY);
+    }
+
+    public static boolean getQuranTranslationVisibilitySecondary(Context context) {
+        return getSharedPreferences(context).getBoolean(HbConst.KEY_TRANSLATION_VISIBILITY_SECONDARY, HbConst.DEFAULT_QURAN_TRANSLATION_VISIBILITY_SECONDARY);
+    }
+    public static void setQuranTranslationVisibilityPrimary(Context context, boolean trns) {
+        getSharedPreferences(context).edit().putBoolean(HbConst.KEY_TRANSLATION_VISIBILITY_PRIMARY, trns).apply();
+    }
+
+    public static void setQuranTranslationVisibilitySecondary(Context context, boolean trns) {
+        getSharedPreferences(context).edit().putBoolean(HbConst.KEY_TRANSLATION_VISIBILITY_SECONDARY, trns).apply();
+
+    }
 }

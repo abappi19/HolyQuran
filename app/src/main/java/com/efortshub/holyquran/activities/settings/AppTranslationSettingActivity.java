@@ -1,12 +1,16 @@
 package com.efortshub.holyquran.activities.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.android.volley.Request;
@@ -94,6 +98,33 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
         binding.includeSecondaryTranslation.tvTranslationName.setText(secondQuranTranslation.getName());
         binding.includeSecondaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
 
+        boolean primaryTrnsVisibility = HbUtils.getQuranTranslationVisibilityPrimary(this);
+        boolean secondaryTrnsVisibility = HbUtils.getQuranTranslationVisibilitySecondary(this);
+
+        if (primaryTrnsVisibility){
+            binding.includePrimaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_24);
+        }else {
+            binding.includePrimaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+
+        }
+
+        if (secondaryTrnsVisibility){
+            binding.includeSecondaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_24);
+        }else {
+            binding.includeSecondaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
+        }
+
+        binding.includePrimaryTranslation.btnRoot.setOnClickListener(view -> {
+            HbUtils.setQuranTranslationVisibilityPrimary(this, !primaryTrnsVisibility);
+            loadCurrentLanguageIds();
+        });
+
+        binding.includeSecondaryTranslation.btnRoot.setOnClickListener(view -> {
+            HbUtils.setQuranTranslationVisibilitySecondary(this, !secondaryTrnsVisibility);
+            loadCurrentLanguageIds();
+        });
+
+
 
 
 
@@ -155,11 +186,23 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
                         }
                     }
 
-
-
-
                     QuranTranslationListAdapter adapter = new QuranTranslationListAdapter(downloadFilteredTranslationList,
-                            quranTranslation -> {
+                            (index,quranTranslation) -> {
+                        if (index==1){
+                            TypedValue typedValue = new TypedValue();
+                            getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+                            int drawable = typedValue.resourceId;
+                            binding.includePrimaryTranslation.btnRoot.setBackground(ContextCompat.getDrawable(AppTranslationSettingActivity.this, R.drawable.bg_widget_active));
+                            new Handler(Looper.getMainLooper())
+                                    .postDelayed(() -> binding.includePrimaryTranslation.btnRoot.setBackground(ContextCompat.getDrawable(AppTranslationSettingActivity.this, drawable)), 2000);
+                        }else  if (index==2){
+                            TypedValue typedValue = new TypedValue();
+                            getTheme().resolveAttribute(android.R.attr.selectableItemBackground, typedValue, true);
+                            int drawable = typedValue.resourceId;
+                            binding.includeSecondaryTranslation.btnRoot.setBackground(ContextCompat.getDrawable(AppTranslationSettingActivity.this, R.drawable.bg_widget_active));
+                            new Handler(Looper.getMainLooper())
+                                    .postDelayed(() -> binding.includeSecondaryTranslation.btnRoot.setBackground(ContextCompat.getDrawable(AppTranslationSettingActivity.this, drawable)), 2000);
+                        }
                         loadCurrentLanguageIds();
                             });
 

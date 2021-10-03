@@ -54,7 +54,7 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
 
         String language = locale.getLanguage();
         String country = locale.getCountry();
-        String languageName = locale.getDisplayLanguage();
+        String languageName = locale.getDisplayLanguage(Locale.ENGLISH);
         String countryName = locale.getDisplayCountry();
         String lc_code = language + "-" + country;
 

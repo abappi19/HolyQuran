@@ -49,6 +49,9 @@
     <string name="txt_available_translation">Available Translation</string>
     <string name="txt_show_primary_trans">Primary Translation</string>
     <string name="txt_show_secondary_trans">Secondary Translation</string>
+    <string name="txt_select_translation_slot_desc">Select Translation Slot to apply changes...</string>
+    <string name="txt_secondary">Secondary</string>
+    <string name="txt_primary">Primary</string>
 
 
 </resources>

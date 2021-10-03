@@ -11,5 +11,5 @@ import com.efortshub.holyquran.models.QuranTranslation;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public interface TranslationChangeListener {
-    void onTranslationChanged(QuranTranslation quranTranslation);
+    void onTranslationChanged(int index, QuranTranslation quranTranslation);
 }

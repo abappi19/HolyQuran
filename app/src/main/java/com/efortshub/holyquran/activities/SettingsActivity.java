@@ -73,6 +73,22 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
+        test();
+
+    }
+
+    private void test() {
+
+        Intent intent = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+            intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
+            intent.putExtra("android.content.extra.FANCY", true);
+            intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
+            ActivityCompat.startActivityForResult(SettingsActivity.this, intent, 1, null);
+        }
+
+
     }
 
     private void loadDropDownListener() {

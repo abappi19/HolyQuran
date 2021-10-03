@@ -1,19 +1,28 @@
 package com.efortshub.holyquran.adapters;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
 import com.efortshub.holyquran.databinding.RowQuranTranslationListItemBinding;
 import com.efortshub.holyquran.interfaces.TranslationChangeListener;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbUtils;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.file.Files;
+import java.nio.file.attribute.FileAttribute;
 import java.util.List;
 
 /**
@@ -26,6 +35,7 @@ import java.util.List;
  **/
 public class QuranTranslationListAdapter extends RecyclerView.Adapter{
     RowQuranTranslationListItemBinding binding;
+    private static final String TAG = "hhhh";
 
     private List<QuranTranslation> translationList;
     private TranslationChangeListener translationChangeListener;
@@ -59,14 +69,89 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
 
         if (translation.isDownloaded()){
             binding.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_done_all_24);
+
+            binding.btnRoot.setOnClickListener(view -> {
+                AlertDialog alertDialog;
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle(view.getContext().getResources().getString(R.string.txt_app_translation));
+                builder.setMessage(R.string.txt_select_translation_slot_desc);
+                builder.setPositiveButton(R.string.txt_secondary, (dialogInterface, i) -> {
+                    HbUtils.saveSecondaryQuranTranslationId(view.getContext(), translation);
+                    translationChangeListener.onTranslationChanged(2,translation);
+
+                });
+                builder.setNegativeButton(R.string.txt_primary, (dialogInterface, i) -> {
+                    HbUtils.savePrimaryQuranTranslationId(view.getContext(), translation);
+                    translationChangeListener.onTranslationChanged(1,translation);
+
+                });
+                alertDialog = builder.create();
+
+                alertDialog.show();
+
+            });
+
+        }else {
+            binding.btnRoot.setOnClickListener(view -> {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                /*
+                String fileStr = view.getContext().getExternalFilesDir(view.getContext().getFilesDir().getAbsolutePath()).getAbsolutePath()+"/hbj/"+translation.getId()+".json";
+
+                File file = new File(fileStr);
+                try {
+                    if (!file.exists()){
+                        Log.d(TAG, "onBindViewHolder: file dees not  exist");
+                        file.createNewFile();
+                        FileOutputStream fo = new FileOutputStream(file);
+                        fo.flush();
+                        fo.close();
+                    }
+                    FileOutputStream fo = new FileOutputStream(file);
+
+                    fo.flush();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fo);
+                    outputStreamWriter.write("hi, how are you");
+                    outputStreamWriter.close();
+                    fo.close();
+
+
+
+
+
+*//*
+
+                    FileOutputStream fout = new FileOutputStream(file);
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fout);
+
+                    outputStreamWriter.write("hi, how are you");
+                    outputStreamWriter.close();
+*//*
+
+                    Log.d(TAG, "onBindViewHolder: success");
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.d(TAG, "onBindViewHolder: "+e.getMessage());
+                }*/
+            });
         }
 
 
-        binding.btnRoot.setOnClickListener(view -> {
-            HbUtils.savePrimaryQuranTranslationId(view.getContext(), translation);
-            translationChangeListener.onTranslationChanged(translation);
-
-        });
 
 
     }

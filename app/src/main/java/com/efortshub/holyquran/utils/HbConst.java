@@ -1,5 +1,7 @@
 package com.efortshub.holyquran.utils;
 
+import com.efortshub.holyquran.models.TranslatedFontSettings;
+
 /**
  * Created by H. Bappi on  12:52 PM 9/27/21.
  * Contact email:
@@ -9,6 +11,10 @@ package com.efortshub.holyquran.utils;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
+    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_PRIMARY = true;
+    public static final String KEY_TRANSLATION_VISIBILITY_SECONDARY = "trns_vsb_sc";
+    public static final String KEY_TRANSLATION_VISIBILITY_PRIMARY = "trns_vsb_pr";
+    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_SECONDARY = true;
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
