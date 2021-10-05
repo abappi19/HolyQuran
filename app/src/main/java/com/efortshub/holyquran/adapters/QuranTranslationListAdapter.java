@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.databinding.DialogDownloadConfirmationBinding;
 import com.efortshub.holyquran.databinding.RowQuranTranslationListItemBinding;
 import com.efortshub.holyquran.interfaces.TranslationChangeListener;
@@ -97,6 +98,7 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
             binding.btnRoot.setOnClickListener(view -> {
 
 
+
                 DialogDownloadConfirmationBinding db = DialogDownloadConfirmationBinding.inflate(LayoutInflater.from(view.getContext())
                 , null, false);
 
@@ -104,6 +106,12 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
                 db.tvTranslationName.setText(translation.getName());
                 db.tvLanguageName.setText(translation.getLanguage_name());
                 db.tvDownloadPath.setText(view.getContext().getFilesDir().getAbsolutePath()+"/holy_quran");
+
+                db.btnChangeDownloadPath.setOnClickListener(v->{
+                    v.getContext().startActivity(new Intent(v.getContext(), DownloadLocationActivity.class));
+
+                });
+
 
               AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
                         .setView(db.getRoot())

@@ -3,6 +3,7 @@ package com.efortshub.holyquran.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -17,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -346,5 +348,32 @@ public class HbUtils {
     public static void setQuranTranslationVisibilitySecondary(Context context, boolean trns) {
         getSharedPreferences(context).edit().putBoolean(HbConst.KEY_TRANSLATION_VISIBILITY_SECONDARY, trns).apply();
 
+    }
+
+    public static File getDownloadDir(Context context){
+
+        File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+        if (!mainDir.exists()){
+            mainDir.mkdirs();
+        }
+
+
+
+
+
+        return mainDir;
+    }
+    public static File getDownloadDir(Context context, String contentTypeKey){
+
+        File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+        if (!mainDir.exists()){
+            mainDir.mkdirs();
+        }
+
+
+
+
+
+        return mainDir;
     }
 }

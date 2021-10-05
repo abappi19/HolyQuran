@@ -15,6 +15,7 @@ public class HbConst {
     public static final String KEY_TRANSLATION_VISIBILITY_SECONDARY = "trns_vsb_sc";
     public static final String KEY_TRANSLATION_VISIBILITY_PRIMARY = "trns_vsb_pr";
     public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_SECONDARY = true;
+    public static final String KEY_DOWNLOAD_DIR_MAIN_PATH = "HolyQuran";
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
