@@ -52,6 +52,12 @@
     <string name="txt_select_translation_slot_desc">Select Translation Slot to apply changes...</string>
     <string name="txt_secondary">Secondary</string>
     <string name="txt_primary">Primary</string>
+    <string name="txt_info">Info</string>
+    <string name="txt_download_trans_details">Are your sure You want to Download :</string>
+    <string name="txt_download">Download</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_change_download_path">Change Download Path</string>
+    <string name="txt_download_path">Download Path:</string>
 
 
 </resources>

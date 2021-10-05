@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.33" />
+        <entry key="app/src/main/res/drawable/bg_border_round.xml" value="0.5" />
         <entry key="app/src/main/res/drawable/bg_button_clicable.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/bg_button_disabled.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/bg_button_enabled.xml" value="0.5833333333333334" />
@@ -16,12 +17,15 @@
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.56875" />
         <entry key="app/src/main/res/drawable/ic_baseline_translate_24.xml" value="0.56875" />
         <entry key="app/src/main/res/drawable/ic_lang_arabic.xml" value="0.56875" />
+        <entry key="app/src/main/res/drawable/transparent.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_app_crash.xml" value="0.2222222222222222" />
         <entry key="app/src/main/res/layout/activity_app_language_setting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_app_translation_setting.xml" value="0.5124653739612188" />
+        <entry key="app/src/main/res/layout/activity_download_location.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.31354166666666666" />
+        <entry key="app/src/main/res/layout/dialog_download_confirmation.xml" value="0.5429362880886427" />
         <entry key="app/src/main/res/layout/layout_back_and_title.xml" value="0.5" />
         <entry key="app/src/main/res/layout/row_language_list_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/row_quran_translation_list_item.xml" value="0.33" />

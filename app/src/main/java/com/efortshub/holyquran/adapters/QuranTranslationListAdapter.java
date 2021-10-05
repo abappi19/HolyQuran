@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.databinding.DialogDownloadConfirmationBinding;
 import com.efortshub.holyquran.databinding.RowQuranTranslationListItemBinding;
 import com.efortshub.holyquran.interfaces.TranslationChangeListener;
 import com.efortshub.holyquran.models.QuranTranslation;
@@ -95,8 +97,22 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
             binding.btnRoot.setOnClickListener(view -> {
 
 
+                DialogDownloadConfirmationBinding db = DialogDownloadConfirmationBinding.inflate(LayoutInflater.from(view.getContext())
+                , null, false);
 
 
+                db.tvTranslationName.setText(translation.getName());
+                db.tvLanguageName.setText(translation.getLanguage_name());
+                db.tvDownloadPath.setText(view.getContext().getFilesDir().getAbsolutePath()+"/holy_quran");
+
+              AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
+                        .setView(db.getRoot())
+                        .create();
+
+
+              alertDialog.getWindow().setBackgroundDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.transparent));
+
+              alertDialog.show();
 
 
 
