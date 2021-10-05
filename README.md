@@ -3,7 +3,7 @@ Holy Quran Android App by H.Bappi - eFortsHub
 
 
 
-# I WISH IF I DIE (DISCONTINUE THE PROJECT)  DURING DEVELOPMENT, SOMEONE WILL CONTINUE MY PROJECT, ALL IS UP TO ALMIGHTY ALLAH
+# I Wish if I Die (discontinue the project)  during development, Someone will continue my project. ALL IS UP TO ALMIGHTY ALLAH
 
 # আমি চাই যদি আমি মরে যাই (প্রকল্পটি বিচ্ছিন্ন করি) উন্নয়নের সময়, কেউ আমার প্রকল্পটি চালিয়ে যাবে, সবই মহান আল্লাহর কাছে
 
