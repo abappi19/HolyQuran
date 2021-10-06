@@ -3,13 +3,16 @@ package com.efortshub.holyquran.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.documentfile.provider.DocumentFile;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity;
+import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
@@ -365,16 +368,30 @@ public class HbUtils {
         return mainDir;
     }
     public static File getDownloadDir(Context context, String contentTypeKey){
-
         File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+
         if (!mainDir.exists()){
             mainDir.mkdirs();
         }
-
-
-
-
-
         return mainDir;
+    }
+
+    public static DocumentFile getDownloadDocumentDir(Context context, Uri uri) throws Exception {
+
+      if (uri.toString().contains("%2FHolyQuran")
+      && !uri.toString().contains("%2FHolyQuran%20")){
+
+            String[] arr = uri.toString().split("%2FHolyQuran");
+
+          throw new Exception("You can't use directory contains HolyQuran");
+
+        }
+        DocumentFile documentFile = DocumentFile.fromTreeUri(context, uri);
+        DocumentFile unf = documentFile.findFile(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+        if (!unf.exists()){
+            DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+            unf = dfm;
+        }
+        return unf;
     }
 }

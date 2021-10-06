@@ -11,11 +11,6 @@ import com.efortshub.holyquran.models.TranslatedFontSettings;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_PRIMARY = true;
-    public static final String KEY_TRANSLATION_VISIBILITY_SECONDARY = "trns_vsb_sc";
-    public static final String KEY_TRANSLATION_VISIBILITY_PRIMARY = "trns_vsb_pr";
-    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_SECONDARY = true;
-    public static final String KEY_DOWNLOAD_DIR_MAIN_PATH = "HolyQuran";
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
@@ -48,6 +43,9 @@ public class HbConst {
     public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_ID = "162";
     public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_NAME = "Bayaan Foundation";
     public static final String DEFAULT_ARABIC_SECONDARY_TRANSLATION_LANGUAGE_NAME = "Bangla";
+    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_SECONDARY = true;
+    public static final boolean DEFAULT_QURAN_TRANSLATION_VISIBILITY_PRIMARY = true;
+
 
 
 
@@ -87,6 +85,10 @@ public class HbConst {
     public static final String KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_ID = "sec_quran_trns_id ";
     public static final String KEY_QURAN_SECONDARY_TRANSLATION_NAME = "sec_quran_trns_name";
     public static final String KEY_QURAN_SECONDARY_TRANSLATION_LANGUAGE_NAME = "sec_quran_trns_lang_name";
+    public static final String KEY_TRANSLATION_VISIBILITY_SECONDARY = "trns_vsb_sc";
+    public static final String KEY_TRANSLATION_VISIBILITY_PRIMARY = "trns_vsb_pr";
+    public static final String KEY_DOWNLOAD_DIR_MAIN_PATH = "HolyQuran";
+    public static final String KEY_DOCUMENT_FILE_PATH_SEPARATOR = "%2F";
 
 
 

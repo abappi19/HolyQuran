@@ -2,6 +2,7 @@ package com.efortshub.holyquran.activities.settings;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -9,6 +10,7 @@ import androidx.documentfile.provider.DocumentFile;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -136,24 +138,40 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     Uri uri = data.getData();
                     Log.d(TAG, "onActivityResult: "+uri);
 
-                    DocumentFile documentFile =  DocumentFile.fromTreeUri(DownloadLocationActivity.this, uri);
-
-                    DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
-
-
-                    Log.d(TAG, "onActivityResult: "+dfm.getUri());
+                    if (uri!=null){
+                        try {
+                            DocumentFile mainPath = HbUtils.getDownloadDocumentDir(this, uri);
 
 
-                    /*
-                    if (bundle!=null){
-                        for (String key : bundle.keySet()){
-                            Log.d(TAG, "onActivityResult:  key"+key);
-                            Log.d(TAG, "onActivityResult: value of key: "+bundle.get(key));
+
+
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            new AlertDialog.Builder(DownloadLocationActivity.this)
+                                    .setTitle(getString(R.string.txt_warning))
+                                    .setMessage(getString(R.string.txt_cant_select_path_that_contains)+"HolyQuran")
+                                    .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                                            Intent intent;
+                                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                                                intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                                                intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
+                                                intent.putExtra("android.content.extra.FANCY", true);
+                                                intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
+                                                ActivityCompat.startActivityForResult(DownloadLocationActivity.this, intent, HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH, null);
+                                            }
+
+
+                                        }
+                                    })
+                                    .create().show();
                         }
+                    }
 
-                    }else {
-
-                    }*/
                 }
 
             }else {
