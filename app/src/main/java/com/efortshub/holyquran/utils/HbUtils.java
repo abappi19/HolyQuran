@@ -35,6 +35,7 @@ import java.io.InputStreamReader;
 public class HbUtils {
 
 
+
     private static SharedPreferences getSharedPreferences(Context context) {
         SharedPreferences sp = context.getSharedPreferences(HbConst.KEY_SHARED_PREF_KEY, Context.MODE_PRIVATE);
         return sp;

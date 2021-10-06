@@ -58,6 +58,11 @@
     <string name="txt_cancel">Cancel</string>
     <string name="txt_change_download_path">Change Download Path</string>
     <string name="txt_download_path">Download Path:</string>
+    <string name="txt_current_path">Current Path</string>
+    <string name="txt_warning">Warning</string>
+    <string name="txt_storage_permission_warning_desc">Storage Permission not granted. It is required if you want to use different location than system allocated Path</string>
+    <string name="txt_btn_enable_storage_perm">Enable Storage Permission</string>
+    <string name="txt_set_another_path">Set Another Path</string>
 
 
 </resources>

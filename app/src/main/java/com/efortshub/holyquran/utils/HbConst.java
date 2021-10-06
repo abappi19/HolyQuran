@@ -65,6 +65,11 @@ public class HbConst {
     public static final String ONLINE_JSON_RECITATION_URL = getOnlineBaseJsonUrl()+"recitations/%s.json";
 
 
+
+
+    public static final int REQUEST_CODE_SELECT_DOWNLOAD_PATH = 91;
+    public static final int REQUEST_CODE_SELECT_STORAGE_PERMISSION = 92;
+
     //DEFAULT KEY USED IN APP TO VALIDATE OF FIND CONTENT
     public static final String KEY_SHARED_PREF_KEY = "sp";
     public static final String KEY_THEME = "theme";
