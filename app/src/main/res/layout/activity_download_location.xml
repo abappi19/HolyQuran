@@ -26,6 +26,11 @@
             layout="@layout/row_quran_translation_list_item" />
 
 
+        <include
+            android:id="@+id/include_custom_path"
+            layout="@layout/row_quran_translation_list_item" />
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
