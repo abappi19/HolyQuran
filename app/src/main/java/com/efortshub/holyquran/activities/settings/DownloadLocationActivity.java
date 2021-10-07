@@ -14,12 +14,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
 import com.efortshub.holyquran.utils.HbConst;
@@ -30,6 +32,8 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
     private static final String TAG = "hhhh";
     ActivityDownloadLocationBinding binding;
+
+    RequestQueue queue = null;
 
 
     int oldTheme = R.style.Theme_HBWhiteLight;
@@ -55,6 +59,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityDownloadLocationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         binding.includeTitle.tvTitle.setText(getString(R.string.txt_download_path));
         binding.includeTitle.btnGoBack.setOnClickListener(view -> onBackPressed());
@@ -82,8 +87,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
             binding.llSecPermissionWarning.setVisibility(View.GONE);
             return true;
         }
-
-
     }
 
     private void initListener() {
@@ -99,7 +102,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
                 }
             }
 
-
         });
     }
 
@@ -112,16 +114,21 @@ public class DownloadLocationActivity extends AppCompatActivity {
         binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
 
 
+
+
+
     }
 
     private void loadCustomPath() {
         File file = HbUtils.getDownloadDir(DownloadLocationActivity.this);
         String path = file.getAbsolutePath();
+/*
 
         binding.includeCustomPath.tvLanguageName.setText(R.string.txt_current_path);
         binding.includeCustomPath.tvTranslationName.setText(path);
         binding.includeCustomPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
 
+*/
 
     }
 
@@ -137,7 +144,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
         if (requestCode == HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH) {
             if (resultCode == RESULT_OK) {
                 if (data != null) {
-
                     Uri uri = data.getData();
                     Log.d(TAG, "onActivityResult: " + uri);
 
@@ -148,15 +154,17 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
 
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                             new AlertDialog.Builder(DownloadLocationActivity.this)
                                     .setTitle(getString(R.string.txt_warning))
                                     .setMessage(e.getMessage())
-                                    .setPositiveButton("Cancel", (dialogInterface, i) -> {
+                                    .setPositiveButton(R.string.txt_choose_another, (dialogInterface, i) -> {
 
                                         Intent intent;
-                                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                             intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
                                             intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
                                             intent.putExtra("android.content.extra.FANCY", true);
@@ -166,6 +174,12 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
                                     })
+                                .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    }
+                                })
                                     .create().show();
                         }
                     }

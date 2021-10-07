@@ -63,7 +63,10 @@
     <string name="txt_storage_permission_warning_desc">Storage Permission not granted. It is required if you want to use different location than system allocated Path</string>
     <string name="txt_btn_enable_storage_perm">Enable Storage Permission</string>
     <string name="txt_set_another_path">Set Another Path</string>
-    <string name="txt_cant_select_path_that_contains">\"You can\'t select path that contains \"</string>
+    <string name="txt_cant_select_path_that_contains">You can\'t select path that contains </string>
+  <string name="txt_use_system_path">Use System Allocated Path</string>
+  <string name="txt_choose_another">Choose Another</string>
+  <string name="txt_we_dont_allow_phone_storage">You selected Phone storage. We don\'t allow to use custom folder from Phone Storage . Instead please use System Allocated Path.</string>
 
 
 </resources>

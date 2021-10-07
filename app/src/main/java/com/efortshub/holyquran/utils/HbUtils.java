@@ -378,22 +378,23 @@ public class HbUtils {
 
     public static DocumentFile getDownloadDocumentDir(Context context, Uri uri) throws Exception {
 
-      if (uri.toString().contains("%2FHolyQuran")
-      && !uri.toString().contains("%2FHolyQuran%20")){
-          throw new Exception("You can't use directory contains HolyQuran");
-
-        }
-        DocumentFile documentFile = DocumentFile.fromTreeUri(context, uri);
-        DocumentFile unf = documentFile.findFile(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
-        if (unf!=null) {
-            if (!unf.exists()) {
-                DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
-                unf = dfm;
-            }
-        }else {
-            DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
-            unf = dfm;
-        }
-        return unf;
+      if (uri.toString().endsWith("%2FHolyQuran")){
+          throw new Exception(context.getString(R.string.txt_cant_select_path_that_contains)+" HolyQuran");
+        }else if (uri.toString().contains("tree/primary%3A")){
+          throw new Exception(context.getString(R.string.txt_we_dont_allow_phone_storage));
+      }else {
+          DocumentFile documentFile = DocumentFile.fromTreeUri(context, uri);
+          DocumentFile unf = documentFile.findFile(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+          if (unf!=null) {
+              if (!unf.exists()) {
+                  DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                  unf = dfm;
+              }
+          }else {
+              DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+              unf = dfm;
+          }
+          return unf;
+      }
     }
 }
