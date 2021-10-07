@@ -26,11 +26,6 @@ import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Files;
-
 public class DownloadLocationActivity extends AppCompatActivity {
 
     private static final String TAG = "hhhh";
@@ -45,6 +40,10 @@ public class DownloadLocationActivity extends AppCompatActivity {
         if (oldTheme != HbUtils.getSavedTheme(this)) {
             recreate();
         }else {
+
+
+
+
         }
     }
 
@@ -147,26 +146,25 @@ public class DownloadLocationActivity extends AppCompatActivity {
                             DocumentFile mainPath = HbUtils.getDownloadDocumentDir(this, uri);
 
 
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                             new AlertDialog.Builder(DownloadLocationActivity.this)
                                     .setTitle(getString(R.string.txt_warning))
                                     .setMessage(e.getMessage())
-                                    .setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                    .setPositiveButton("Cancel", (dialogInterface, i) -> {
 
-                                            Intent intent;
-                                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                                                intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                                                intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
-                                                intent.putExtra("android.content.extra.FANCY", true);
-                                                intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
-                                                ActivityCompat.startActivityForResult(DownloadLocationActivity.this, intent, HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH, null);
-                                            }
-
-
+                                        Intent intent;
+                                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                                            intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                                            intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
+                                            intent.putExtra("android.content.extra.FANCY", true);
+                                            intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
+                                            ActivityCompat.startActivityForResult(DownloadLocationActivity.this, intent, HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH, null);
                                         }
+
+
                                     })
                                     .create().show();
                         }
@@ -196,16 +194,12 @@ public class DownloadLocationActivity extends AppCompatActivity {
                 new AlertDialog.Builder(DownloadLocationActivity.this)
                         .setTitle(getString(R.string.txt_warning))
                         .setMessage(getString(R.string.txt_storage_permission_warning_desc))
-                        .setPositiveButton("Enable Permission", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+                        .setPositiveButton("Enable Permission", (dialogInterface, i) -> {
 
-                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                Uri uri = Uri.fromParts("package", getPackageName(), null);
-                                intent.setData(uri);
-                                startActivity(intent);
-
-                            }
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
 
                         }).create().show();
 
