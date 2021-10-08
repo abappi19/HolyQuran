@@ -19,8 +19,6 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
-import com.efortshub.holyquran.tajweed.QuranArabicUtils;
-import com.efortshub.holyquran.views.HbTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;

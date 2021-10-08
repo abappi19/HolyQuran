@@ -1,4 +1,4 @@
-package com.efortshub.holyquran.tajweed;
+package com.efortshub.holyquran.utils;
 
 import android.content.Context;
 import android.os.SystemClock;
