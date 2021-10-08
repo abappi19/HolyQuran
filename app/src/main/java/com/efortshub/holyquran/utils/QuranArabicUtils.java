@@ -205,30 +205,30 @@ public class QuranArabicUtils {
             text.setSpan(new ForegroundColorSpan(colors[5]), getStart(s, ikhfamatcher.start()), getEnd(s, ikhfamatcher.end()), 0);
         }
 
-//        onemaadmatcher.reset(s);
-//        while (onemaadmatcher.find()) {
-//            Timber.d("ikhfa Found text " + onemaadmatcher.group(), "starting at " + onemaadmatcher.start() + " and ending at " + onemaadmatcher.end() + " actual " + getEnd(s, onemaadmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
-//            text.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.color_ikhfa)), getStart(s, onemaadmatcher.start()), getEnd(s, onemaadmatcher.end()), 0);
-//        }
-//
-//        hamzawaslmatcher.reset(s);
-//        while (hamzawaslmatcher.find()) {
-//            Timber.d("ikhfa Found text " + hamzawaslmatcher.group(), "starting at " + hamzawaslmatcher.start() + " and ending at " + hamzawaslmatcher.end() + " actual " + getEnd(s, hamzawaslmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
-//            text.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.color_ikhfa)), getStart(s, hamzawaslmatcher.start()), getEnd(s, hamzawaslmatcher.end()), 0);
-//        }
-//
-//        lastelongationmatcher.reset(s);
-//        while (lastelongationmatcher.find()) {
-//            Timber.d("ikhfa Found text " + lastelongationmatcher.group(), "starting at " + lastelongationmatcher.start() + " and ending at " + lastelongationmatcher.end() + " actual " + getEnd(s, lastelongationmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
-//            text.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.color_ikhfa)), getStart(s, lastelongationmatcher.start()), getEnd(s, lastelongationmatcher.end()), 0);
-//        }
-//
-//        threemaadmatcher.reset(s);
-//        while (threemaadmatcher.find()) {
-//            Timber.d("ikhfa Found text " + threemaadmatcher.group(), "starting at " + threemaadmatcher.start() + " and ending at " + threemaadmatcher.end() + " actual " + getEnd(s, threemaadmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
-//            text.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.color_ikhfa)), getStart(s, threemaadmatcher.start()), getEnd(s, threemaadmatcher.end()), 0);
-//        }
-//        Timber.d("%sms", SystemClock.uptimeMillis() - t2);
+ /*
+        onemaadmatcher.reset(s);
+        while (onemaadmatcher.find()) {
+          //  Timber.d("ikhfa Found text " + onemaadmatcher.group(), "starting at " + onemaadmatcher.start() + " and ending at " + onemaadmatcher.end() + " actual " + getEnd(s, onemaadmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
+            text.setSpan(new ForegroundColorSpan(colors[5]), getStart(s, onemaadmatcher.start()), getEnd(s, onemaadmatcher.end()), 0);
+        }
+        hamzawaslmatcher.reset(s);
+        while (hamzawaslmatcher.find()) {
+        //    Timber.d("ikhfa Found text " + hamzawaslmatcher.group(), "starting at " + hamzawaslmatcher.start() + " and ending at " + hamzawaslmatcher.end() + " actual " + getEnd(s, hamzawaslmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
+            text.setSpan(new ForegroundColorSpan(colors[5]), getStart(s, hamzawaslmatcher.start()), getEnd(s, hamzawaslmatcher.end()), 0);
+        }
+
+        lastelongationmatcher.reset(s);
+        while (lastelongationmatcher.find()) {
+        //    Timber.d("ikhfa Found text " + lastelongationmatcher.group(), "starting at " + lastelongationmatcher.start() + " and ending at " + lastelongationmatcher.end() + " actual " + getEnd(s, lastelongationmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
+            text.setSpan(new ForegroundColorSpan(colors[5]), getStart(s, lastelongationmatcher.start()), getEnd(s, lastelongationmatcher.end()), 0);
+        }
+
+        threemaadmatcher.reset(s);
+        while (threemaadmatcher.find()) {
+          //  Timber.d("ikhfa Found text " + threemaadmatcher.group(), "starting at " + threemaadmatcher.start() + " and ending at " + threemaadmatcher.end() + " actual " + getEnd(s, threemaadmatcher.end()) + " " + s.charAt(ikhfamatcher.end() + 1));
+            text.setSpan(new ForegroundColorSpan(colors[5]), getStart(s, threemaadmatcher.start()), getEnd(s, threemaadmatcher.end()), 0);
+        }*/
+       // Timber.d("%sms", SystemClock.uptimeMillis() - t2);
         return text;
     }
     private static int getIqlabStart(String m, int start) {

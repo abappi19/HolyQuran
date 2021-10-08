@@ -47,6 +47,7 @@
                 android:layoutDirection="rtl"
                 android:layout_marginStart="8dp"
                 android:paddingStart="8dp"
+                android:textStyle="bold"
                 android:paddingEnd="8dp"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"

@@ -106,7 +106,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
     }
 
     private void loadDefaultPath() {
-        File file = HbUtils.getDownloadDir(DownloadLocationActivity.this);
+        File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
         String path = file.getAbsolutePath();
 
         binding.includeDefaultPath.tvLanguageName.setText(R.string.txt_current_path);
@@ -120,7 +120,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
     }
 
     private void loadCustomPath() {
-        File file = HbUtils.getDownloadDir(DownloadLocationActivity.this);
+        File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
         String path = file.getAbsolutePath();
 /*
 
@@ -149,7 +149,8 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
                     if (uri != null) {
                         try {
-                            DocumentFile mainPath = HbUtils.getDownloadDocumentDir(this, uri);
+                            DocumentFile mainPath = HbUtils.getIntentDocumentDownloadDir(this, uri);
+
 
 
 

@@ -12,6 +12,7 @@ import android.view.ContextThemeWrapper;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.documentfile.provider.DocumentFile;
 
@@ -39,6 +40,7 @@ import java.io.InputStreamReader;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbUtils {
+
 
 
 
@@ -377,7 +379,7 @@ public class HbUtils {
 
     }
 
-    public static File getDownloadDir(Context context){
+    public static File getSystemAllocatedDownloadDir(Context context){
 
         File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
         if (!mainDir.exists()){
@@ -390,7 +392,7 @@ public class HbUtils {
 
         return mainDir;
     }
-    public static File getDownloadDir(Context context, String contentTypeKey){
+    public static File getSystemAllocatedDownloadDir(Context context, String subPath){
         File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
 
         if (!mainDir.exists()){
@@ -399,7 +401,7 @@ public class HbUtils {
         return mainDir;
     }
 
-    public static DocumentFile getDownloadDocumentDir(Context context, Uri uri) throws Exception {
+    public static DocumentFile getIntentDocumentDownloadDir(Context context, Uri uri) throws Exception {
 
       if (uri.toString().endsWith("%2FHolyQuran")){
           throw new Exception(context.getString(R.string.txt_cant_select_path_that_contains)+" HolyQuran");
@@ -420,11 +422,59 @@ public class HbUtils {
           return unf;
       }
     }
-    public static boolean isColorDark(int color){
+    public static String getSavedDocumentUriString(Context context){
 
+        return "";
+    }
+    public static DocumentFile getSavedDocumentDownloadDir(Context context,@Nullable String uriString,@Nullable String subPath) throws Exception {
+        Uri uri;
+        try{
+
+            if (uriString==null){
+                uri = Uri.parse(getSavedDocumentUriString(context));
+            }else if (uriString.trim().isEmpty()) {
+                uri = Uri.parse(getSavedDocumentUriString(context));
+            }else {
+                uri = Uri.parse(uriString);
+            }
+            DocumentFile documentFile = DocumentFile.fromTreeUri(context, uri);
+            DocumentFile unf = documentFile;
+
+            if (!uri.toString().endsWith("%2FHolyQuran")){
+                unf = documentFile.findFile(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                if (unf!=null) {
+                    if (!unf.exists()) {
+                        DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                        unf = dfm;
+                    }
+                }else {
+                    DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                    unf = dfm;
+                }
+            }
+            if (subPath!=null){
+                DocumentFile subFile = unf.findFile(subPath);
+                if (subFile!=null) {
+                    if (!subFile.exists()) {
+                        DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                        subFile = dfm;
+                    }
+                }else {
+                    DocumentFile dfm = documentFile.createDirectory(HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
+                    subFile = dfm;
+                }
+                return subFile;
+            }else return unf;
+
+        }catch (Exception e){
+            throw new Exception(e.getMessage(), e.getCause());
+        }
+    }
+
+    public static boolean isColorDark(int color){
         if (getContrastColor(color)==-1){
-            return true;
-        }else return false;
+            return false;
+        }else return true;
     }
 
     public static boolean isDarkTheme(Context context){
@@ -433,17 +483,13 @@ public class HbUtils {
         TypedValue typeColor = new TypedValue();
         myTheme.resolveAttribute(R.attr.colorPrimaryVariant, typeColor, true);
         int colortheme = typeColor.data;
-        if (getContrastColor(colortheme)==-1){
-            return true;
-        }else return false;
+
+        return !isColorDark(colortheme);
     }
 
     public static int getContrastColor(int color) {
-        Log.d("clrcc", "getContrastColor: old color: "+color);
         double y = (299 * Color.red(color) + 587 * Color.green(color) + 114 * Color.blue(color)) / 1000;
-
         int c =  y >= 128 ? Color.BLACK : Color.WHITE;
-        Log.d("clrcc", "getContrastColor: current color: "+c);
         return c;
     }
 
@@ -458,14 +504,9 @@ public class HbUtils {
     public static void setTajweedFilteredTextView(TextView tv, String text) {
         Context context = tv.getContext();
 
-        int fontSize = HbUtils.getArabicFontSize(context);
-        Typeface fontTypeface = HbUtils.getArabicFont(context);
-        int styleTypeface = HbUtils.getArabicFontStyleTypeFace(context);
-        boolean isShowTajweed = HbUtils.getShowTajweedCheck(context);
-
-        tv.setTypeface(fontTypeface, styleTypeface);
-        tv.setTextSize(fontSize);
-        if (isShowTajweed) {
+        tv.setTypeface(getArabicFont(context), getArabicFontStyleTypeFace(context));
+        tv.setTextSize(getArabicFontSize(context));
+        if (getShowTajweedCheck(context)) {
             tv.setText(QuranArabicUtils.getTajweed(context, text));
         }else tv.setText(text);
 

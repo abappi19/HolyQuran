@@ -13,7 +13,7 @@ public class VolleyRequestQue {
   private static RequestQueue requestQueue = null;
 
   public static RequestQueue getInstance(Context context){
-    if (requestQueue==null) requestQueue =  Volley.newRequestQueue(context);
+    if (requestQueue==null) requestQueue =  Volley.newRequestQueue(context.getApplicationContext());
     return requestQueue;
   }
 
