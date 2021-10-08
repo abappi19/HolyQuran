@@ -11,7 +11,7 @@ import com.efortshub.holyquran.models.TranslatedFontSettings;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-    //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
+  //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
         System.loadLibrary("native-lib");
@@ -33,7 +33,16 @@ public class HbConst {
     //DEFAULT ARABIC FONT INITIALIZATION
 
 
-    public static final int DEFAULT_ARABIC_FONT_SIZE = 14;
+  static String gunnah = "إِنَّهَا عَلَيْهِم مُّؤْصَدَةٌ ";
+  static String ikhfa = "تَرْمِيهِم بِحِجَارَةٍ مِّن سِجِّيلٍ";
+ // static String idhgham = " الَّذِي أَطْعَمَهُم مِّن جُوعٍ وَآمَنَهُم مِّنْ خَوْفٍ";
+ // static String idhghamwithoutgunnah = "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ";
+  static String iqlab = "كَذَّبَتْ ثَمُودُ وَعَادٌۢ بِالْقَارِعَةِ";
+ // static String qalqala = "لَمْ يَلِدْ وَلَمْ يُولَدْ";
+
+  public static final String DEFAULT_COLOR_CODED_TEXT = gunnah + " " + ikhfa   + " " + iqlab;
+  //public static final String DEFAULT_COLOR_CODED_TEXT = gunnah + " " + ikhfa + " " + idhgham + " " + idhghamwithoutgunnah + " " + iqlab + " " + qalqala;
+  public static final int DEFAULT_ARABIC_FONT_SIZE = 14;
     public static final String DEFAULT_ARABIC_FONT = "othmani";
     public static final String DEFAULT_ARABIC_SCRIPT = "Imlaei";
     public static final String DEFAULT_ARABIC_FONT_STYLE = "normal";
@@ -89,6 +98,7 @@ public class HbConst {
     public static final String KEY_TRANSLATION_VISIBILITY_PRIMARY = "trns_vsb_pr";
     public static final String KEY_DOWNLOAD_DIR_MAIN_PATH = "HolyQuran";
     public static final String KEY_DOCUMENT_FILE_PATH_SEPARATOR = "%2F";
+    public static final String KEY_SHOW_TAJWEED = "tajweed_check";
 
 
 

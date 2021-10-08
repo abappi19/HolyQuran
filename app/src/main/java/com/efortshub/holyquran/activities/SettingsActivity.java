@@ -1,25 +1,9 @@
 package com.efortshub.holyquran.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.LinearLayoutCompat;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.os.ConfigurationCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.DrawableWrapper;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.SeekBar;
@@ -30,16 +14,22 @@ import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
 import com.efortshub.holyquran.databinding.ActivitySettingsBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;
+import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
-import com.google.android.material.chip.ChipGroup;
-
-import org.w3c.dom.Attr;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.os.ConfigurationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -142,42 +132,47 @@ public class SettingsActivity extends AppCompatActivity {
 
         //get arabic font details
 
+
+
         String fontName = HbUtils.getArabicFontName(this);
         String scriptName = HbUtils.getHbjScriptName(this);
         int fontSize = HbUtils.getArabicFontSize(this);
         String style = HbUtils.getArabicFontStyle(this);
         int fontSizeProgress = fontSize-9;
         Typeface fontTypeface = HbUtils.getArabicFont(this);
-        int styleTypeface = Typeface.NORMAL;
+        boolean isShowTajweed = HbUtils.getShowTajweedCheck(this);
 
 
         //style chip
         if (style.equals("normal")) {
             binding.chipArabicNormal.setChecked(true);
-            styleTypeface = Typeface.NORMAL;
         } else if (style.equals("bold")) {
             binding.chipArabicBold.setChecked(true);
-            styleTypeface = Typeface.BOLD;
         } else if (style.equals("italic")) {
             binding.chipArabicItalic.setChecked(true);
-            styleTypeface = Typeface.ITALIC;
         }else if (style.equals("bold_italic")) {
             binding.chipArabicBoldItalic.setChecked(true);
-            styleTypeface = Typeface.BOLD_ITALIC;
         }
-
 
         //script chip
 
         if (scriptName.equals("Imlaei")) {
             binding.chipImlaei.setChecked(true);
-            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_imlaei);
+            String s = getString(R.string.txt_arabic_font_test_imlaei);
+
+            HbUtils.setTajweedFilteredTextView(binding.tvPreviewArabic, s);
+
+            //binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_imlaei);
         } else if (scriptName.equals("Indopak")) {
             binding.chipIndopak.setChecked(true);
-            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_indopak);
-        } else if (scriptName.equals("Uthmani")) {
+            String s = getString(R.string.txt_arabic_font_test_indopak);
+
+            HbUtils.setTajweedFilteredTextView(binding.tvPreviewArabic, s);
+            } else if (scriptName.equals("Uthmani")) {
             binding.chipUthmani.setChecked(true);
-            binding.tvPreviewArabic.setText(R.string.txt_arabic_font_test_uthmani);
+            String s = getString(R.string.txt_arabic_font_test_uthmani);
+
+            HbUtils.setTajweedFilteredTextView(binding.tvPreviewArabic, s);
         }
 
         //font chip
@@ -202,11 +197,9 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
-        binding.tvPreviewArabic.setTextSize(fontSize);
         binding.seekBarArabic.setProgress(fontSizeProgress);
         binding.btnFontSizeText.setText(String.valueOf(fontSize));
 
-        binding.tvPreviewArabic.setTypeface(fontTypeface,styleTypeface);
 
 
         //initialize all listener
@@ -481,6 +474,28 @@ public class SettingsActivity extends AppCompatActivity {
         binding.rvTheme.setLayoutManager(new LinearLayoutManager(SettingsActivity.this, RecyclerView.HORIZONTAL, false));
         binding.rvTheme.setItemViewCacheSize(100);
         binding.rvTheme.setAdapter(adapter);
+
+
+
+        boolean isShowTajweed = HbUtils.getShowTajweedCheck(this);
+
+
+
+
+        if (isShowTajweed)binding.checkboxShowTajweed.setChecked(true); else  binding.checkboxShowTajweed.setChecked(false);
+
+
+
+           HbUtils.setTajweedFilteredTextView(binding.tvPreviewColorCode, HbConst.DEFAULT_COLOR_CODED_TEXT);
+
+        binding.checkboxShowTajweed.setOnCheckedChangeListener(
+            (compoundButton, b) -> {
+                HbUtils.setShowTajweedCheck(this, b);
+                loadThemeList();
+                loadFonts();
+
+            });
+
 
 
     }

@@ -3,6 +3,38 @@
 
     <color name="transparent">#00000000</color>
 
+    <!--tajweed color code -->
+
+    <color name="color_ghunna_light">#FF0000</color>
+    <color name="color_qalqala_light">#B60073</color>
+    <color name="color_iqlab_light">#008E50</color>
+    <color name="color_idgham_light">#2E00D6</color>
+    <color name="color_idghamwo_light">#006391</color>
+    <color name="color_ikhfa_light">#6D01CC</color>
+
+    <color name="color_ghunna_dark">#FF6E6E</color>
+    <color name="color_qalqala_dark">#FF91D7</color>
+    <color name="color_iqlab_dark">#FFD53D</color>
+    <color name="color_idgham_dark">#ADCBFF</color>
+    <color name="color_idghamwo_dark">#8FFFB5</color>
+    <color name="color_ikhfa_dark">#AA8BFF</color>
+<!--
+
+    <color name="color_ghunna_light">#B30000</color>
+    <color name="color_qalqala_light">#A34600</color>
+    <color name="color_iqlab_light">#77A800</color>
+    <color name="color_idgham_light">#3100A8</color>
+    <color name="color_idghamwo_light">#0041A1</color>
+    <color name="color_ikhfa_light">#A500AC</color>
+
+    <color name="color_ghunna_dark">#F85F5F</color>
+    <color name="color_qalqala_dark">#F0FF6A</color>
+    <color name="color_iqlab_dark">#B9FF74</color>
+    <color name="color_idgham_dark">#A783FF</color>
+    <color name="color_idghamwo_dark">#93BEFF</color>
+    <color name="color_ikhfa_dark">#FB81FF</color>
+-->
+
 
 
 

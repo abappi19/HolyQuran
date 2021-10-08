@@ -2,20 +2,25 @@ package com.efortshub.holyquran.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.ContextThemeWrapper;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.documentfile.provider.DocumentFile;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity;
-import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
+import com.efortshub.holyquran.tajweed.QuranArabicUtils;
+import com.efortshub.holyquran.views.HbTextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +55,7 @@ public class HbUtils {
 
     public static void saveTheme(Context context, int theme) {
         getSharedPreferences(context).edit().putInt(HbConst.KEY_THEME, theme).apply();
+
     }
 
 
@@ -265,6 +271,25 @@ public class HbUtils {
         return getSavedArabicFontSetting(context).getStyle();
     }
 
+    public static int getArabicFontStyleTypeFace(Context context) {
+         String style = getSavedArabicFontSetting(context).getStyle();
+
+         int styleTypeface = Typeface.NORMAL;
+
+        if (style.equals("normal")) {
+            styleTypeface = Typeface.NORMAL;
+        } else if (style.equals("bold")) {
+            styleTypeface = Typeface.BOLD;
+        } else if (style.equals("italic")) {
+            styleTypeface = Typeface.ITALIC;
+        }else if (style.equals("bold_italic")) {
+            styleTypeface = Typeface.BOLD_ITALIC;
+        }
+
+        return styleTypeface;
+
+    }
+
 
     public static Typeface getTranslatedFont(Context context) {
         String fontName = getSavedTranslatedFontSetting(context).getFontName();
@@ -396,5 +421,56 @@ public class HbUtils {
           }
           return unf;
       }
+    }
+    public static boolean isColorDark(int color){
+
+        if (getContrastColor(color)==-1){
+            return true;
+        }else return false;
+    }
+
+    public static boolean isDarkTheme(Context context){
+        Resources.Theme myTheme = new ContextThemeWrapper(context, getSavedTheme(context)).getTheme();
+
+        TypedValue typeColor = new TypedValue();
+        myTheme.resolveAttribute(R.attr.colorPrimaryVariant, typeColor, true);
+        int colortheme = typeColor.data;
+        if (getContrastColor(colortheme)==-1){
+            return true;
+        }else return false;
+    }
+
+    public static int getContrastColor(int color) {
+        Log.d("clrcc", "getContrastColor: old color: "+color);
+        double y = (299 * Color.red(color) + 587 * Color.green(color) + 114 * Color.blue(color)) / 1000;
+
+        int c =  y >= 128 ? Color.BLACK : Color.WHITE;
+        Log.d("clrcc", "getContrastColor: current color: "+c);
+        return c;
+    }
+
+
+    public static boolean getShowTajweedCheck(Context context) {
+        return getSharedPreferences(context).getBoolean(HbConst.KEY_SHOW_TAJWEED, true);
+    }
+    public static void setShowTajweedCheck(Context context, boolean isShowTajweed) {
+         getSharedPreferences(context).edit().putBoolean(HbConst.KEY_SHOW_TAJWEED, isShowTajweed).apply();
+    }
+
+    public static void setTajweedFilteredTextView(TextView tv, String text) {
+        Context context = tv.getContext();
+
+        int fontSize = HbUtils.getArabicFontSize(context);
+        Typeface fontTypeface = HbUtils.getArabicFont(context);
+        int styleTypeface = HbUtils.getArabicFontStyleTypeFace(context);
+        boolean isShowTajweed = HbUtils.getShowTajweedCheck(context);
+
+        tv.setTypeface(fontTypeface, styleTypeface);
+        tv.setTextSize(fontSize);
+        if (isShowTajweed) {
+            tv.setText(QuranArabicUtils.getTajweed(context, text));
+        }else tv.setText(text);
+
+
     }
 }

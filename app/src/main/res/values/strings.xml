@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Holy Quran</string>
 
-    <string name="txt_arabic_font_test_imlaei" translatable="false">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</string>
-    <string name="txt_arabic_font_test_indopak" translatable="false">  بِسۡمِ اللهِ الرَّحۡمٰنِ الرَّحِيۡمِ صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡنَ</string>
-    <string name="txt_arabic_font_test_uthmani" translatable="false">  بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيم صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَِ </string>
-    <string name="txt_arabic_font_test_uthmani_simple" translatable="false"> بسم الله الرحمن الرحيم صرط الذين انعمت عليهم غير المغضوب عليهم ولا الضالين </string>
+    <string name="txt_arabic_font_test_imlaei" translatable="false">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم وَآيَةٌ لَّهُمُ الْأَرْضُ الْمَيْتَةُ  وَأَخْرَجْنَا مِنْهَا حَبًّا فَمِنْهُ يَأْكُلُونَ</string>
+    <string name="txt_arabic_font_test_indopak" translatable="false">بِسۡمِ اللهِ الرَّحۡمٰنِ الرَّحِيۡمِ وَاٰيَةٌ لَّهُمُ الۡاَرۡضُ الۡمَيۡتَةُ ۖۚ اَحۡيَيۡنٰهَا وَاَخۡرَجۡنَا مِنۡهَا حَبًّا فَمِنۡهُ يَاۡكُلُوۡنَ</string>
+    <string name="txt_arabic_font_test_uthmani" translatable="false">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيم وَءَايَةٌ لَّهُمُ ٱلْأَرْضُ ٱلْمَيْتَةُ أَحْيَيْنَـٰهَا وَأَخْرَجْنَا مِنْهَا حَبًّا فَمِنْهُ يَأْكُلُونَِ</string>
     <string name="txt_imlaei" translatable="false">Imlaei</string>
     <string name="txt_indopak" translatable="false">Indopak</string>
     <string name="txt_uthmani" translatable="false">Uthmani</string>
@@ -67,6 +66,7 @@
   <string name="txt_use_system_path">Use System Allocated Path</string>
   <string name="txt_choose_another">Choose Another</string>
   <string name="txt_we_dont_allow_phone_storage">You selected Phone storage. We don\'t allow to use custom folder from Phone Storage . Instead please use System Allocated Path.</string>
+  <string name="txt_show_tajweed">Show Tajweed</string>
 
 
 </resources>

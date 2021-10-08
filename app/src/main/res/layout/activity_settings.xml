@@ -34,9 +34,56 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:padding="8dp"
                 android:id="@+id/rv_theme"/>
+
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkbox_show_tajweed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_show_tajweed"
+                android:textColor="?attr/colorPrimary"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="8dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                />
+
+
+
+            <com.efortshub.holyquran.views.HbTextView
+                android:id="@+id/tv_preview_ccode_title"
+                app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/txt_preview"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:paddingTop="8dp"/>
+
+
+            <com.efortshub.holyquran.views.HbTextView
+                android:id="@+id/tv_preview_color_code"
+                app:layout_constraintTop_toBottomOf="@+id/chip_group_script"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_arabic_font_test_imlaei"
+                android:gravity="center"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"/>
+
 
             <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
@@ -121,8 +168,8 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="4dp"
-                android:visibility="gone"
                 android:padding="8dp"
+                android:visibility="gone"
                 android:background="@drawable/bg_widget_active_border"
                 android:orientation="vertical">
 
@@ -441,6 +488,8 @@
                     </HorizontalScrollView>
 
                 </com.efortshub.holyquran.views.HbTransparentLinearLayout>
+
+
 
                 <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/tv_preview_title"
