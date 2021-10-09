@@ -3,13 +3,10 @@ Holy Quran Android App by H.Bappi - eFortsHub
 
 
 
-# I Wish if I Die (discontinue the project)  during development, Someone will continue my project. ALL IS UP TO ALMIGHTY ALLAH
+# Some Important Message
+I Am going to make Pduction of from this project. so I am not sharing full project source code here. Instead I am sharing Settings which is completely Ready to apply in your actual arabic and other language. if you can't find downloadable source added in the code. please concider finding some opensource quran resource and use those in your project. Thanks
 
-# আমি চাই যদি আমি মরে যাই (প্রকল্পটি বিচ্ছিন্ন করি) উন্নয়নের সময়, কেউ আমার প্রকল্পটি চালিয়ে যাবে, সবই মহান আল্লাহর কাছে
 
-
-if you fork my repository or build your own app using my source. Please give me credit. I don't want this Islamic project to be Closed sourced.
-So I made it opensource.
 
 
 # Watch My Work Progress in video at Youtube: 
