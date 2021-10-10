@@ -8,13 +8,20 @@
     android:orientation="vertical"
     tools:context=".activities.settings.DownloadLocationActivity">
 
+    <include
+        android:id="@+id/include_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        layout="@layout/layout_back_and_title" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/botton_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/include_title">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -22,96 +29,86 @@
             android:orientation="vertical">
 
             <include
-                android:id="@+id/include_title"
-                layout="@layout/layout_back_and_title" />
-
-            <include
                 android:id="@+id/include_default_path"
                 layout="@layout/row_quran_translation_list_item" />
-
-
-
 
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_sec_permission_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="4dp"
                 android:layout_gravity="center"
+                android:background="@drawable/bg_widget_active_border"
                 android:gravity="center"
-                android:background="@drawable/bg_widget_active_border">
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:padding="4dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="#fff"
                     android:gravity="center"
                     android:text="@string/txt_warning"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
                     android:textColor="#f00"
-                    android:background="#fff"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="#fff"
                     android:gravity="center"
-                    android:text="@string/txt_storage_permission_warning_desc"
-                    android:textSize="12sp"
-                    android:textColor="#f00"
                     android:padding="8dp"
-                    android:background="#fff"/>
+                    android:text="@string/txt_storage_permission_warning_desc"
+                    android:textColor="#f00"
+                    android:textSize="12sp" />
+
                 <com.efortshub.holyquran.views.HbButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_margin="4dp"
                     android:text="@string/txt_btn_enable_storage_perm"
-                    android:layout_margin="4dp"/>
+                    android:textStyle="bold" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/botton_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/botton_container"
-                android:orientation="vertical"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="4dp"
-                android:gravity="center"
                 android:foregroundGravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                >
-
-                <com.efortshub.holyquran.views.HbButton
-                    android:id="@+id/btn_set_another_path"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_set_another_path"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:layout_margin="4dp"
-                    />
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
 
                 <com.efortshub.holyquran.views.HbButton
                     android:id="@+id/btn_set_system_allocated_path"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
                     android:text="@string/txt_use_system_path"
                     android:textAllCaps="true"
-                    android:textStyle="bold"
+                    android:textStyle="bold" />
+
+                <com.efortshub.holyquran.views.HbButton
+                    android:id="@+id/btn_set_another_path"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="4dp"
-                    />
+                    android:text="@string/txt_set_another_path"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>

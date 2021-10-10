@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
 import android.widget.TextView;
@@ -18,6 +17,7 @@ import androidx.documentfile.provider.DocumentFile;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.models.ArabicFontSettings;
+import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.models.TranslatedFontSettings;
 
@@ -422,21 +422,35 @@ public class HbUtils {
           return unf;
       }
     }
-    public static String getSavedDocumentUriString(Context context){
+    public static DownloadPathDetails getSavedDownloadPathDetails(Context context){
+       boolean isSystemAllocated =  getSharedPreferences(context).getBoolean(HbConst.KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH, true);
+        String uriString = getSharedPreferences(context).getString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, "");
 
-        return "";
+        DownloadPathDetails downloadPathDetails  = new DownloadPathDetails(Uri.parse(uriString), isSystemAllocated);
+        return downloadPathDetails;
     }
-    public static DocumentFile getSavedDocumentDownloadDir(Context context,@Nullable String uriString,@Nullable String subPath) throws Exception {
+    public static void setSavedDownloadPathDetails(Context context, Uri uri){
+        getSharedPreferences(context).edit().putBoolean(HbConst.KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH, uri==null).apply();
+        if (uri!=null) {
+            getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, uri.toString()).apply();
+        }else {
+            getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, "").apply();
+        }
+
+    }
+    public static DocumentFile getSavedDocumentDownloadDir(Context context,@NonNull String uriString,@Nullable String subPath) throws Exception {
         Uri uri;
         try{
 
-            if (uriString==null){
-                uri = Uri.parse(getSavedDocumentUriString(context));
+          /*  if (uriString==null){
+                uri = Uri.parse(getSavedDownloadPathDetails(context));
             }else if (uriString.trim().isEmpty()) {
-                uri = Uri.parse(getSavedDocumentUriString(context));
+                uri = Uri.parse(getSavedDownloadPathDetails(context));
             }else {
                 uri = Uri.parse(uriString);
-            }
+            }*/
+            uri = Uri.parse(uriString);
+
             DocumentFile documentFile = DocumentFile.fromTreeUri(context, uri);
             DocumentFile unf = documentFile;
 

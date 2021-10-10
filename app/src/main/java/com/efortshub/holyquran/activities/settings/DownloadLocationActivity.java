@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
+import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
 
@@ -66,7 +67,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
         loadDefaultPath();
         loadCustomPath();
-        loadPermissionRequest();
+       // loadPermissionRequest();
         initListener();
 
 
@@ -91,16 +92,19 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
     private void initListener() {
         binding.btnSetAnotherPath.setOnClickListener(view -> {
-            if (loadPermissionRequest()) {
-                Intent intent;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-                    intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
-                    intent.putExtra("android.content.extra.FANCY", true);
-                    intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
-                    ActivityCompat.startActivityForResult(DownloadLocationActivity.this, intent, HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH, null);
-                }
+     /*       if (loadPermissionRequest()) {
             }
+*/
+            Intent intent;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
+                intent.putExtra("android.content.extra.SHOW_ADVANCED", true);
+                intent.putExtra("android.content.extra.FANCY", true);
+                intent.putExtra("android.content.extra.SHOW_FILESIZE", true);
+                ActivityCompat.startActivityForResult(DownloadLocationActivity.this, intent, HbConst.REQUEST_CODE_SELECT_DOWNLOAD_PATH, null);
+            }
+
+
 
         });
     }
@@ -116,19 +120,26 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
 
-
     }
 
     private void loadCustomPath() {
-        File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
-        String path = file.getAbsolutePath();
-/*
+        DownloadPathDetails downloadPathDetails = HbUtils.getSavedDownloadPathDetails(this);
 
-        binding.includeCustomPath.tvLanguageName.setText(R.string.txt_current_path);
-        binding.includeCustomPath.tvTranslationName.setText(path);
-        binding.includeCustomPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
+        if (!downloadPathDetails.isSystemAllocated()){
 
-*/
+            binding.includeDefaultPath.tvLanguageName.setText(R.string.txt_current_path);
+            binding.includeDefaultPath.tvTranslationName.setText(downloadPathDetails.getDocumentMainPathURi().getPath());
+            binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
+
+
+
+
+
+
+
+        }
+
+
 
     }
 
@@ -149,9 +160,18 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
                     if (uri != null) {
                         try {
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                                getContentResolver().takePersistableUriPermission(uri,
+                                        Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                            }
+
                             DocumentFile mainPath = HbUtils.getIntentDocumentDownloadDir(this, uri);
 
+                            HbUtils.setSavedDownloadPathDetails(this, mainPath.getUri());
 
+
+                            loadCustomPath();
 
 
 

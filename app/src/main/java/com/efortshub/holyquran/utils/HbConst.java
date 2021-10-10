@@ -11,7 +11,9 @@ import com.efortshub.holyquran.models.TranslatedFontSettings;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class HbConst {
-  //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
+    public static final String KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH = "is_system_allocated";
+    public static final String KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI = "document_path_uri";
+    //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
         System.loadLibrary("native-lib");
