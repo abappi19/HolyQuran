@@ -28,7 +28,7 @@ facebook page:  https://www.facebook.com/eFortsHub/
 
 facebook Group: https://www.facebook.com/groups/holyquranusers
 
-linkedIn : https://www.linkedin.com/in/h-bappi/
+linkedIn : https://www.linkedin.com/in/hbappi/
 
 linkedIn Company: https://www.linkedin.com/company/efortshub
 
