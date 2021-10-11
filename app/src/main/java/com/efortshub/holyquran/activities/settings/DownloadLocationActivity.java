@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.utils.HbConst;
@@ -48,7 +49,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
 
-
         }
     }
 
@@ -66,12 +66,12 @@ public class DownloadLocationActivity extends AppCompatActivity {
         binding.includeTitle.btnGoBack.setOnClickListener(view -> onBackPressed());
 
         loadDefaultPath();
-        loadCustomPath();
        // loadPermissionRequest();
         initListener();
 
 
     }
+/*
 
     private boolean loadPermissionRequest() {
         if (ContextCompat.checkSelfPermission(DownloadLocationActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
@@ -89,6 +89,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
             return true;
         }
     }
+*/
 
     private void initListener() {
         binding.btnSetAnotherPath.setOnClickListener(view -> {
@@ -110,10 +111,23 @@ public class DownloadLocationActivity extends AppCompatActivity {
     }
 
     private void loadDefaultPath() {
-        File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
-        String path = file.getAbsolutePath();
+        DownloadPathDetails dpd = HbUtils.getSavedDownloadPathDetails(DownloadLocationActivity.this);
+
+        String path;
+        if (dpd.isSystemAllocated()){
+            File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
+             path = file.getAbsolutePath();
+
+        }else {
+            path = dpd.getDocumentMainPathURi().toString();
+        }
 
         binding.includeDefaultPath.tvLanguageName.setText(R.string.txt_current_path);
+
+        if (path.contains("document/")){
+            path = path.split("document/")[1];
+        }
+
         binding.includeDefaultPath.tvTranslationName.setText(path);
         binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
 
@@ -121,6 +135,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
     }
+/*
 
     private void loadCustomPath() {
         DownloadPathDetails downloadPathDetails = HbUtils.getSavedDownloadPathDetails(this);
@@ -142,6 +157,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
 
     }
+*/
 
     @Override
     public void onBackPressed() {
@@ -170,8 +186,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
                             HbUtils.setSavedDownloadPathDetails(this, mainPath.getUri());
 
-
-                            loadCustomPath();
+                            loadDefaultPath();
 
 
 
@@ -222,7 +237,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED
                     && grantResults[1] == PackageManager.PERMISSION_GRANTED
             ) {
-                binding.llSecPermissionWarning.setVisibility(View.GONE);
+               // binding.llSecPermissionWarning.setVisibility(View.GONE);
 
 
             } else {

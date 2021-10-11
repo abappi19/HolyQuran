@@ -27,7 +27,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
 
     private static HbSqliteOpenHelper hbSqliteOpenHelper;
     static final String databaseName = "hb.db";
-    static final int version = 1;
+    static final int version = 4;
     static final String tableListTable = "table_list_table";
 
     private HbSqliteOpenHelper(@Nullable Context context) {
@@ -40,7 +40,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table "+tableListTable+" (id integer primary key, table_name text);");
+        sqLiteDatabase.execSQL("create table "+tableListTable+" (id integer primary key, table_name text unique);");
 
     }
     @Override
@@ -70,7 +70,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
 
         String paramsHere="";
         for (String s: params){
-            paramsHere.concat(", "+s+" text");
+            paramsHere = paramsHere.concat(", "+s+" text");
         }
         try {
             db.execSQL("create table if not exists " + tableName + " (id integer primary key" + paramsHere + ");");
@@ -83,6 +83,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
     private void deleteAllTables(SQLiteDatabase sqLiteDatabase) {
         Cursor cursor = sqLiteDatabase.rawQuery("select * from "+tableListTable, null);
 
@@ -90,17 +91,37 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
             String tableName = cursor.getString(1);
             sqLiteDatabase.execSQL("drop table if exists "+tableName+";");
         }
+        cursor.close();
 
     }
 
     public boolean insertNewCustomPath(String path){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean b = createNewTable("customLocation", "path");
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("path", path);
-        db.insert("customLocation", null, contentValues);
-        return true;
+
+        boolean result = false;
+
+        try (Cursor cursor = db.rawQuery("select * from customLocation", null)) {
+            while (cursor.moveToNext()) {
+                String locationPath = cursor.getString(1);
+               if (locationPath.equals(path)){
+                   result = true;
+                   break;
+               }
+            }
+
+        }
+
+        if (!result) {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("path", path);
+            db.insert("customLocation", null, contentValues);
+            result = true;
+        }
+
+        return result;
     }
+
     public boolean updateCustomPath(int id, String path){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean b = createNewTable("customLocation", "path");
@@ -109,6 +130,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
         db.update("customLocation", contentValues, "id=?", new String[]{String.valueOf(id)});
         return true;
     }
+
     public boolean deleteCustomPath(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean b = createNewTable("customLocation", "path");

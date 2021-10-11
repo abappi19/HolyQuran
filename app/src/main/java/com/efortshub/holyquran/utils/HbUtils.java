@@ -16,6 +16,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.documentfile.provider.DocumentFile;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.models.ArabicFontSettings;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.models.QuranTranslation;
@@ -430,12 +431,21 @@ public class HbUtils {
         return downloadPathDetails;
     }
     public static void setSavedDownloadPathDetails(Context context, Uri uri){
+
+        HbSqliteOpenHelper oh = HbSqliteOpenHelper.getInstance(context.getApplicationContext());
+
+
+
         getSharedPreferences(context).edit().putBoolean(HbConst.KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH, uri==null).apply();
         if (uri!=null) {
+
+            boolean b = oh.insertNewCustomPath(uri.getPath());
+
             getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, uri.toString()).apply();
         }else {
             getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, "").apply();
         }
+
 
     }
     public static DocumentFile getSavedDocumentDownloadDir(Context context,@NonNull String uriString,@Nullable String subPath) throws Exception {

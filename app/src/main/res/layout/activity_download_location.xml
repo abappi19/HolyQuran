@@ -18,7 +18,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/botton_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/include_title">
@@ -32,6 +32,7 @@
                 android:id="@+id/include_default_path"
                 layout="@layout/row_quran_translation_list_item" />
 
+<!--
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_sec_permission_warning"
@@ -40,9 +41,9 @@
                 android:layout_gravity="center"
                 android:background="@drawable/bg_widget_active_border"
                 android:gravity="center"
-                android:visibility="gone"
                 android:orientation="vertical"
-                android:padding="4dp">
+                android:padding="4dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -74,46 +75,51 @@
                     android:textStyle="bold" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+-->
 
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/botton_container"
+            <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:text="Available Path"
+                android:paddingStart="8dp"
+                android:textStyle="bold"
+                android:paddingEnd="8dp"/>
 
-                <com.efortshub.holyquran.views.HbButton
-                    android:id="@+id/btn_set_system_allocated_path"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/txt_use_system_path"
-                    android:textAllCaps="true"
-                    android:textStyle="bold" />
-
-                <com.efortshub.holyquran.views.HbButton
-                    android:id="@+id/btn_set_another_path"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/txt_set_another_path"
-                    android:textAllCaps="true"
-                    android:textStyle="bold" />
-
-
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_previous_download_path"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </ScrollView>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/botton_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.efortshub.holyquran.views.HbButton
+            android:id="@+id/btn_set_another_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/txt_set_another_path"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
