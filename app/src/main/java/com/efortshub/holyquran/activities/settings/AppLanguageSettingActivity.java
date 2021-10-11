@@ -110,9 +110,9 @@ public class AppLanguageSettingActivity extends AppCompatActivity {
         String currentCountry = currentLocale.getCountry();
         String currentLanguageName = currentLocale.getDisplayLanguage();
         String currentCountryName = currentLocale.getDisplayCountry();
-        binding.includeLang.tvCountryName.setText(currentCountryName);
-        binding.includeLang.tvLanguageName.setText(currentLanguageName);
-        binding.includeLang.tvCountryLanguageCode.setText(currentLanguage+"-"+currentCountry);
+        binding.includeLang.tvItemSubTitle.setText(currentCountryName);
+        binding.includeLang.tvItemMainTitle.setText(currentLanguageName);
+        binding.includeLang.tvItemSideTextSmall.setText(currentLanguage+"-"+currentCountry);
 
 
 

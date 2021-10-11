@@ -87,14 +87,14 @@ public class AppTranslationSettingActivity extends AppCompatActivity {
 
     private void loadCurrentLanguageIds() {
         QuranTranslation quranTranslation = HbUtils.getQuranTranslationIdPrimary(this);
-        binding.includePrimaryTranslation.tvLanguageName.setText(quranTranslation.getLanguage_name());
-        binding.includePrimaryTranslation.tvLanguageName.setAllCaps(true);
+        binding.includePrimaryTranslation.tvItemMainTitle.setText(quranTranslation.getLanguage_name());
+        binding.includePrimaryTranslation.tvItemMainTitle.setAllCaps(true);
         binding.includePrimaryTranslation.tvTranslationName.setText(quranTranslation.getName());
         binding.includePrimaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_24);
 
         QuranTranslation secondQuranTranslation = HbUtils.getQuranTranslationIdSecondary(this);
-        binding.includeSecondaryTranslation.tvLanguageName.setText(secondQuranTranslation.getLanguage_name());
-        binding.includeSecondaryTranslation.tvLanguageName.setAllCaps(true);
+        binding.includeSecondaryTranslation.tvItemMainTitle.setText(secondQuranTranslation.getLanguage_name());
+        binding.includeSecondaryTranslation.tvItemMainTitle.setAllCaps(true);
         binding.includeSecondaryTranslation.tvTranslationName.setText(secondQuranTranslation.getName());
         binding.includeSecondaryTranslation.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_check_box_outline_blank_24);
 

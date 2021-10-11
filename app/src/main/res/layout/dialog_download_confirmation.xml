@@ -29,7 +29,7 @@
             />
 
         <com.efortshub.holyquran.views.HbTextView
-            android:id="@+id/tv_language_name"
+            android:id="@+id/tv_item_main_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
@@ -54,7 +54,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_download_status"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_language_name" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_main_title" />
 
         <com.efortshub.holyquran.views.HbTransparentLinearLayout
             android:layout_width="match_parent"

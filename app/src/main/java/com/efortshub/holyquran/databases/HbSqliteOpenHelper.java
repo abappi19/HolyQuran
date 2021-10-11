@@ -27,7 +27,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
 
     private static HbSqliteOpenHelper hbSqliteOpenHelper;
     static final String databaseName = "hb.db";
-    static final int version = 4;
+    static final int version = 5;
     static final String tableListTable = "table_list_table";
 
     private HbSqliteOpenHelper(@Nullable Context context) {
@@ -141,10 +141,11 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
     public ArrayList<DownloadPathDetails> getAllCustomPath(){
         ArrayList<DownloadPathDetails> list = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from customLocation", null);
+        boolean b = createNewTable("customLocation", "path");
+        Cursor cursor = db.rawQuery("select * from customLocation where path not null", null);
 
         while (cursor.moveToNext()){
-           int id = Integer.parseInt(cursor.getString(0));
+           int id = cursor.getInt(0);
             String url =  cursor.getString(1);
             DownloadPathDetails downloadPathDetails = new DownloadPathDetails(Uri.parse(url), false, id);
          list.add(downloadPathDetails);

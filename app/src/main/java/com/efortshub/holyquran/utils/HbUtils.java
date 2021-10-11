@@ -434,13 +434,9 @@ public class HbUtils {
 
         HbSqliteOpenHelper oh = HbSqliteOpenHelper.getInstance(context.getApplicationContext());
 
-
-
         getSharedPreferences(context).edit().putBoolean(HbConst.KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH, uri==null).apply();
         if (uri!=null) {
-
-            boolean b = oh.insertNewCustomPath(uri.getPath());
-
+            boolean b = oh.insertNewCustomPath(uri.toString());
             getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, uri.toString()).apply();
         }else {
             getSharedPreferences(context).edit().putString(HbConst.KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI, "").apply();

@@ -10,7 +10,7 @@
     android:padding="8dp">
 
     <com.efortshub.holyquran.views.HbTextView
-        android:id="@+id/tv_language_name"
+        android:id="@+id/tv_item_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
@@ -21,25 +21,23 @@
 
 
     <com.efortshub.holyquran.views.HbTextView
-        android:id="@+id/tv_country_name"
+        android:id="@+id/tv_item_sub_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_language_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_main_title" />
 
 
     <com.efortshub.holyquran.views.HbTextView
-        android:id="@+id/tv_country_language_code"
+        android:id="@+id/tv_item_side_text_small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_language_name" />
-
-
+        app:layout_constraintTop_toTopOf="@+id/tv_item_main_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,8 +66,8 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         QuranTranslation translation = translationList.get(holder.getAdapterPosition());
-        binding.tvLanguageName.setText(translation.getLanguage_name());
-        binding.tvLanguageName.setAllCaps(true);
+        binding.tvItemMainTitle.setText(translation.getLanguage_name());
+        binding.tvItemMainTitle.setAllCaps(true);
         binding.tvTranslationName.setText(translation.getName());
 
         if (translation.isDownloaded()){
@@ -104,7 +104,7 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
 
 
                 db.tvTranslationName.setText(translation.getName());
-                db.tvLanguageName.setText(translation.getLanguage_name());
+                db.tvItemMainTitle.setText(translation.getLanguage_name());
                 db.tvDownloadPath.setText(view.getContext().getFilesDir().getAbsolutePath()+"/holy_quran");
 
                 db.btnChangeDownloadPath.setOnClickListener(v->{

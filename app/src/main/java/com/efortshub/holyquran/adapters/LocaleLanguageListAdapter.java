@@ -58,9 +58,9 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
         String countryName = locale.getDisplayCountry();
         String lc_code = language + "-" + country;
 
-        binding.tvCountryName.setText(countryName);
-        binding.tvLanguageName.setText(languageName);
-        binding.tvCountryLanguageCode.setText(lc_code);
+        binding.tvItemSubTitle.setText(countryName);
+        binding.tvItemMainTitle.setText(languageName);
+        binding.tvItemSideTextSmall.setText(lc_code);
 
 
         binding.btnRoot.setOnClickListener(view -> {

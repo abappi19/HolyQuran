@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.adapters.DownloadPathListAdapter;
 import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
 import com.efortshub.holyquran.models.DownloadPathDetails;
@@ -30,12 +33,13 @@ import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
 
 import java.io.File;
+import java.util.List;
+
 public class DownloadLocationActivity extends AppCompatActivity {
 
     private static final String TAG = "hhhh";
     ActivityDownloadLocationBinding binding;
 
-    RequestQueue queue = null;
 
 
     int oldTheme = R.style.Theme_HBWhiteLight;
@@ -119,10 +123,10 @@ public class DownloadLocationActivity extends AppCompatActivity {
              path = file.getAbsolutePath();
 
         }else {
-            path = dpd.getDocumentMainPathURi().toString();
+            path = dpd.getDocumentMainPathURi().getPath();
         }
 
-        binding.includeDefaultPath.tvLanguageName.setText(R.string.txt_current_path);
+        binding.includeDefaultPath.tvItemMainTitle.setText(R.string.txt_current_path);
 
         if (path.contains("document/")){
             path = path.split("document/")[1];
@@ -130,6 +134,20 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
         binding.includeDefaultPath.tvTranslationName.setText(path);
         binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
+
+
+        HbSqliteOpenHelper oh = HbSqliteOpenHelper.getInstance(getApplicationContext());
+        List<DownloadPathDetails> list = oh.getAllCustomPath();
+
+        for (DownloadPathDetails dd: list){
+            Log.d(TAG, "loadDefaultPath: hhbb: "+dd.getDocumentMainPathURi().getPath());
+        }
+
+        DownloadPathListAdapter adapter = new DownloadPathListAdapter(list);
+
+        binding.rvPreviousDownloadPath.setLayoutManager(new LinearLayoutManager(DownloadLocationActivity.this, LinearLayoutManager.VERTICAL, false));
+        binding.rvPreviousDownloadPath.setItemViewCacheSize(50);
+        binding.rvPreviousDownloadPath.setAdapter(adapter);
 
 
 
