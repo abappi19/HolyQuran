@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
+import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 
 import java.util.List;
@@ -17,11 +18,13 @@ import java.util.List;
 public class DownloadPathListAdapter extends RecyclerView.Adapter {
 
     private List<DownloadPathDetails> list;
+    private DownloadPathItemClickListener downloadPathItemClickListener;
     RowLanguageListItemBinding binding;
 
-    public DownloadPathListAdapter(List<DownloadPathDetails> list) {
+    public DownloadPathListAdapter(List<DownloadPathDetails> list, DownloadPathItemClickListener downloadPathItemClickListener) {
 
         this.list = list;
+        this.downloadPathItemClickListener = downloadPathItemClickListener;
     }
 
     @NonNull
@@ -52,6 +55,12 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
         binding.tvItemMainTitle.setText(title);
 
         binding.tvItemSubTitle.setText(filteredPath);
+
+        binding.btnRoot.setOnClickListener(v -> {
+            downloadPathItemClickListener.onItemClicked(dd);
+        });
+
+
 
 
 

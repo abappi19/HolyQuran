@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_widget_active_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <com.efortshub.holyquran.views.HbTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/txt_options"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/btn_see_files"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackground"
+                >
+
+                <com.efortshub.holyquran.views.HbImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_baseline_open_in_new_24"
+                     android:padding="4dp"/>
+
+                <com.efortshub.holyquran.views.HbTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:text="@string/txt_see_files"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.3"
+                android:background="?attr/colorPrimary"
+                />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackground"
+>
+                        <com.efortshub.holyquran.views.HbImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_done_outline_24"
+                            android:padding="4dp"/>
+
+                        <com.efortshub.holyquran.views.HbTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="@string/txt_set_download_path"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.3"
+                android:background="?attr/colorPrimary"
+                />
+
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        >
+                        <com.efortshub.holyquran.views.HbImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_content_copy_24"
+                            android:padding="4dp"/>
+
+                        <com.efortshub.holyquran.views.HbTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="@string/txt_copy_files_to_current_path"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.3"
+                android:background="?attr/colorPrimary"
+                />
+
+
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        >
+                        <com.efortshub.holyquran.views.HbImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_delete_forever_24"
+                            android:padding="4dp"/>
+
+                        <com.efortshub.holyquran.views.HbTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="@string/txt_delete_everything_and_remove_path"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.3"
+                android:background="?attr/colorPrimary"
+                />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackground"
+                        >
+                        <com.efortshub.holyquran.views.HbImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_baseline_remove_24"
+                            android:padding="4dp"/>
+
+                        <com.efortshub.holyquran.views.HbTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="@string/txt_remove_path_only_keep_files"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:alpha="0.3"
+                android:background="?attr/colorPrimary"
+                />
+
+
+
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:text="@string/txt_close_menu"
+                android:padding="2dp"
+                android:id="@+id/btn_close_dialog"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

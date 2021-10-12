@@ -18,6 +18,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +29,8 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.DownloadPathListAdapter;
 import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
+import com.efortshub.holyquran.databinding.DialogDownloadPathActionBinding;
+import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
@@ -143,7 +146,45 @@ public class DownloadLocationActivity extends AppCompatActivity {
             Log.d(TAG, "loadDefaultPath: hhbb: "+dd.getDocumentMainPathURi().getPath());
         }
 
-        DownloadPathListAdapter adapter = new DownloadPathListAdapter(list);
+        DownloadPathListAdapter adapter = new DownloadPathListAdapter(list, new DownloadPathItemClickListener(){
+            @Override
+            public void onItemClicked(DownloadPathDetails downloadPathDetails) {
+
+                AlertDialog alertDialog;
+                AlertDialog.Builder builder = new AlertDialog.Builder(DownloadLocationActivity.this);
+                DialogDownloadPathActionBinding db = DialogDownloadPathActionBinding.inflate(getLayoutInflater(), null, false);
+                builder.setView(db.getRoot());
+                alertDialog = builder.create();
+                alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.transparent);
+
+                alertDialog.show();
+
+                db.btnSeeFiles.setOnClickListener(v -> {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    Uri uri = downloadPathDetails.getDocumentMainPathURi();
+                    if (intent != null) {
+                        intent.setDataAndType(uri, DocumentsContract.Document.MIME_TYPE_DIR);
+                        startActivity(Intent.createChooser(intent, "Open Via:"));
+                    }
+                });
+                db.btnCloseDialog.setOnClickListener(v -> alertDialog.dismiss());
+
+
+
+
+
+            }
+
+            @Override
+            public void onItemDeleteRequest(DownloadPathDetails downloadPathDetails) {
+
+            }
+
+            @Override
+            public void onItemSetCurrentPathRequest(DownloadPathDetails downloadPathDetails) {
+
+            }
+        });
 
         binding.rvPreviousDownloadPath.setLayoutManager(new LinearLayoutManager(DownloadLocationActivity.this, LinearLayoutManager.VERTICAL, false));
         binding.rvPreviousDownloadPath.setItemViewCacheSize(50);

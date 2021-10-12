@@ -67,6 +67,14 @@
   <string name="txt_choose_another">Choose Another</string>
   <string name="txt_we_dont_allow_phone_storage">You selected Phone storage. We don\'t allow to use custom folder from Phone Storage . Instead please use System Allocated Path.</string>
   <string name="txt_show_tajweed">Show Tajweed Color</string>
+    <string name="txt_options">Options</string>
+    <string name="txt_select_this_path">Select This Path</string>
+    <string name="txt_see_files">See Files</string>
+    <string name="txt_set_download_path">Set download path</string>
+    <string name="txt_copy_files_to_current_path">Copy files to current path</string>
+    <string name="txt_delete_everything_and_remove_path">Delete Everything And Remove Path</string>
+    <string name="txt_remove_path_only_keep_files">Remove Path Only (keep files)</string>
+    <string name="txt_close_menu">Close Menu</string>
 
 
 </resources>
