@@ -28,61 +28,45 @@
             android:layout_height="0dp"
             android:orientation="vertical">
 
-            <include
-                android:id="@+id/include_default_path"
-                layout="@layout/row_quran_translation_list_item" />
-
-<!--
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/ll_sec_permission_warning"
+            <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/bg_widget_active_border"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="4dp"
-                android:visibility="gone">
+                android:text="@string/txt_current_path"
+                android:paddingStart="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingEnd="8dp"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="#fff"
-                    android:gravity="center"
-                    android:text="@string/txt_warning"
-                    android:textColor="#f00"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="#fff"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/txt_storage_permission_warning_desc"
-                    android:textColor="#f00"
-                    android:textSize="12sp" />
+            <include
+                android:id="@+id/include_default_path"
+                layout="@layout/row_quran_translation_list_item"
+                />
 
-                <com.efortshub.holyquran.views.HbButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="@string/txt_btn_enable_storage_perm"
-                    android:textStyle="bold" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
--->
+
+            <TextView
+                android:id="@+id/default_path_files_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0 Files"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:background="@drawable/bg_widget_active"
+                />
+
+
 
             <com.efortshub.holyquran.views.HbTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Available Path"
+                android:text="@string/txt_available_path"
                 android:paddingStart="8dp"
                 android:textStyle="bold"
+                android:textSize="18sp"
+                android:paddingTop="16dp"
                 android:paddingEnd="8dp"/>
 
             <androidx.recyclerview.widget.RecyclerView

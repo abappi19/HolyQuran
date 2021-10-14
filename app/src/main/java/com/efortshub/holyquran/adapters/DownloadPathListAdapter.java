@@ -6,13 +6,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
 import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
+import com.efortshub.holyquran.utils.HbUtils;
 
+import java.io.File;
 import java.util.List;
 
 public class DownloadPathListAdapter extends RecyclerView.Adapter {
@@ -44,17 +48,35 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         DownloadPathDetails dd = list.get(holder.getAdapterPosition());
-        Uri uri  = dd.getDocumentMainPathURi();
-        Log.d("hhhhbb", "onBindViewHolder: "+uri);
-        String filteredPath = dd.getDocumentMainPathURi().getPath().split("document/")[1];
 
-        Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
+        if (dd.isSystemAllocated()){
 
-        String title = filteredPath.split(":" )[1].replace("/HolyQuran", "");
+            binding.tvItemMainTitle.setText(binding.tvItemMainTitle.getContext().getString(R.string.txt_system_allocated));
+            File file = HbUtils.getSystemAllocatedDownloadDir(holder.itemView.getContext());
 
-        binding.tvItemMainTitle.setText(title);
+            binding.tvItemSubTitle.setText(binding.tvItemSubTitle.getContext().getString(R.string.txt_hidden_system_path));
+            File[] files = file.listFiles();
+            binding.tvItemSideTextSmall.setText(files.length+" Files");
+        }else{
 
-        binding.tvItemSubTitle.setText(filteredPath);
+            Uri uri  = dd.getDocumentMainPathURi();
+            Log.d("hhhhbb", "onBindViewHolder: "+uri);
+            String filteredPath = dd.getDocumentMainPathURi().getPath().split("document/")[1];
+
+            Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
+
+            String title = filteredPath.split(":" )[1].replace("/HolyQuran", "");
+
+            binding.tvItemMainTitle.setText(title);
+
+            binding.tvItemSubTitle.setText(filteredPath);
+            DocumentFile df = DocumentFile.fromTreeUri(binding.tvItemSubTitle.getContext(), uri);
+            DocumentFile[] dfiles = df.listFiles();
+            binding.tvItemSideTextSmall.setText(dfiles.length+" Files");
+
+
+
+        }
 
         binding.btnRoot.setOnClickListener(v -> {
             downloadPathItemClickListener.onItemClicked(dd);

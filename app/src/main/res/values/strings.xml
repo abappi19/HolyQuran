@@ -75,6 +75,10 @@
     <string name="txt_delete_everything_and_remove_path">Delete Everything And Remove Path</string>
     <string name="txt_remove_path_only_keep_files">Remove Path Only (keep files)</string>
     <string name="txt_close_menu">Close Menu</string>
+    <string name="txt_done">Done</string>
+    <string name="txt_system_allocated">System Allocated</string>
+    <string name="txt_available_path">Available Path</string>
+    <string name="txt_hidden_system_path">Hidden System Path</string>
 
 
 </resources>

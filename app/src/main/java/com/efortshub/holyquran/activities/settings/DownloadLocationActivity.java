@@ -36,6 +36,7 @@ import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DownloadLocationActivity extends AppCompatActivity {
@@ -120,33 +121,54 @@ public class DownloadLocationActivity extends AppCompatActivity {
     private void loadDefaultPath() {
         DownloadPathDetails dpd = HbUtils.getSavedDownloadPathDetails(DownloadLocationActivity.this);
 
-        String path;
         if (dpd.isSystemAllocated()){
-            File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
-             path = file.getAbsolutePath();
 
-        }else {
-            path = dpd.getDocumentMainPathURi().getPath();
+            binding.includeDefaultPath.tvItemMainTitle.setText(getString(R.string.txt_system_allocated));
+            File file = HbUtils.getSystemAllocatedDownloadDir(this);
+            binding.includeDefaultPath.tvTranslationName.setText(getString(R.string.txt_hidden_system_path));
+            File[] files = file.listFiles();
+            binding.defaultPathFilesCount.setText(files.length+" Files");
+
+        }else{
+
+            Uri uri  = dpd.getDocumentMainPathURi();
+            Log.d("hhhhbb", "onBindViewHolder: "+uri);
+            String filteredPath = dpd.getDocumentMainPathURi().getPath().split("document/")[1];
+
+            Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
+
+            String title = filteredPath.split(":" )[1].replace("/HolyQuran", "");
+
+
+            DocumentFile df = DocumentFile.fromTreeUri(this, uri);
+            DocumentFile[] dfiles = df.listFiles();
+            binding.defaultPathFilesCount.setText(dfiles.length+" Files");
+            binding.includeDefaultPath.tvItemMainTitle.setText(title);
+            binding.includeDefaultPath.tvTranslationName.setText(filteredPath);
+            binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
+
         }
 
-        binding.includeDefaultPath.tvItemMainTitle.setText(R.string.txt_current_path);
 
-        if (path.contains("document/")){
-            path = path.split("document/")[1];
-        }
-
-        binding.includeDefaultPath.tvTranslationName.setText(path);
-        binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
-
+       binding.includeDefaultPath.btnRoot.setBackground(ContextCompat.getDrawable(DownloadLocationActivity.this, R.drawable.bg_widget_active));
 
         HbSqliteOpenHelper oh = HbSqliteOpenHelper.getInstance(getApplicationContext());
         List<DownloadPathDetails> list = oh.getAllCustomPath();
 
-        for (DownloadPathDetails dd: list){
-            Log.d(TAG, "loadDefaultPath: hhbb: "+dd.getDocumentMainPathURi().getPath());
+        List<DownloadPathDetails> filteredList = new ArrayList<>();
+
+        if (!dpd.isSystemAllocated()){
+            filteredList.add(new DownloadPathDetails(null, true));
         }
 
-        DownloadPathListAdapter adapter = new DownloadPathListAdapter(list, new DownloadPathItemClickListener(){
+        for (DownloadPathDetails dd: list){
+                if (!dd.getDocumentMainPathURi().equals(dpd.getDocumentMainPathURi())){
+                    filteredList.add(dd);
+                }
+
+        }
+
+        DownloadPathListAdapter adapter = new DownloadPathListAdapter(filteredList, new DownloadPathItemClickListener(){
             @Override
             public void onItemClicked(DownloadPathDetails downloadPathDetails) {
 
@@ -161,13 +183,27 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
                 db.btnSeeFiles.setOnClickListener(v -> {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    Uri uri = downloadPathDetails.getDocumentMainPathURi();
-                    if (intent != null) {
+                    Uri uri= downloadPathDetails.getDocumentMainPathURi();
+                    if (uri==null){
+                        Toast.makeText(DownloadLocationActivity.this, "We don't provide permission to see System Allocated Path.", Toast.LENGTH_SHORT).show();
+
+                    }else {
                         intent.setDataAndType(uri, DocumentsContract.Document.MIME_TYPE_DIR);
                         startActivity(Intent.createChooser(intent, "Open Via:"));
                     }
+
                 });
                 db.btnCloseDialog.setOnClickListener(v -> alertDialog.dismiss());
+
+                db.btnSetDownloadPath.setOnClickListener(v -> {
+                    HbUtils.setSavedDownloadPathDetails(DownloadLocationActivity.this, downloadPathDetails.getDocumentMainPathURi());
+                    loadDefaultPath();
+
+                    alertDialog.dismiss();
+                    Toast.makeText(DownloadLocationActivity.this, getString(R.string.txt_done), Toast.LENGTH_SHORT).show();
+                });
+
+
 
 
 

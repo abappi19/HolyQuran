@@ -71,7 +71,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/btn_set_download_path"
                         android:orientation="horizontal"
                         android:clickable="true"
                         android:focusable="true"
@@ -107,7 +107,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/btn_copy_files_to_current_path"
                         android:orientation="horizontal"
                         android:clickable="true"
                         android:focusable="true"
@@ -145,8 +145,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
-
+                        android:id="@+id/btn_delete_everything"
                         android:orientation="horizontal"
                         android:clickable="true"
                         android:focusable="true"
@@ -180,7 +179,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
+                        android:id="@+id/btn_remove_path_only"
                         android:orientation="horizontal"
                         android:clickable="true"
                         android:focusable="true"
