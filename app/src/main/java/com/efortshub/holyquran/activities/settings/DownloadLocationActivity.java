@@ -131,7 +131,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
             binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
 
         }else{
-
             Uri uri  = dpd.getDocumentMainPathURi();
             Log.d("hhhhbb", "onBindViewHolder: "+uri);
             String filteredPath = dpd.getDocumentMainPathURi().getPath().split("document/")[1];
@@ -139,8 +138,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
             Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
 
             String title = filteredPath.split(":" )[1].replace("/HolyQuran", "");
-
-
             DocumentFile df = DocumentFile.fromTreeUri(this, uri);
             DocumentFile[] dfiles = df.listFiles();
             binding.defaultPathFilesCount.setText(dfiles.length+" Files");

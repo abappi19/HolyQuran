@@ -3,12 +3,14 @@ package com.efortshub.holyquran.adapters;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
@@ -16,6 +18,7 @@ import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.databinding.DialogDownloadConfirmationBinding;
 import com.efortshub.holyquran.databinding.RowQuranTranslationListItemBinding;
 import com.efortshub.holyquran.interfaces.TranslationChangeListener;
+import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbUtils;
 
@@ -97,29 +100,53 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
         }else {
             binding.btnRoot.setOnClickListener(view -> {
 
-
+                AlertDialog alertDialog;
 
                 DialogDownloadConfirmationBinding db = DialogDownloadConfirmationBinding.inflate(LayoutInflater.from(view.getContext())
                 , null, false);
 
-
-                db.tvTranslationName.setText(translation.getName());
-                db.tvItemMainTitle.setText(translation.getLanguage_name());
-                db.tvDownloadPath.setText(view.getContext().getFilesDir().getAbsolutePath()+"/holy_quran");
-
-                db.btnChangeDownloadPath.setOnClickListener(v->{
-                    v.getContext().startActivity(new Intent(v.getContext(), DownloadLocationActivity.class));
-
-                });
-
-
-              AlertDialog alertDialog = new AlertDialog.Builder(view.getContext())
+                alertDialog = new AlertDialog.Builder(view.getContext())
                         .setView(db.getRoot())
                         .create();
 
 
-              alertDialog.getWindow().setBackgroundDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.transparent));
+                db.tvTranslationName.setText(translation.getName());
+                db.tvItemMainTitle.setText(translation.getLanguage_name());
 
+
+
+                DownloadPathDetails dd = HbUtils.getSavedDownloadPathDetails(view.getContext());
+
+                if (dd.isSystemAllocated()){
+
+                    db.tvDownloadPath.setText(view.getContext().getString(R.string.txt_hidden_system_path));
+
+                }else{
+
+                    Uri uri  = dd.getDocumentMainPathURi();
+                    Log.d("hhhhbb", "onBindViewHolder: "+uri);
+                    String filteredPath = dd.getDocumentMainPathURi().getPath().split("document/")[1];
+
+                    Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
+
+                    db.tvDownloadPath.setText(filteredPath);
+
+
+                }
+
+                db.btnChangeDownloadPath.setOnClickListener(v->{
+                    v.getContext().startActivity(new Intent(v.getContext(), DownloadLocationActivity.class));
+                    if (alertDialog!=null)alertDialog.dismiss();
+
+                });
+
+                db.btnCancelDownload.setOnClickListener(v -> {
+                    if (alertDialog != null) {
+                        alertDialog.dismiss();
+
+                    }
+                });
+              alertDialog.getWindow().setBackgroundDrawable(ContextCompat.getDrawable(view.getContext(), R.drawable.transparent));
               alertDialog.show();
 
 

@@ -51,7 +51,7 @@ public class HbUtils {
     }
 
     public static int getSavedTheme(Context context) {
-        return getSharedPreferences(context).getInt(HbConst.KEY_THEME, R.style.Base_Theme_AppCompat_Light);
+        return getSharedPreferences(context).getInt(HbConst.KEY_THEME, R.style.Theme_HBWhiteLight);
     }
 
     public static void saveTheme(Context context, int theme) {
