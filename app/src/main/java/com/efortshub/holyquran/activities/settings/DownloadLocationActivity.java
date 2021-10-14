@@ -128,6 +128,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
             binding.includeDefaultPath.tvTranslationName.setText(getString(R.string.txt_hidden_system_path));
             File[] files = file.listFiles();
             binding.defaultPathFilesCount.setText(files.length+" Files");
+            binding.includeDefaultPath.ivDownloadStatus.setImageResource(R.drawable.ic_baseline_snippet_folder_24);
 
         }else{
 
