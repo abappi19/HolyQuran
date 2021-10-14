@@ -8,9 +8,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,21 +16,20 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.DocumentsContract;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.DownloadPathListAdapter;
 import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
 import com.efortshub.holyquran.databinding.DialogDownloadPathActionBinding;
+import com.efortshub.holyquran.interfaces.DownloadFileListener;
 import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.utils.HbConst;
+import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 import com.efortshub.holyquran.utils.HbUtils;
 
 import java.io.File;
@@ -178,7 +175,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
                 alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.transparent);
 
                 alertDialog.show();
-
+/*
                 db.btnSeeFiles.setOnClickListener(v -> {
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     Uri uri= downloadPathDetails.getDocumentMainPathURi();
@@ -191,7 +188,68 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     }
 
                 });
+                */
                 db.btnCloseDialog.setOnClickListener(v -> alertDialog.dismiss());
+
+
+                //load clicked download path details
+
+
+                if (downloadPathDetails.isSystemAllocated()){
+
+                    db.includeDefaultPath.tvItemMainTitle.setText(getString(R.string.txt_system_allocated));
+                    File file = HbUtils.getSystemAllocatedDownloadDir(DownloadLocationActivity.this);
+                    db.includeDefaultPath.tvItemSubTitle.setText(getString(R.string.txt_hidden_system_path));
+                    File[] files = file.listFiles();
+                    db.includeDefaultPath.tvItemSideTextSmall.setText(files.length+" Files");
+
+                }else{
+                    Uri uri  = downloadPathDetails.getDocumentMainPathURi();
+                    Log.d("hhhhbb", "onBindViewHolder: "+uri);
+                    String filteredPath = downloadPathDetails.getDocumentMainPathURi().getPath().split("document/")[1];
+
+                    Log.d("hhbb", "onBindViewHolder: filtered path: "+filteredPath);
+
+                    String title = filteredPath.split(":" )[1].replace("/HolyQuran", "");
+                    DocumentFile df = DocumentFile.fromTreeUri(DownloadLocationActivity.this, uri);
+                    DocumentFile[] dfiles = df.listFiles();
+                    db.includeDefaultPath.tvItemSideTextSmall.setText(dfiles.length+" Files");
+                    db.includeDefaultPath.tvItemMainTitle.setText(title);
+                    db.includeDefaultPath.tvItemSubTitle.setText(filteredPath);
+
+                }
+
+                db.includeDefaultPath.btnRoot.setBackground(ContextCompat.getDrawable(DownloadLocationActivity.this,
+                        R.drawable.bg_widget_active));
+
+
+                HbDownloadUtils.getInstance(getApplicationContext()).startDownload("",
+                        new DownloadFileListener() {
+                            @Override
+                            public void onDownloadStarted() {
+
+                            }
+
+                            @Override
+                            public void onDownloadFinished() {
+
+                            }
+
+                            @Override
+                            public void onDownloadProgress() {
+
+                            }
+
+                            @Override
+                            public void onDownloadFailed(Exception e, boolean isDownloadAlreadyAdded) {
+
+                            }
+                        });
+
+
+
+
+
 
                 db.btnSetDownloadPath.setOnClickListener(v -> {
                     HbUtils.setSavedDownloadPathDetails(DownloadLocationActivity.this, downloadPathDetails.getDocumentMainPathURi());
