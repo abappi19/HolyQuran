@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.efortshub.holyquran.R;
@@ -202,6 +203,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     db.includeDefaultPath.tvItemSubTitle.setText(getString(R.string.txt_hidden_system_path));
                     File[] files = file.listFiles();
                     db.includeDefaultPath.tvItemSideTextSmall.setText(files.length+" Files");
+                    db.btnRemovePathOnly.setVisibility(View.GONE);
 
                 }else{
                     Uri uri  = downloadPathDetails.getDocumentMainPathURi();
@@ -258,6 +260,7 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     alertDialog.dismiss();
                     Toast.makeText(DownloadLocationActivity.this, getString(R.string.txt_done), Toast.LENGTH_SHORT).show();
                 });
+
 
 
 

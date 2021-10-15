@@ -36,7 +36,6 @@ public class HbDownloadUtils {
 
         if (que.isExist(url)){
             downloadFileListener.onDownloadFailed(new Exception("Download Already in queue"), true);
-
         }else {
 
 
