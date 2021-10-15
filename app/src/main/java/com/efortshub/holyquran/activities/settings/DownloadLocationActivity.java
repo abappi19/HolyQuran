@@ -1,14 +1,5 @@
 package com.efortshub.holyquran.activities.settings;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.documentfile.provider.DocumentFile;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,16 +12,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.documentfile.provider.DocumentFile;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.adapters.DownloadPathListAdapter;
 import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
 import com.efortshub.holyquran.databinding.ActivityDownloadLocationBinding;
 import com.efortshub.holyquran.databinding.DialogDownloadPathActionBinding;
-import com.efortshub.holyquran.interfaces.DownloadFileListener;
 import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.utils.HbConst;
-import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 import com.efortshub.holyquran.utils.HbUtils;
 
 import java.io.File;
@@ -223,31 +221,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
 
                 db.includeDefaultPath.btnRoot.setBackground(ContextCompat.getDrawable(DownloadLocationActivity.this,
                         R.drawable.bg_widget_active));
-
-
-                HbDownloadUtils.getInstance(getApplicationContext()).startDownload("",
-                        new DownloadFileListener() {
-                            @Override
-                            public void onDownloadStarted() {
-
-                            }
-
-                            @Override
-                            public void onDownloadFinished() {
-
-                            }
-
-                            @Override
-                            public void onDownloadProgress() {
-
-                            }
-
-                            @Override
-                            public void onDownloadFailed(Exception e, boolean isDownloadAlreadyAdded) {
-
-                            }
-                        });
-
 
 
 

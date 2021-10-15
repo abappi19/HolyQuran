@@ -20,6 +20,7 @@ import com.efortshub.holyquran.interfaces.TranslationChangeListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbUtils;
+import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 
 import java.util.List;
 
@@ -83,6 +84,7 @@ public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder
                     translationChangeListener.onTranslationChanged(1,translation);
 
                 });
+
                 alertDialog = builder.create();
 
                 alertDialog.show();
@@ -132,7 +134,24 @@ public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder
 
                 });
 
+                db.btnDownloadTrans.setOnClickListener(v -> {
+                    Log.d("hhbbh", "onBindViewHolder: download starting...");
+                    HbDownloadUtils.getInstance()
+                            .startDownload("a", null);
+
+
+                });
+
                 db.btnCancelDownload.setOnClickListener(v -> {
+
+                    //todo: test///////
+                    Log.d("hhbbh", "onBindViewHolder: que from outside: ");
+
+                    for (String s: HbDownloadUtils.que){
+                        Log.d("hhbbh", "onBindViewHolder: ques outside : "+s);
+                    }
+
+
                     if (alertDialog != null) {
                         alertDialog.dismiss();
 

@@ -1,38 +1,39 @@
 package com.efortshub.holyquran.utils.download_helper;
 
+import android.content.Context;
+
+import com.efortshub.holyquran.databases.HbSqliteOpenHelper;
+import com.efortshub.holyquran.utils.HbConst;
+
 import java.util.ArrayList;
-import java.util.List;
 
-public class HbDownloadQue {
-    List<String> queList;
+public class HbDownloadQue  {
+    private static HbDownloadQue que;
+    private HbSqliteOpenHelper helper;
 
-    public HbDownloadQue(){
-        queList = new ArrayList<>();
+    private HbDownloadQue(Context context) {
+        this.helper = HbSqliteOpenHelper.getInstance(context);
     }
 
-    public void add(String url){
-        queList.add(url);
+    public static HbDownloadQue getInstance(Context context){
+        if (que==null) que = new HbDownloadQue(context);
+        return que;
     }
-    public String enQue(){
-        if (queList.size()>0){
 
-            String url = queList.get(0);
 
-            queList.remove(0);
+    boolean enQue(String url){
+        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url");
 
-            return url;
-        }
-        else return null;
+
+
+
     }
-    public boolean isExist(String url) {
-        boolean b = false;
-        for (String s: queList){
-            if (s.equals(url)){
-                b = true;
-                break;
-            }
-        }
-        
-        return b;
+    private String deQue(){
+
+
+    }
+    boolean isExist(String url) {
+
+
     }
 }

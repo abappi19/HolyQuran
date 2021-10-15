@@ -66,7 +66,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
 
 
 
-    private boolean createNewTable(String tableName, String... params){
+    public boolean createNewTable(String tableName, String... params){
         SQLiteDatabase db  = this.getWritableDatabase();
 
         String paramsHere="";

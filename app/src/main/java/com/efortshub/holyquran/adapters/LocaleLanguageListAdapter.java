@@ -23,7 +23,6 @@ import java.util.Locale;
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
 public class LocaleLanguageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     RowLanguageListItemBinding binding;
     private final List<Locale> locales;
     private final LanguageChangeListener languageChangeListener;

@@ -13,6 +13,7 @@ import com.efortshub.holyquran.models.TranslatedFontSettings;
 public class HbConst {
     public static final String KEY_IS_SYSTEM_ALLOCATED_DOWNLOAD_PATH = "is_system_allocated";
     public static final String KEY_IS_CUSTOM_DOCUMENT_DOWNLOAD_URI = "document_path_uri";
+    public static final String KEY_TABLE_NAME_DOWNLOAD_QUE = "d_que";
     //FETCHING NATIVE VARIABLE HERE INCLUDING API AND OFFLINE URL
 
     static {
