@@ -1,12 +1,9 @@
 package com.efortshub.holyquran.utils.download_helper;
 
-import android.app.DownloadManager;
 import android.content.Context;
-import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
 
 import java.util.ArrayList;
