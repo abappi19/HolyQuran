@@ -456,7 +456,7 @@ public class SettingsActivity extends AppCompatActivity {
         themeList.add(HBLowOrangeLightGrey);
         themeList.add(HBLowOrangeDarkGrey);
 
-        ThemeListAdapter adapter = new ThemeListAdapter(themeList, getTheme(), new ThemeChangeListener() {
+        ThemeListAdapter adapter = new ThemeListAdapter(themeList, new ThemeChangeListener() {
             @Override
             public void onThemeSelected(int themeId, Resources.Theme theme) {
                 HbUtils.saveTheme(SettingsActivity.this, themeId);

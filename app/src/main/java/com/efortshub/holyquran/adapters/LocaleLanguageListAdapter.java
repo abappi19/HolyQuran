@@ -2,8 +2,6 @@ package com.efortshub.holyquran.adapters;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.os.Build;
-import android.os.LocaleList;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -24,11 +22,11 @@ import java.util.Locale;
  * contact.efortshub@gmail.com
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
-public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
+public class LocaleLanguageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     RowLanguageListItemBinding binding;
-    private List<Locale> locales;
-    private LanguageChangeListener languageChangeListener;
+    private final List<Locale> locales;
+    private final LanguageChangeListener languageChangeListener;
 
     public LocaleLanguageListAdapter(List<Locale> locales, LanguageChangeListener languageChangeListener) {
 
@@ -41,6 +39,7 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = RowLanguageListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new RecyclerView.ViewHolder(binding.getRoot()) {
+            @NonNull
             @Override
             public String toString() {
                 return super.toString();
@@ -67,11 +66,7 @@ public class LocaleLanguageListAdapter extends RecyclerView.Adapter {
             Locale.setDefault(locale);
             Resources resources = view.getContext().getResources();
             Configuration config = resources.getConfiguration();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                config.setLocale(locale);
-            }else{
-                config.locale = locale;
-            }
+            config.setLocale(locale);
             resources.updateConfiguration(config, resources.getDisplayMetrics());
             languageChangeListener.onLanguageChanged(locale);
         });

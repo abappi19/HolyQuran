@@ -1,7 +1,6 @@
 package com.efortshub.holyquran.adapters;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
@@ -10,8 +9,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
-import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
@@ -22,13 +21,6 @@ import com.efortshub.holyquran.models.DownloadPathDetails;
 import com.efortshub.holyquran.models.QuranTranslation;
 import com.efortshub.holyquran.utils.HbUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.file.Files;
-import java.nio.file.attribute.FileAttribute;
 import java.util.List;
 
 /**
@@ -39,12 +31,11 @@ import java.util.List;
  * contact.efortshub@gmail.com
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
-public class QuranTranslationListAdapter extends RecyclerView.Adapter{
+public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder> {
     RowQuranTranslationListItemBinding binding;
-    private static final String TAG = "hhhh";
 
-    private List<QuranTranslation> translationList;
-    private TranslationChangeListener translationChangeListener;
+    private final List<QuranTranslation> translationList;
+    private final TranslationChangeListener translationChangeListener;
 
     public QuranTranslationListAdapter(List<QuranTranslation> translationList, TranslationChangeListener translationChangeListener) {
 
@@ -58,6 +49,7 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
         binding = RowQuranTranslationListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
         return new RecyclerView.ViewHolder(binding.getRoot()) {
+            @NonNull
             @Override
             public String toString() {
                 return super.toString();
@@ -182,15 +174,11 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
 
 
 
-
-*//*
-
                     FileOutputStream fout = new FileOutputStream(file);
                     OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fout);
 
                     outputStreamWriter.write("hi, how are you");
                     outputStreamWriter.close();
-*//*
 
                     Log.d(TAG, "onBindViewHolder: success");
 
@@ -199,6 +187,7 @@ public class QuranTranslationListAdapter extends RecyclerView.Adapter{
                     e.printStackTrace();
                     Log.d(TAG, "onBindViewHolder: "+e.getMessage());
                 }*/
+
             });
         }
 

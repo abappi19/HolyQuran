@@ -1,5 +1,6 @@
 package com.efortshub.holyquran.adapters;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +11,6 @@ import androidx.documentfile.provider.DocumentFile;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.activities.settings.DownloadLocationActivity;
 import com.efortshub.holyquran.databinding.RowLanguageListItemBinding;
 import com.efortshub.holyquran.interfaces.DownloadPathItemClickListener;
 import com.efortshub.holyquran.models.DownloadPathDetails;
@@ -19,14 +19,13 @@ import com.efortshub.holyquran.utils.HbUtils;
 import java.io.File;
 import java.util.List;
 
-public class DownloadPathListAdapter extends RecyclerView.Adapter {
+public class DownloadPathListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DownloadPathDetails> list;
-    private DownloadPathItemClickListener downloadPathItemClickListener;
+    private final List<DownloadPathDetails> list;
+    private final DownloadPathItemClickListener downloadPathItemClickListener;
     RowLanguageListItemBinding binding;
 
     public DownloadPathListAdapter(List<DownloadPathDetails> list, DownloadPathItemClickListener downloadPathItemClickListener) {
-
         this.list = list;
         this.downloadPathItemClickListener = downloadPathItemClickListener;
     }
@@ -37,6 +36,7 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
         binding = RowLanguageListItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
 
         return new RecyclerView.ViewHolder(binding.getRoot()) {
+            @NonNull
             @Override
             public String toString() {
                 return super.toString();
@@ -44,6 +44,7 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
         };
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
@@ -56,7 +57,9 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
 
             binding.tvItemSubTitle.setText(binding.tvItemSubTitle.getContext().getString(R.string.txt_hidden_system_path));
             File[] files = file.listFiles();
-            binding.tvItemSideTextSmall.setText(files.length+" Files");
+            if (files != null) {
+                binding.tvItemSideTextSmall.setText(files.length+" Files");
+            }
         }else{
 
             Uri uri  = dd.getDocumentMainPathURi();
@@ -71,16 +74,17 @@ public class DownloadPathListAdapter extends RecyclerView.Adapter {
 
             binding.tvItemSubTitle.setText(filteredPath);
             DocumentFile df = DocumentFile.fromTreeUri(binding.tvItemSubTitle.getContext(), uri);
-            DocumentFile[] dfiles = df.listFiles();
+            DocumentFile[] dfiles = new DocumentFile[0];
+            if (df != null) {
+                dfiles = df.listFiles();
+            }
             binding.tvItemSideTextSmall.setText(dfiles.length+" Files");
 
 
 
         }
 
-        binding.btnRoot.setOnClickListener(v -> {
-            downloadPathItemClickListener.onItemClicked(dd);
-        });
+        binding.btnRoot.setOnClickListener(v -> downloadPathItemClickListener.onItemClicked(dd));
 
 
 

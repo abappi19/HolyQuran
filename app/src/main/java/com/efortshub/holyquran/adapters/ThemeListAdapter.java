@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,16 +29,14 @@ import java.util.List;
  * contact.efortshub@gmail.com
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
-public class ThemeListAdapter extends RecyclerView.Adapter {
+public class ThemeListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     RowThemeItemBinding binding;
-    private List<Integer> themeList;
-    private Resources.Theme currentTheme;
-    private ThemeChangeListener themeChangeListener;
+    private final List<Integer> themeList;
+    private final ThemeChangeListener themeChangeListener;
 
-    public ThemeListAdapter(List<Integer> themeList, Resources.Theme currentTheme, ThemeChangeListener themeChangeListener) {
+    public ThemeListAdapter(List<Integer> themeList, ThemeChangeListener themeChangeListener) {
 
         this.themeList = themeList;
-        this.currentTheme = currentTheme;
         this.themeChangeListener = themeChangeListener;
     }
 
@@ -48,6 +45,7 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = RowThemeItemBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new RecyclerView.ViewHolder(binding.getRoot()) {
+            @NonNull
             @Override
             public String toString() {
                 return super.toString();
@@ -122,9 +120,7 @@ public class ThemeListAdapter extends RecyclerView.Adapter {
 
         }else binding.btnSetNow.setVisibility(View.VISIBLE);
 
-        binding.btnSetNow.setOnClickListener(view -> {
-            themeChangeListener.onThemeSelected(theme, myTheme);
-        });
+        binding.btnSetNow.setOnClickListener(view -> themeChangeListener.onThemeSelected(theme, myTheme));
 
 
     }

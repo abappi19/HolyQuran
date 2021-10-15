@@ -1,5 +1,6 @@
 package com.efortshub.holyquran.databases;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -142,7 +143,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
         ArrayList<DownloadPathDetails> list = new ArrayList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         boolean b = createNewTable("customLocation", "path");
-        Cursor cursor = db.rawQuery("select * from customLocation where path not null", null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("select * from customLocation where path not null", null);
 
         while (cursor.moveToNext()){
            int id = cursor.getInt(0);
