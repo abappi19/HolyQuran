@@ -17,11 +17,11 @@
         android:gravity="end">
 
         <com.efortshub.holyquran.views.HbImageButton
+            android:id="@+id/btn_goto_download_manager"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:padding="4dp"
             android:layout_margin="4dp"
-            app:tint="?attr/colorPrimaryVariant"
             android:src="@drawable/ic_baseline_save_alt_24"/>
 
 
@@ -31,7 +31,6 @@
             android:layout_height="30dp"
             android:padding="4dp"
             android:layout_margin="4dp"
-            app:tint="?attr/colorPrimaryVariant"
             android:src="@drawable/ic_baseline_settings_24"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
