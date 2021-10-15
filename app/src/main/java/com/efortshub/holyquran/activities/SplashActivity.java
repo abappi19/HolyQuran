@@ -1,6 +1,10 @@
 package com.efortshub.holyquran.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.Constraints;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +15,7 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.ActivitySplashBinding;
 import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
+import com.efortshub.holyquran.workers.DownloadWorker;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -46,12 +51,13 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
-
         binding.btnGotoDownloadManager.setOnClickListener(v -> {
+            WorkRequest workRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class)
+                    .build();
+            WorkManager.getInstance(v.getContext()).enqueue(workRequest);
 
         });
 
-        
 
 
 
