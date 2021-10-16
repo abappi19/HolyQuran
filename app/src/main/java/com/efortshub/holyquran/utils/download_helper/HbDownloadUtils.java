@@ -3,6 +3,7 @@ package com.efortshub.holyquran.utils.download_helper;
 import android.content.Context;
 import android.util.Log;
 import android.util.Patterns;
+import android.webkit.URLUtil;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,9 +38,8 @@ public class HbDownloadUtils {
     public void startDownload(@NonNull String url, @Nullable DownloadFileListener downloadFileListener){
 
         if (url==null) url = "";
-
-        //todo: remove !not sign after testing
         if (Patterns.WEB_URL.matcher(url).matches()){
+
 
             boolean isAdded = que.addItem(new HbDownloadQue.Item(url));
             if (!isAdded){
@@ -50,10 +50,6 @@ public class HbDownloadUtils {
 
             }else {
                 Log.d(TAG, "startDownload: que items: ");
-
-
-
-
             }
 
 

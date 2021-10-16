@@ -138,12 +138,9 @@ public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder
 
                 db.btnDownloadTrans.setOnClickListener(v -> {
                     Log.d("hhbbh", "onBindViewHolder: download starting...");
-
                     String url = String.format(HbConst.ONLINE_JSON_TRANSLATION_URL, translation.getId());
-
                     HbDownloadUtils.getInstance(v.getContext())
                             .startDownload(url, null);
-
 
                     if (alertDialog != null) {
                         if (alertDialog.isShowing())alertDialog.dismiss();
@@ -153,12 +150,6 @@ public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder
                 });
 
                 db.btnCancelDownload.setOnClickListener(v -> {
-
-                    //todo: test///////
-                    Log.d("hhbbh", "onBindViewHolder: que from outside: ");
-
-
-
 
                     if (alertDialog != null) {
                         if (alertDialog.isShowing())alertDialog.dismiss();

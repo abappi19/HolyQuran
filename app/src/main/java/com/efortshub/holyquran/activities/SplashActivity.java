@@ -1,7 +1,6 @@
 package com.efortshub.holyquran.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.Constraints;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
@@ -9,11 +8,10 @@ import androidx.work.WorkRequest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.SettingsActivity;
 import com.efortshub.holyquran.databinding.ActivitySplashBinding;
-import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.workers.DownloadWorker;
 

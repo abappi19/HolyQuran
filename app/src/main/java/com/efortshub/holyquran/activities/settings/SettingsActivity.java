@@ -1,4 +1,4 @@
-package com.efortshub.holyquran.activities;
+package com.efortshub.holyquran.activities.settings;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,8 +9,6 @@ import android.view.View;
 import android.widget.SeekBar;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.activities.settings.AppLanguageSettingActivity;
-import com.efortshub.holyquran.activities.settings.AppTranslationSettingActivity;
 import com.efortshub.holyquran.adapters.ThemeListAdapter;
 import com.efortshub.holyquran.databinding.ActivitySettingsBinding;
 import com.efortshub.holyquran.interfaces.ThemeChangeListener;

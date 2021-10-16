@@ -63,10 +63,10 @@
     <string name="txt_btn_enable_storage_perm">Enable Storage Permission</string>
     <string name="txt_set_another_path">Set Another Path</string>
     <string name="txt_cant_select_path_that_contains">You can\'t select path that contains </string>
-  <string name="txt_use_system_path">Use System Allocated Path</string>
-  <string name="txt_choose_another">Choose Another</string>
-  <string name="txt_we_dont_allow_phone_storage">You selected Phone storage. We don\'t allow to use custom folder from Phone Storage . Instead please use System Allocated Path.</string>
-  <string name="txt_show_tajweed">Show Tajweed Color</string>
+    <string name="txt_use_system_path">Use System Allocated Path</string>
+    <string name="txt_choose_another">Choose Another</string>
+    <string name="txt_we_dont_allow_phone_storage">You selected Phone storage. We don\'t allow to use custom folder from Phone Storage . Instead please use System Allocated Path.</string>
+    <string name="txt_show_tajweed">Show Tajweed Color</string>
     <string name="txt_options">Options</string>
     <string name="txt_select_this_path">Select This Path</string>
     <string name="txt_see_files">See Files</string>
