@@ -384,7 +384,9 @@ public class HbUtils {
 
         File mainDir = new File( context.getFilesDir().getAbsolutePath(), HbConst.KEY_DOWNLOAD_DIR_MAIN_PATH);
         if (!mainDir.exists()){
-            mainDir.mkdirs();
+            if(mainDir.mkdirs()){
+                return mainDir;
+            }
         }
 
 

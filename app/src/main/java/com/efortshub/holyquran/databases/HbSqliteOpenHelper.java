@@ -120,22 +120,16 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
             result = true;
         }
 
+        db.close();
         return result;
     }
 
-    public boolean updateCustomPath(int id, String path){
-        SQLiteDatabase db = this.getWritableDatabase();
-        boolean b = createNewTable("customLocation", "path");
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("path", path);
-        db.update("customLocation", contentValues, "id=?", new String[]{String.valueOf(id)});
-        return true;
-    }
 
     public boolean deleteCustomPath(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         boolean b = createNewTable("customLocation", "path");
         db.delete("customLocation", "id = ?", new String[]{String.valueOf(id)});
+        db.close();
         return true;
     }
 
@@ -152,6 +146,7 @@ public class HbSqliteOpenHelper extends SQLiteOpenHelper {
          list.add(downloadPathDetails);
         }
 
+        db.close();
         return list;
     }
 }

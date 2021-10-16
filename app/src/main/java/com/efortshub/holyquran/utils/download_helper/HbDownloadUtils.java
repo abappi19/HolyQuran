@@ -39,19 +39,18 @@ public class HbDownloadUtils {
         if (url==null) url = "";
 
         //todo: remove !not sign after testing
-        if (!Patterns.WEB_URL.matcher(url).matches()){
+        if (Patterns.WEB_URL.matcher(url).matches()){
 
-            if (que.isExist(url)){
+            boolean isAdded = que.addItem(new HbDownloadQue.Item(url));
+            if (!isAdded){
                 Log.d(TAG, "startDownload: que is already exists... "+url);
                 if (downloadFileListener != null) {
                     downloadFileListener.onDownloadStarted();
                 }
 
-
             }else {
-                que.enQue(url);
-
                 Log.d(TAG, "startDownload: que items: ");
+
 
 
 

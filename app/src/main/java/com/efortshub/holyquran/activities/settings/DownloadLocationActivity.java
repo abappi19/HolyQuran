@@ -203,6 +203,45 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     db.includeDefaultPath.tvItemSideTextSmall.setText(files.length+" Files");
                     db.btnRemovePathOnly.setVisibility(View.GONE);
 
+
+                    db.btnDeleteEverything.setOnClickListener(v -> {
+                        if (alertDialog!=null) if (alertDialog.isShowing()) alertDialog.dismiss();
+
+
+                        new AlertDialog.Builder(v.getContext())
+                                .setTitle(v.getContext().getString(R.string.txt_warning))
+                                .setMessage(v.getContext().getString(R.string.txt_path_delete_confirmation))
+                                .setPositiveButton(R.string.txt_delete, (dialog, which) -> {
+
+                                    try{
+                                        boolean b = file.delete();
+
+                                        if (b){
+
+
+                                            HbSqliteOpenHelper.getInstance(v.getContext())
+                                                    .deleteCustomPath(downloadPathDetails.getId());
+
+                                            //reload path list and default path
+                                            loadDefaultPath();
+                                            Toast.makeText(DownloadLocationActivity.this, "Everything deleted...", Toast.LENGTH_SHORT).show();
+
+                                        }else {
+                                            Toast.makeText(DownloadLocationActivity.this, "Something wrong! We can't delete this directory", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }catch (Exception e){
+                                        Toast.makeText(DownloadLocationActivity.this, "Something wrong! "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    }
+                                })
+                                .setNegativeButton(v.getContext().getString(R.string.txt_cancel), (dialog, which) -> {
+
+                                }).create().show();
+
+                    });
+
+
+
                 }else{
                     Uri uri  = downloadPathDetails.getDocumentMainPathURi();
                     Log.d("hhhhbb", "onBindViewHolder: "+uri);
@@ -216,6 +255,60 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     db.includeDefaultPath.tvItemSideTextSmall.setText(dfiles.length+" Files");
                     db.includeDefaultPath.tvItemMainTitle.setText(title);
                     db.includeDefaultPath.tvItemSubTitle.setText(filteredPath);
+
+
+
+
+                    db.btnRemovePathOnly.setOnClickListener(v -> {
+                        HbSqliteOpenHelper.getInstance(v.getContext())
+                                .deleteCustomPath(downloadPathDetails.getId());
+
+                        //reload path list and default path
+                        loadDefaultPath();
+                        if (alertDialog!=null) if (alertDialog.isShowing()) alertDialog.dismiss();
+                        Toast.makeText(DownloadLocationActivity.this, "Path Removed from list...", Toast.LENGTH_SHORT).show();
+                    });
+
+
+
+                    db.btnDeleteEverything.setOnClickListener(v -> {
+                        if (alertDialog!=null) if (alertDialog.isShowing()) alertDialog.dismiss();
+
+
+                        new AlertDialog.Builder(v.getContext())
+                                .setTitle(v.getContext().getString(R.string.txt_warning))
+                                .setMessage(v.getContext().getString(R.string.txt_path_delete_confirmation))
+                                .setPositiveButton(R.string.txt_delete, (dialog, which) -> {
+
+                                    try{
+                                         boolean b = df.delete();
+
+                                        if (b){
+
+
+                                            HbSqliteOpenHelper.getInstance(v.getContext())
+                                                    .deleteCustomPath(downloadPathDetails.getId());
+
+                                            //reload path list and default path
+                                            loadDefaultPath();
+                                            Toast.makeText(DownloadLocationActivity.this, "Everything deleted...", Toast.LENGTH_SHORT).show();
+
+                                        }else {
+                                            Toast.makeText(DownloadLocationActivity.this, "Something wrong! We can't delete this directory", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }catch (Exception e){
+                                        Toast.makeText(DownloadLocationActivity.this, "Something wrong! "+e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                    }
+                                })
+                                .setNegativeButton(v.getContext().getString(R.string.txt_cancel), (dialog, which) -> {
+
+                                }).create().show();
+
+                    });
+
+
+
 
                 }
 
@@ -233,11 +326,6 @@ public class DownloadLocationActivity extends AppCompatActivity {
                     alertDialog.dismiss();
                     Toast.makeText(DownloadLocationActivity.this, getString(R.string.txt_done), Toast.LENGTH_SHORT).show();
                 });
-
-
-
-
-
 
 
 

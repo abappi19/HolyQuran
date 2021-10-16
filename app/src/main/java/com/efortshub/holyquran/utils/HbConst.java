@@ -21,7 +21,6 @@ public class HbConst {
     }
 
     public static native String getOnlineBaseJsonUrl();
-    public static native String stringFromJNI();
 
 
     public static native String getOfflineHbjImlaei();
