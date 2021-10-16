@@ -14,14 +14,14 @@ import java.util.List;
 
 public class HbDownloadQue  {
     private static HbDownloadQue que;
-    private HbSqliteOpenHelper helper;
+    private static HbSqliteOpenHelper helper;
 
     private HbDownloadQue(Context context) {
-        this.helper = HbSqliteOpenHelper.getInstance(context);
+        helper = HbSqliteOpenHelper.getInstance(context);
     }
 
     public static HbDownloadQue getInstance(Context context){
-        if (que==null) que = new HbDownloadQue(context);
+        if (que==null || helper == null) que = new HbDownloadQue(context);
         return que;
     }
 
@@ -78,6 +78,7 @@ public class HbDownloadQue  {
             }else break;
 
         }
+        cursor.close();
         db.close();
         return items;
     }

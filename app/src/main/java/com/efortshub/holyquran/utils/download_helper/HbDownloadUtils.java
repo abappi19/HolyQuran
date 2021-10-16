@@ -8,8 +8,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.work.BackoffPolicy;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
+import com.efortshub.holyquran.workers.DownloadWorker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,17 +22,19 @@ import java.util.regex.Pattern;
 
 
 public class HbDownloadUtils {
+    private Context context;
     private static final String TAG = "hhbbh";
     private static  HbDownloadUtils hbDownloadUtils;
     public static HbDownloadQue que;
     private static List<Thread> downlodThreads;
 
-    private HbDownloadUtils(){
+    private HbDownloadUtils(Context context){
+        this.context = context;
 
     }
     public static HbDownloadUtils getInstance(Context context){
         if (hbDownloadUtils==null){
-            hbDownloadUtils = new HbDownloadUtils();
+            hbDownloadUtils = new HbDownloadUtils(context);
             downlodThreads = new ArrayList<>();
             que = HbDownloadQue.getInstance(context);
         }
@@ -39,7 +46,6 @@ public class HbDownloadUtils {
 
         if (url==null) url = "";
         if (Patterns.WEB_URL.matcher(url).matches()){
-
 
             boolean isAdded = que.addItem(new HbDownloadQue.Item(url));
             if (!isAdded){
@@ -54,6 +60,16 @@ public class HbDownloadUtils {
 
 
         }else if (downloadFileListener!=null) downloadFileListener.onDownloadFailed(new Exception("Not a valid URL"), false);
+
+
+        OneTimeWorkRequest downloadRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class)
+                .build();
+
+        WorkManager.getInstance(context).enqueueUniqueWork("download_worker", ExistingWorkPolicy.KEEP, downloadRequest);
+
+
+
+
 
 
     }

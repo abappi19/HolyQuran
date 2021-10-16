@@ -21,6 +21,9 @@ import androidx.work.WorkerParameters;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.utils.HbUtils;
+import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
+
+import java.util.List;
 
 /**
  * Created by H. Bappi on  9:36 AM  10/15/21.
@@ -42,27 +45,80 @@ public class DownloadWorker extends Worker {
     @Override
     public Result doWork() {
 
-       // setForegroundAsync(createForegroundInfo("Starting Download"));
+        boolean isNetworkAvailable = false;
+        int x = 0;
+        while (!isNetworkAvailable){
+            x++;
+            try {
+                isNetworkAvailable = checkNetworkConnectivity();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (x==10) isNetworkAvailable = true;
+            if (isNetworkAvailable){
+                download();
+            }else {
+                setForegroundAsync(createForegroundInfo(0,0, false,0));
+            }
 
-
-        download();
+        }
 
 
         return Result.success();
     }
 
+    private boolean checkNetworkConnectivity() throws InterruptedException {
+        Thread.sleep(1000);
+        return false;
+    }
+
     private void download() {
+
+        HbDownloadQue que = HbDownloadQue.getInstance(getApplicationContext());
+        int fileDownloaded = 0;
+
+
+        for ( int fileRemaining =  Long.valueOf(que.queSize()).intValue(); fileRemaining>0; fileRemaining =   Long.valueOf(que.queSize()).intValue()){
+
+            List<HbDownloadQue.Item> items = que.enQue(1);
+            for (HbDownloadQue.Item item: items){
+                try {
+
+                    //todo: test download............
+                    for (int i=0; i<100; i++){
+                        Thread.sleep(100);
+                        setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i));
+                    }
+                    if (que.deQue(item))fileDownloaded++;
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+/*
+
+
         for (int i =0; i<100; i++){
             try {
-                setForegroundAsync(createForegroundInfo("Downloading...", i, 100));
+                setForegroundAsync(createForegroundInfo( i, 100, true, 0));
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
-    private ForegroundInfo createForegroundInfo(String name, int progress, int total) {
+    private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork,  int progressCurrent) {
         Context context = getApplicationContext();
         PendingIntent cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(getId());
 
@@ -91,12 +147,38 @@ public class DownloadWorker extends Worker {
         remoteViewsBigContent.setInt(R.id.ll_root, "setBackgroundColor", colorPrimaryVariant);
         remoteViewsBigContent.setInt(R.id.btn_details, "setBackgroundResource", selectableBg);
         remoteViewsBigContent.setInt(R.id.btn_cancel, "setBackgroundResource", selectableBg);
+
         remoteViewsBigContent.setTextColor(R.id.tv_app_name, colorPrimary);
         remoteViewsBigContent.setTextColor(R.id.btn_details, colorPrimary);
         remoteViewsBigContent.setTextColor(R.id.btn_cancel, colorPrimary);
         remoteViewsBigContent.setTextColor(R.id.tv_download_title, colorPrimary);
         remoteViewsBigContent.setTextColor(R.id.tv_download_progress, colorPrimary);
-        remoteViewsBigContent.setTextViewText(R.id.tv_download_progress, progress+"/"+total);
+        remoteViewsBigContent.setTextColor(R.id.tv_remaining_progress, colorPrimary);
+        remoteViewsBigContent.setTextColor(R.id.tv_title_remaining, colorPrimary);
+        remoteViewsBigContent.setTextColor(R.id.tv_pb_progress, colorPrimary);
+
+        remoteViewsBigContent.setTextViewText(R.id.tv_download_progress, " "+fileDownloaded+"");
+        remoteViewsBigContent.setTextViewText(R.id.tv_remaining_progress, " "+fileRemaining+" ");
+
+        if (hasNetwork) {
+            remoteViewsBigContent.setTextViewText(R.id.tv_pb_progress, progressCurrent + "% ");
+        }else {
+            remoteViewsBigContent.setTextViewText(R.id.tv_pb_progress, "Waiting for network...");
+        }
+
+        if (hasNetwork){
+            if (fileRemaining>0) {
+                remoteViewsBigContent.setProgressBar(R.id.pb,  100,0, false);
+                if (progressCurrent > 0) {
+                    remoteViewsBigContent.setProgressBar(R.id.pb, 100, progressCurrent, false);
+                }else{
+                    remoteViewsBigContent.setProgressBar(R.id.pb, 100, 0, true);
+                }
+            }
+        }else {
+            remoteViewsBigContent.setProgressBar(R.id.pb, 100, 0, true);
+        }
+/*
 
 
         //set normal remote view
@@ -110,16 +192,17 @@ public class DownloadWorker extends Worker {
         remoteViewNormal.setTextColor(R.id.btn_cancel, colorPrimary);
         remoteViewNormal.setTextColor(R.id.tv_download_title, colorPrimary);
         remoteViewNormal.setTextColor(R.id.tv_download_progress, colorPrimary);
-        remoteViewNormal.setTextViewText(R.id.tv_download_progress, progress+"/"+total);
+        remoteViewNormal.setTextViewText(R.id.tv_download_progress, fileDownloaded+"");
 
 
+
+*/
 
         remoteViewsBigContent.setOnClickPendingIntent(R.id.btn_cancel, cancelIntent);
 
 
-
         Notification notification = new NotificationCompat.Builder(context, "idid")
-                .setCustomContentView(remoteViewNormal)
+              //  .setCustomContentView(remoteViewNormal)
                 .setCustomBigContentView(remoteViewsBigContent)
                 .setTicker("ticker title")
                 .setSmallIcon(R.drawable.ic_baseline_cloud_download_24)
