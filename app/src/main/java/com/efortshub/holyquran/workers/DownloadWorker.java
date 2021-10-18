@@ -24,7 +24,9 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -71,16 +73,23 @@ public class DownloadWorker extends Worker {
         if (cm.getActiveNetworkInfo()!=null){
             if (cm.getActiveNetworkInfo().isConnected()){
                 try{
-                    URL url = new URL("https://google.com");
+                    URL url = new URL("https://github.com");
                     URLConnection conn = url.openConnection();
                     conn.connect();
                     return true;
                 }catch (Exception e){
-                    return false;
+                    URL url = null;
+                    try {
+                        url = new URL("https://google.com");
+                        URLConnection conn = url.openConnection();
+                        conn.connect();
+                        return true;
+                    } catch (IOException ex) {
+                        return false;
+                    }
                 }
             }else return false;
         }
-
 
         return false;
     }
