@@ -84,6 +84,7 @@
     <string name="txt_path_delete_confirmation">Everything will be deleted from this path. Are you sure you want to delete?</string>
     <string name="txt_delete">Delete</string>
     <string name="txt_remaining">Remaining </string>
+    <string name="txt_no_internet_connection">No Internet Connection!</string>
 
 
 </resources>

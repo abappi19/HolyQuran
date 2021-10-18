@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.util.TypedValue;
 import android.widget.RemoteViews;
@@ -23,6 +24,7 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
+import java.net.InetAddress;
 import java.util.List;
 
 /**
@@ -46,19 +48,13 @@ public class DownloadWorker extends Worker {
     public Result doWork() {
 
         boolean isNetworkAvailable = false;
-        int x = 0;
         while (!isNetworkAvailable){
-            x++;
-            try {
                 isNetworkAvailable = checkNetworkConnectivity();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if (x==10) isNetworkAvailable = true;
+
             if (isNetworkAvailable){
                 download();
             }else {
-                setForegroundAsync(createForegroundInfo(0,0, false,0));
+                setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0));
             }
 
         }
@@ -67,8 +63,22 @@ public class DownloadWorker extends Worker {
         return Result.success();
     }
 
-    private boolean checkNetworkConnectivity() throws InterruptedException {
-        Thread.sleep(1000);
+    private boolean checkNetworkConnectivity() {
+
+        ConnectivityManager cm = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm.getActiveNetworkInfo()!=null){
+            if (cm.getActiveNetworkInfo().isConnected()){
+                try{
+                    InetAddress ip = InetAddress.getByName("www.google.com");
+                    if (!ip.equals("")) return true;
+                }catch (Exception e){
+
+                }
+                return false;
+            }else return false;
+        }
+
+
         return false;
     }
 
@@ -118,7 +128,7 @@ public class DownloadWorker extends Worker {
         }*/
     }
 
-    private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork,  int progressCurrent) {
+    private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork, int progressCurrent) {
         Context context = getApplicationContext();
         PendingIntent cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(getId());
 
@@ -205,6 +215,8 @@ public class DownloadWorker extends Worker {
               //  .setCustomContentView(remoteViewNormal)
                 .setCustomBigContentView(remoteViewsBigContent)
                 .setTicker("ticker title")
+                .setSound(null)
+                .setSilent(true)
                 .setSmallIcon(R.drawable.ic_baseline_cloud_download_24)
                 .setOngoing(true)
                 .build();
@@ -219,11 +231,12 @@ public class DownloadWorker extends Worker {
         NotificationManager notification = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        CharSequence name = "name";
-        String description = "desc";
+        CharSequence name = "Holy Quran eFortsHub";
+        String description = "Holy Quran Resource Downloading Notification Status";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
-        NotificationChannel channel = new NotificationChannel("idid", name, importance);
+        NotificationChannel channel = new NotificationChannel("holy_quran_efortshub", name, importance);
         channel.setDescription(description);
+        channel.setSound(null,null);
         notification.createNotificationChannel(channel);
 
 
