@@ -35,9 +35,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
 
+        }
+        debug {
+            minifyEnabled true
+            multiDexEnabled true
         }
     }
     compileOptions {
@@ -48,6 +53,10 @@ android {
 
     buildFeatures{
         viewBinding true
+    }
+    dependenciesInfo {
+        includeInApk true
+        includeInBundle true
     }
 
 }
