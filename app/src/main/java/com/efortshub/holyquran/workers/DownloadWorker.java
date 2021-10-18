@@ -25,6 +25,8 @@ import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
 import java.net.InetAddress;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 /**
@@ -69,12 +71,13 @@ public class DownloadWorker extends Worker {
         if (cm.getActiveNetworkInfo()!=null){
             if (cm.getActiveNetworkInfo().isConnected()){
                 try{
-                    InetAddress ip = InetAddress.getByName("www.google.com");
-                    if (!ip.equals("")) return true;
+                    URL url = new URL("https://google.com");
+                    URLConnection conn = url.openConnection();
+                    conn.connect();
+                    return true;
                 }catch (Exception e){
-
+                    return false;
                 }
-                return false;
             }else return false;
         }
 
