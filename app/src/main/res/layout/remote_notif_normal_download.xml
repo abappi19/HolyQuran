@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textStyle="bold"
+        android:paddingTop="8dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"/>
 

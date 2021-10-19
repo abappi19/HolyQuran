@@ -140,7 +140,7 @@ public class QuranTranslationListAdapter extends Adapter<RecyclerView.ViewHolder
                     Log.d("hhbbh", "onBindViewHolder: download starting...");
                     String url = String.format(HbConst.ONLINE_JSON_TRANSLATION_URL, translation.getId());
                     HbDownloadUtils.getInstance(v.getContext())
-                            .startDownload(url, null);
+                            .startDownload(url, translation.getLanguage_name(), translation.getName(),null);
 
                     if (alertDialog != null) {
                         if (alertDialog.isShowing())alertDialog.dismiss();

@@ -42,12 +42,14 @@ public class HbDownloadUtils {
         return hbDownloadUtils;
     }
 
-    public void startDownload(@NonNull String url, @Nullable DownloadFileListener downloadFileListener){
+    public void startDownload(@NonNull String url, String title, String subtitle, @Nullable DownloadFileListener downloadFileListener){
 
         if (url==null) url = "";
+        if (title==null) title = "";
+        if (subtitle==null) subtitle = "";
         if (Patterns.WEB_URL.matcher(url).matches()){
 
-            boolean isAdded = que.addItem(new HbDownloadQue.Item(url));
+            boolean isAdded = que.addItem(new HbDownloadQue.Item(url, title, subtitle));
             if (!isAdded){
                 Log.d(TAG, "startDownload: que is already exists... "+url);
                 if (downloadFileListener != null) {

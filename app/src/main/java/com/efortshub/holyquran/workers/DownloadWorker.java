@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import androidx.annotation.NonNull;
@@ -188,13 +189,26 @@ public class DownloadWorker extends Worker {
                 remoteViewsBigContent.setProgressBar(R.id.pb,  100,0, false);
                 if (progressCurrent > 0) {
                     remoteViewsBigContent.setProgressBar(R.id.pb, 100, progressCurrent, false);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_download_progress, View.VISIBLE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_download_title, View.VISIBLE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_remaining_progress, View.VISIBLE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_title_remaining, View.VISIBLE);
                 }else{
                     remoteViewsBigContent.setProgressBar(R.id.pb, 100, 0, true);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_download_progress, View.GONE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_download_title, View.GONE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_remaining_progress, View.GONE);
+                    remoteViewsBigContent.setViewVisibility(R.id.tv_title_remaining, View.GONE);
                 }
             }
         }else {
             remoteViewsBigContent.setProgressBar(R.id.pb, 100, 0, true);
+            remoteViewsBigContent.setViewVisibility(R.id.tv_download_progress, View.GONE);
+            remoteViewsBigContent.setViewVisibility(R.id.tv_download_title, View.GONE);
+            remoteViewsBigContent.setViewVisibility(R.id.tv_remaining_progress, View.GONE);
+            remoteViewsBigContent.setViewVisibility(R.id.tv_title_remaining, View.GONE);
         }
+
 
 /*
 

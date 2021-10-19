@@ -33,7 +33,7 @@ public class eFortsHub extends MultiDexApplication {
 
 
         HbDownloadUtils.getInstance(getApplicationContext())
-                .startDownload("", null);
+                .startDownload("", null, null, null);
 
     }
 

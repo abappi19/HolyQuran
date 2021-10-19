@@ -27,7 +27,7 @@ public class HbDownloadQue  {
 
 
     public boolean addItem(Item item){
-        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url");
+        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url", "title", "subtitle");
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, null);
 
@@ -44,6 +44,8 @@ public class HbDownloadQue  {
         if (!b){
             ContentValues contentValues = new ContentValues();
             contentValues.put("url", item.getUrl());
+            contentValues.put("title", item.getUrl());
+            contentValues.put("subtitle", item.getUrl());
             db.insert(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, null, contentValues);
         }
 
@@ -61,7 +63,7 @@ public class HbDownloadQue  {
 
     }
     public List<Item> enQue(int size){
-        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url");
+        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url", "title", "subtitle");
         SQLiteDatabase db = helper.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, null);
         int temp = size;
@@ -71,8 +73,10 @@ public class HbDownloadQue  {
             if (temp>0){
 
                 String url = cursor.getString(1);
+                String title = cursor.getString(2);
+                String subtitle = cursor.getString(3);
                 int id = cursor.getInt(0);
-                items.add(new Item(url, id));
+                items.add(new Item(url, id, title, subtitle));
 
                 temp--;
             }else break;
@@ -84,7 +88,7 @@ public class HbDownloadQue  {
     }
     public boolean deQue(Item item){
         boolean done =false;
-        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url");
+        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url", "title", "subtitle");
         SQLiteDatabase db = helper.getWritableDatabase();
         int i = db.delete(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "id = ?", new String[]{item.getId()+""});
         if (i!=0) done = true;
@@ -93,7 +97,7 @@ public class HbDownloadQue  {
     }
 
     public long queSize(){
-        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url");
+        helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url", "title", "subtitle");
         SQLiteDatabase db = helper.getWritableDatabase();
 
 
@@ -105,15 +109,21 @@ public class HbDownloadQue  {
 
     public static class Item{
         private String url;
+        private String title;
+        private String subtitle;
         private int id;
 
-        public Item(String url) {
+        public Item(String url, String title, String subtitle) {
             this.url = url;
             this.id = -1;
+            this.title = title;
+            this.subtitle = subtitle;
         }
 
-        public Item(String url, int id) {
+        public Item(String url, int id, String title, String subtitle) {
             this.url = url;
+            this.title = title;
+            this.subtitle = subtitle;
             this.id = id;
         }
 
@@ -123,6 +133,14 @@ public class HbDownloadQue  {
 
         public int getId() {
             return id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getSubtitle() {
+            return subtitle;
         }
     }
 }
