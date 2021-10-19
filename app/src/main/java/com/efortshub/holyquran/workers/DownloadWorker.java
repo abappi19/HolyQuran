@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -21,6 +22,7 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.DownloadManagerActivity;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
@@ -213,7 +215,11 @@ public class DownloadWorker extends Worker {
 
 */
 
+        Intent di = new Intent(getApplicationContext(), DownloadManagerActivity.class);
+        PendingIntent detailsIntent = PendingIntent.getActivity(getApplicationContext(), 129, di , PendingIntent.FLAG_ONE_SHOT);
         remoteViewsBigContent.setOnClickPendingIntent(R.id.btn_cancel, cancelIntent);
+        remoteViewsBigContent.setOnClickPendingIntent(R.id.btn_details, detailsIntent);
+
 
 
         Notification notification = new NotificationCompat.Builder(context, "idid")
@@ -238,7 +244,7 @@ public class DownloadWorker extends Worker {
 
         CharSequence name = "Holy Quran eFortsHub";
         String description = "Holy Quran Resource Downloading Notification Status";
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        int importance = NotificationManager.IMPORTANCE_MIN;
         NotificationChannel channel = new NotificationChannel("holy_quran_efortshub", name, importance);
         channel.setDescription(description);
         channel.setSound(null,null);
