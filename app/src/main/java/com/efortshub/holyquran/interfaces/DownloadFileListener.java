@@ -1,5 +1,7 @@
 package com.efortshub.holyquran.interfaces;
 
+import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
+
 /**
  * Created by H. Bappi on  8:18 AM PM 10/15/21.
  * Contact email:
@@ -11,9 +13,9 @@ package com.efortshub.holyquran.interfaces;
  **/
 public interface DownloadFileListener {
 
-    void onDownloadStarted();
-    void onDownloadFinished();
-    void onDownloadProgress();
+    void onDownloadStarted(HbDownloadQue.Item downloadingItem);
+    void onDownloadFinished(HbDownloadQue.Item downloadingItem);
+    void onDownloadProgress(HbDownloadQue.Item downloadingItem, int progress);
     void onDownloadFailed(Exception e, boolean isDownloadAlreadyAdded);
 
 }

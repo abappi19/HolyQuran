@@ -60,7 +60,7 @@ public class DownloadWorker extends Worker {
             if (isNetworkAvailable){
                return download();
             }else {
-                setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0));
+                setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0, null));
             }
 
         }
@@ -114,12 +114,12 @@ public class DownloadWorker extends Worker {
                             //todo: test download............
                             for (int i=0; i<100; i++){
                                 Thread.sleep(100);
-                                setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i));
+                                setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i, item));
                             }
                             if (que.deQue(item))fileDownloaded++;
 
                         }else {
-                            setForegroundAsync(createForegroundInfo(0,0, b,0));
+                            setForegroundAsync(createForegroundInfo(0,0, b,0, item));
                         }
                     }
 
@@ -136,7 +136,7 @@ public class DownloadWorker extends Worker {
         return Result.success();
     }
 
-    private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork, int progressCurrent) {
+    private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork, int progressCurrent, HbDownloadQue.Item item) {
         Context context = getApplicationContext();
         PendingIntent cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(getId());
 
@@ -208,6 +208,15 @@ public class DownloadWorker extends Worker {
             remoteViewsBigContent.setViewVisibility(R.id.tv_remaining_progress, View.GONE);
             remoteViewsBigContent.setViewVisibility(R.id.tv_title_remaining, View.GONE);
         }
+
+
+
+        if (item!=null){
+            if (DownloadManagerActivity.listener!=null){
+                DownloadManagerActivity.listener.onDownloadProgress(item, progressCurrent);
+            }
+        }
+
 
 
 /*

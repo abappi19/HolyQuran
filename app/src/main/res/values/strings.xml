@@ -88,6 +88,7 @@
     <string name="txt_pending_downloads">Pending Downloads</string>
     <string name="txt_downloading">Downloading</string>
     <string name="txt_queued_download">In Queue</string>
+    <string name="txt_download_manager">Download Manager</string>
 
 
 </resources>

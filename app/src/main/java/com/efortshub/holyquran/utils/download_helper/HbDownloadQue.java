@@ -44,8 +44,8 @@ public class HbDownloadQue  {
         if (!b){
             ContentValues contentValues = new ContentValues();
             contentValues.put("url", item.getUrl());
-            contentValues.put("title", item.getUrl());
-            contentValues.put("subtitle", item.getUrl());
+            contentValues.put("title", item.getTitle());
+            contentValues.put("subtitle", item.getSubtitle());
             db.insert(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, null, contentValues);
         }
 

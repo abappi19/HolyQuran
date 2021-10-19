@@ -53,7 +53,7 @@ public class HbDownloadUtils {
             if (!isAdded){
                 Log.d(TAG, "startDownload: que is already exists... "+url);
                 if (downloadFileListener != null) {
-                    downloadFileListener.onDownloadStarted();
+                    downloadFileListener.onDownloadStarted(null);
                 }
 
             }else {
