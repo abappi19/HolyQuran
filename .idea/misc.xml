@@ -16,6 +16,8 @@
         <entry key="app/src/main/res/drawable/bg_widget_clicable.xml" value="0.5833333333333334" />
         <entry key="app/src/main/res/drawable/bg_widget_enabled.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/bg_widget_focused.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" value="0.6375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.55" />
         <entry key="app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.56875" />
         <entry key="app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.5833333333333334" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.47875" />
@@ -26,7 +28,7 @@
         <entry key="app/src/main/res/layout/activity_app_language_setting.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_app_translation_setting.xml" value="0.5124653739612188" />
         <entry key="app/src/main/res/layout/activity_download_location.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_download_manager.xml" value="0.3531746031746032" />
+        <entry key="app/src/main/res/layout/activity_download_manager.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.5" />
@@ -36,7 +38,7 @@
         <entry key="app/src/main/res/layout/layout_back_and_title.xml" value="0.5" />
         <entry key="app/src/main/res/layout/remote_notif_big_download.xml" value="0.3752927400468384" />
         <entry key="app/src/main/res/layout/remote_notif_normal_download.xml" value="0.3752927400468384" />
-        <entry key="app/src/main/res/layout/row_download_manager_list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/row_download_manager_list_item.xml" value="0.67" />
         <entry key="app/src/main/res/layout/row_language_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_quran_translation_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_theme_item.xml" value="0.22" />

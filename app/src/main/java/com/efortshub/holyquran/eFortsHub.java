@@ -1,6 +1,11 @@
 package com.efortshub.holyquran;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.multidex.MultiDexApplication;
+import androidx.work.Configuration;
+import androidx.work.WorkManager;
 
 import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 
@@ -15,7 +20,7 @@ import cat.ereza.customactivityoncrash.config.CaocConfig;
  * contact.efortshub@gmail.com
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
-public class eFortsHub extends MultiDexApplication {
+public class eFortsHub extends MultiDexApplication implements Configuration.Provider {
     @Override
     public void onCreate() {
         super.onCreate();
@@ -32,6 +37,8 @@ public class eFortsHub extends MultiDexApplication {
                 .apply();
 
 
+
+
         HbDownloadUtils.getInstance(getApplicationContext())
                 .startDownload("", null, null, null);
 
@@ -43,4 +50,13 @@ public class eFortsHub extends MultiDexApplication {
     }
 
 
+    @NonNull
+    @Override
+    public Configuration getWorkManagerConfiguration() {
+        Configuration configuration = new Configuration.Builder()
+                .setMinimumLoggingLevel(Log.DEBUG)
+                .build();
+
+        return  configuration;
+    }
 }

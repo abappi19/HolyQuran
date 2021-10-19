@@ -87,6 +87,7 @@
     <string name="txt_no_internet_connection">No Internet Connection!</string>
     <string name="txt_pending_downloads">Pending Downloads</string>
     <string name="txt_downloading">Downloading</string>
+    <string name="txt_queued_download">In Queue</string>
 
 
 </resources>
