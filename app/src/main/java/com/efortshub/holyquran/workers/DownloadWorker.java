@@ -25,8 +25,6 @@ import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.List;
@@ -52,19 +50,19 @@ public class DownloadWorker extends Worker {
     public Result doWork() {
 
         boolean isNetworkAvailable = false;
+
         while (!isNetworkAvailable){
                 isNetworkAvailable = checkNetworkConnectivity();
 
             if (isNetworkAvailable){
-                download();
+               return download();
             }else {
                 setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0));
             }
 
         }
 
-
-        return Result.success();
+        return Result.retry();
     }
 
     private boolean checkNetworkConnectivity() {
@@ -94,7 +92,7 @@ public class DownloadWorker extends Worker {
         return false;
     }
 
-    private void download() {
+    private Result download() {
 
         HbDownloadQue que = HbDownloadQue.getInstance(getApplicationContext());
         int fileDownloaded = 0;
@@ -105,13 +103,22 @@ public class DownloadWorker extends Worker {
             List<HbDownloadQue.Item> items = que.enQue(1);
             for (HbDownloadQue.Item item: items){
                 try {
+                    boolean b = false;
+                    while (!b){
+                        b = checkNetworkConnectivity();
+                        if (b){
 
-                    //todo: test download............
-                    for (int i=0; i<100; i++){
-                        Thread.sleep(100);
-                        setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i));
+                            //todo: test download............
+                            for (int i=0; i<100; i++){
+                                Thread.sleep(100);
+                                setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i));
+                            }
+                            if (que.deQue(item))fileDownloaded++;
+
+                        }else {
+                            setForegroundAsync(createForegroundInfo(0,0, b,0));
+                        }
                     }
-                    if (que.deQue(item))fileDownloaded++;
 
 
                 } catch (Exception e) {
@@ -123,21 +130,7 @@ public class DownloadWorker extends Worker {
 
         }
 
-
-
-
-
-/*
-
-
-        for (int i =0; i<100; i++){
-            try {
-                setForegroundAsync(createForegroundInfo( i, 100, true, 0));
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
+        return Result.success();
     }
 
     private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork, int progressCurrent) {

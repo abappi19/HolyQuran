@@ -79,7 +79,7 @@
     <string name="txt_system_allocated">System Allocated</string>
     <string name="txt_available_path">Available Path</string>
     <string name="txt_hidden_system_path">Hidden System Path</string>
-    <string name="txt_downloading">Downloading :</string>
+    <string name="txt_downloaded">Downloaded :</string>
     <string name="txt_details">Details</string>
     <string name="txt_path_delete_confirmation">Everything will be deleted from this path. Are you sure you want to delete?</string>
     <string name="txt_delete">Delete</string>
