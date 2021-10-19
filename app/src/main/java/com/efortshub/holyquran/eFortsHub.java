@@ -2,6 +2,8 @@ package com.efortshub.holyquran;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
+
 import cat.ereza.customactivityoncrash.config.CaocConfig;
 
 
@@ -28,6 +30,10 @@ public class eFortsHub extends MultiDexApplication {
                 .errorDrawable(R.drawable.ic_baseline_report_problem_24)
                 .showErrorDetails(true)
                 .apply();
+
+
+        HbDownloadUtils.getInstance(getApplicationContext())
+                .startDownload("", null);
 
     }
 

@@ -195,8 +195,8 @@ public class DownloadWorker extends Worker {
         }else {
             remoteViewsBigContent.setProgressBar(R.id.pb, 100, 0, true);
         }
-/*
 
+/*
 
         //set normal remote view
         RemoteViews remoteViewNormal = new RemoteViews(getApplicationContext().getPackageName(), R.layout.remote_notif_big_download);
@@ -210,10 +210,8 @@ public class DownloadWorker extends Worker {
         remoteViewNormal.setTextColor(R.id.tv_download_title, colorPrimary);
         remoteViewNormal.setTextColor(R.id.tv_download_progress, colorPrimary);
         remoteViewNormal.setTextViewText(R.id.tv_download_progress, fileDownloaded+"");
-
-
-
 */
+
 
         Intent di = new Intent(getApplicationContext(), DownloadManagerActivity.class);
         PendingIntent detailsIntent = PendingIntent.getActivity(getApplicationContext(), 129, di , PendingIntent.FLAG_ONE_SHOT);
@@ -233,7 +231,6 @@ public class DownloadWorker extends Worker {
                 .build();
 
 
-
         return new ForegroundInfo(11, notification);
     }
 
@@ -249,8 +246,6 @@ public class DownloadWorker extends Worker {
         channel.setDescription(description);
         channel.setSound(null,null);
         notification.createNotificationChannel(channel);
-
-
 
     }
 }
