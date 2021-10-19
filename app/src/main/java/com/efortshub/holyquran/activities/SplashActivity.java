@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.settings.DownloadManagerActivity;
 import com.efortshub.holyquran.activities.settings.SettingsActivity;
 import com.efortshub.holyquran.databinding.ActivitySplashBinding;
 import com.efortshub.holyquran.utils.HbUtils;
+import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 import com.efortshub.holyquran.workers.DownloadWorker;
 
 public class SplashActivity extends AppCompatActivity {
@@ -50,9 +52,9 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         binding.btnGotoDownloadManager.setOnClickListener(v -> {
-            WorkRequest workRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class)
-                    .build();
-            WorkManager.getInstance(v.getContext()).enqueue(workRequest);
+
+            startActivity(new Intent(this, DownloadManagerActivity.class));
+
 
         });
 

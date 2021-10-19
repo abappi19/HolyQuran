@@ -19,6 +19,15 @@ import com.efortshub.holyquran.utils.HbUtils;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Created by H. Bappi on  9:36 AM  10/15/21.
+ * Contact email:
+ * contact@efortshub.com
+ * bappi@efortshub.com
+ * contact.efortshub@gmail.com
+ * github: https://github.com/hbappi
+ * Copyright (c) 2021 eFortsHub . All rights reserved.
+ **/
 public class DownloadPathListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final List<DownloadPathDetails> list;

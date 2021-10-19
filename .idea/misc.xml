@@ -25,7 +25,7 @@
         <entry key="app/src/main/res/drawable/ic_lang_arabic.xml" value="0.56875" />
         <entry key="app/src/main/res/drawable/transparent.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_app_crash.xml" value="0.2222222222222222" />
-        <entry key="app/src/main/res/layout/activity_app_language_setting.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_app_language_setting.xml" value="0.67" />
         <entry key="app/src/main/res/layout/activity_app_translation_setting.xml" value="0.5124653739612188" />
         <entry key="app/src/main/res/layout/activity_download_location.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_download_manager.xml" value="0.5" />

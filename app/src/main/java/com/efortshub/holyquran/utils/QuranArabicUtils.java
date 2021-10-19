@@ -15,6 +15,15 @@ import androidx.core.content.ContextCompat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Created by H. Bappi on  9:36 AM  10/15/21.
+ * Contact email:
+ * contact@efortshub.com
+ * bappi@efortshub.com
+ * contact.efortshub@gmail.com
+ * github: https://github.com/hbappi
+ * Copyright (c) 2021 eFortsHub . All rights reserved.
+ **/
 public class QuranArabicUtils {
 
 //todo;    https://www.linkedin.com/in/nabil6391/

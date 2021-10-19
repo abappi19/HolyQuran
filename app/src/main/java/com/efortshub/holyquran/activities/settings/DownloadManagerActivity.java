@@ -1,16 +1,24 @@
 package com.efortshub.holyquran.activities.settings;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.databinding.ActivityDownloadManagerBinding;
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
-import com.efortshub.holyquran.utils.HbConst;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
+import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 
+/**
+ * Created by H. Bappi on  9:36 AM  10/15/21.
+ * Contact email:
+ * contact@efortshub.com
+ * bappi@efortshub.com
+ * contact.efortshub@gmail.com
+ * github: https://github.com/hbappi
+ * Copyright (c) 2021 eFortsHub . All rights reserved.
+ **/
 public class DownloadManagerActivity extends AppCompatActivity implements DownloadFileListener {
     ActivityDownloadManagerBinding binding;
     public static  DownloadFileListener listener;
@@ -21,6 +29,9 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         binding = ActivityDownloadManagerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         listener = this;
+
+        HbDownloadUtils.getInstance(this)
+                .startDownload("", null, null, null);
 
         binding.includeTitle.tvTitle.setText(getString(R.string.txt_download_manager));
         binding.includeTitle.btnGoBack.setOnClickListener(v -> onBackPressed());

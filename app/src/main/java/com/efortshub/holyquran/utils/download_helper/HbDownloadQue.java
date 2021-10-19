@@ -12,6 +12,15 @@ import com.efortshub.holyquran.utils.HbConst;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by H. Bappi on  9:36 AM  10/15/21.
+ * Contact email:
+ * contact@efortshub.com
+ * bappi@efortshub.com
+ * contact.efortshub@gmail.com
+ * github: https://github.com/hbappi
+ * Copyright (c) 2021 eFortsHub . All rights reserved.
+ **/
 public class HbDownloadQue  {
     private static HbDownloadQue que;
     private static HbSqliteOpenHelper helper;
