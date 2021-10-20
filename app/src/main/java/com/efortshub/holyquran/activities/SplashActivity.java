@@ -52,9 +52,9 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
         binding.btnGotoDownloadManager.setOnClickListener(v -> {
-
-            startActivity(new Intent(this, DownloadManagerActivity.class));
-
+          Intent di =    new Intent(this, DownloadManagerActivity.class);
+            di.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(di);
 
         });
 

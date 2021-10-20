@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Build;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -24,6 +25,7 @@ import androidx.work.WorkerParameters;
 
 import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.settings.DownloadManagerActivity;
+import com.efortshub.holyquran.services.CancelDownloadWorkerService;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 
@@ -43,6 +45,7 @@ import java.util.List;
  **/
 public class DownloadWorker extends Worker {
 
+    private static final String TAG = "hhbbhb";
 
 
     public DownloadWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -61,14 +64,16 @@ public class DownloadWorker extends Worker {
                 isNetworkAvailable = checkNetworkConnectivity();
 
             if (isNetworkAvailable){
+                Log.d(TAG, "doWork: downloading");
                return download();
             }else {
+                Log.d(TAG, "doWork: no internet... notify");
                 setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0, null));
             }
 
         }
 
-        return Result.retry();
+        return Result.success();
     }
 
     private boolean checkNetworkConnectivity() {
@@ -80,6 +85,7 @@ public class DownloadWorker extends Worker {
                     URL url = new URL("https://github.com");
                     URLConnection conn = url.openConnection();
                     conn.connect();
+                    Log.d(TAG, "checkNetworkConnectivity: has internet");
                     return true;
                 }catch (Exception e){
                     URL url = null;
@@ -87,6 +93,7 @@ public class DownloadWorker extends Worker {
                         url = new URL("https://google.com");
                         URLConnection conn = url.openConnection();
                         conn.connect();
+                        Log.d(TAG, "checkNetworkConnectivity: has internet google");
                         return true;
                     } catch (IOException ex) {
                         return false;
@@ -141,7 +148,12 @@ public class DownloadWorker extends Worker {
 
     private ForegroundInfo createForegroundInfo(int fileDownloaded, int fileRemaining, boolean hasNetwork, int progressCurrent, HbDownloadQue.Item item) {
         Context context = getApplicationContext();
-        PendingIntent cancelIntent = WorkManager.getInstance(context).createCancelPendingIntent(getId());
+        PendingIntent cancelIntent = PendingIntent.getService(getApplicationContext(), 123,
+                new Intent(getApplicationContext(), CancelDownloadWorkerService.class)
+                .setAction("stop")
+                , 0);
+
+
 
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             createChannel();
@@ -240,6 +252,7 @@ public class DownloadWorker extends Worker {
 
 
         Intent di = new Intent(getApplicationContext(), DownloadManagerActivity.class);
+        di.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent detailsIntent = PendingIntent.getActivity(getApplicationContext(), 129, di , PendingIntent.FLAG_ONE_SHOT);
         remoteViewsBigContent.setOnClickPendingIntent(R.id.btn_cancel, cancelIntent);
         remoteViewsBigContent.setOnClickPendingIntent(R.id.btn_details, detailsIntent);

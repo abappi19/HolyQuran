@@ -74,6 +74,7 @@ public class HbDownloadUtils {
 
 
         OneTimeWorkRequest downloadRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class)
+                .addTag("download_worker")
                 .build();
 
         WorkManager.getInstance(context).enqueueUniqueWork("download_worker", ExistingWorkPolicy.APPEND_OR_REPLACE, downloadRequest);

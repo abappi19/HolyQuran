@@ -19,9 +19,11 @@ import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
  * github: https://github.com/hbappi
  * Copyright (c) 2021 eFortsHub . All rights reserved.
  **/
+
 public class DownloadManagerActivity extends AppCompatActivity implements DownloadFileListener {
     ActivityDownloadManagerBinding binding;
     public static  DownloadFileListener listener;
+    private boolean isActivityRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         binding = ActivityDownloadManagerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         listener = this;
+
+        binding.getRoot().post(()-> isActivityRunning = true);
 
         HbDownloadUtils.getInstance(this)
                 .startDownload("", null, null, null);
@@ -65,24 +69,28 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     @Override
     protected void onResume() {
         super.onResume();
+        binding.getRoot().post(()-> isActivityRunning = true);
         listener = this;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        isActivityRunning = false;
         listener = null;
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        isActivityRunning = false;
         listener = null;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        isActivityRunning = false;
         listener = null;
     }
 
@@ -98,12 +106,14 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
     @Override
     public void onDownloadProgress(HbDownloadQue.Item downloadingItem, int progress) {
+        if (isActivityRunning) {
 
-        binding.tvItemTitle.setText(downloadingItem.getTitle());
-        binding.tvSubtitle.setText(downloadingItem.getSubtitle());
+            binding.tvItemTitle.setText(downloadingItem.getTitle());
+            binding.tvSubtitle.setText(downloadingItem.getSubtitle());
+            binding.pbProgress.setProgress(progress);
 
-        binding.pbProgress.setProgress(progress);
 
+        }
     }
 
     @Override
