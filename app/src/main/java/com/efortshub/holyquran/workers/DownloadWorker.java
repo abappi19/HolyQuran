@@ -295,7 +295,7 @@ public class DownloadWorker extends Worker {
         Notification notification = new NotificationCompat.Builder(context, "idid")
               //  .setCustomContentView(remoteViewNormal)
                 .setCustomBigContentView(remoteViewsBigContent)
-                .setTicker("ticker title")
+                .setTicker(getApplicationContext().getString(R.string.txt_download_started))
                 .setSound(null)
                 .setSilent(true)
                 .setSmallIcon(R.drawable.ic_baseline_cloud_download_24)

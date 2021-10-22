@@ -89,6 +89,9 @@
     <string name="txt_downloading">Downloading</string>
     <string name="txt_queued_download">In Queue</string>
     <string name="txt_download_manager">Download Manager</string>
+    <string name="txt_download_started">Download Started for HolyQuran</string>
+    <string name="txt_no_pending_downloads">No Pending downloads...</string>
+    <string name="txt_nothing_to_show">Nothing to show</string>
 
 
 </resources>
