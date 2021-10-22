@@ -28,6 +28,7 @@
 
         <activity
             android:name=".activities.settings.DownloadManagerActivity"
+            android:launchMode="singleTask"
             android:exported="true" />
         <activity
             android:name=".activities.settings.DownloadLocationActivity"

@@ -176,6 +176,14 @@ public class DownloadWorker extends Worker {
 
         }
 
+
+
+        //cancel downloading task and notify listener....
+
+        Intent i = new Intent(getApplicationContext(), CancelDownloadWorkerService.class);
+        getApplicationContext().startService(i);
+
+
         return Result.success();
     }
 

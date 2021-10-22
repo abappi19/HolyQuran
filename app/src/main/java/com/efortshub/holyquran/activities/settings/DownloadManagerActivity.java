@@ -1,7 +1,11 @@
 package com.efortshub.holyquran.activities.settings;
 
+import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +13,7 @@ import com.efortshub.holyquran.R;
 import com.efortshub.holyquran.activities.SplashActivity;
 import com.efortshub.holyquran.databinding.ActivityDownloadManagerBinding;
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
+import com.efortshub.holyquran.services.CancelDownloadWorkerService;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
@@ -29,16 +34,18 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     private boolean isActivityRunning = false;
 
 
+
     int oldTheme = R.style.Theme_HBWhiteLight;
 
     @Override
     protected void onResume() {
         super.onResume();
+        isActivityRunning = true;
         if (oldTheme!= HbUtils.getSavedTheme(this)){
             recreate();
         }else {
-            binding.getRoot().post(()-> isActivityRunning = true);
             listener = this;
+            binding.getRoot().post(()-> isActivityRunning = true);
 
         }
     }
@@ -52,7 +59,6 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         binding = ActivityDownloadManagerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         listener = this;
-
         binding.getRoot().post(()-> isActivityRunning = true);
 
         HbDownloadUtils.getInstance(this)
@@ -60,6 +66,16 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
         binding.includeTitle.tvTitle.setText(getString(R.string.txt_download_manager));
         binding.includeTitle.btnGoBack.setOnClickListener(v -> onBackPressed());
+
+
+
+
+
+        binding.btnCancelDownload.setOnClickListener(v -> {
+            Intent i = new Intent(DownloadManagerActivity.this, CancelDownloadWorkerService.class);
+            startService(i);
+
+        });
 
 
 
@@ -78,12 +94,14 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     @Override
     protected void onStart() {
         super.onStart();
+        isActivityRunning = true;
         listener=this;
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
+        isActivityRunning = true;
         listener =this;
     }
 
@@ -112,10 +130,23 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     @Override
     public void onDownloadStarted(HbDownloadQue.Item downloadingItem) {
 
+
     }
 
     @Override
     public void onDownloadFinished(HbDownloadQue.Item downloadingItem) {
+
+        if (downloadingItem==null){
+            new Handler(Looper.getMainLooper()).post(() -> {
+                binding.llTvPendingDownloadAvailable.setVisibility(View.GONE);
+                binding.tvNoPendingDownload.setVisibility(View.VISIBLE);
+
+            });
+        }else {
+
+        }
+
+
 
     }
 
@@ -123,11 +154,22 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     public void onDownloadProgress(HbDownloadQue.Item downloadingItem, int progress) {
         if (isActivityRunning) {
 
-            binding.tvItemTitle.setText(downloadingItem.getTitle());
-            binding.tvSubtitle.setText(downloadingItem.getSubtitle());
-            binding.pbProgress.setProgress(progress);
+            new Handler(Looper.getMainLooper()).post(()->{
+
+                  binding.llTvPendingDownloadAvailable.setVisibility(View.VISIBLE);
+                binding.tvNoPendingDownload.setVisibility(View.GONE);
 
 
+                binding.tvItemTitle.setText(downloadingItem.getTitle());
+                binding.tvSubtitle.setText(downloadingItem.getSubtitle());
+                binding.pbProgress.setProgress(progress);
+
+            });
+        }
+
+
+        if (binding.llTvPendingDownloadAvailable.getVisibility()==View.GONE){
+            recreate();
         }
     }
 
