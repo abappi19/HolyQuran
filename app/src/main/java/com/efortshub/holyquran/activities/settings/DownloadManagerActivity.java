@@ -1,12 +1,15 @@
 package com.efortshub.holyquran.activities.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.efortshub.holyquran.R;
+import com.efortshub.holyquran.activities.SplashActivity;
 import com.efortshub.holyquran.databinding.ActivityDownloadManagerBinding;
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
+import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
 
@@ -25,8 +28,26 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
     public static  DownloadFileListener listener;
     private boolean isActivityRunning = false;
 
+
+    int oldTheme = R.style.Theme_HBWhiteLight;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (oldTheme!= HbUtils.getSavedTheme(this)){
+            recreate();
+        }else {
+            binding.getRoot().post(()-> isActivityRunning = true);
+            listener = this;
+
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        oldTheme = HbUtils.getSavedTheme(this);
+        setTheme(oldTheme);
+
         super.onCreate(savedInstanceState);
         binding = ActivityDownloadManagerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -66,12 +87,6 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         listener =this;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        binding.getRoot().post(()-> isActivityRunning = true);
-        listener = this;
-    }
 
     @Override
     protected void onPause() {

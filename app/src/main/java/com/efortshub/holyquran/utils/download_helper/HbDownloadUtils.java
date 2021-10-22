@@ -14,6 +14,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
+import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.workers.DownloadWorker;
 
 import java.util.ArrayList;
@@ -73,12 +74,17 @@ public class HbDownloadUtils {
         }else if (downloadFileListener!=null) downloadFileListener.onDownloadFailed(new Exception("Not a valid URL"), false);
 
 
+
+
         OneTimeWorkRequest downloadRequest = new OneTimeWorkRequest.Builder(DownloadWorker.class)
                 .addTag("download_worker")
                 .build();
 
-        WorkManager.getInstance(context).enqueueUniqueWork("download_worker", ExistingWorkPolicy.APPEND_OR_REPLACE, downloadRequest);
 
+
+
+        WorkManager.getInstance(context).enqueueUniqueWork("download_worker", ExistingWorkPolicy.KEEP, downloadRequest);
+        HbUtils.setShouldStartDownlaod(context, true);
 
     }
 

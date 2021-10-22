@@ -58,17 +58,21 @@ public class DownloadWorker extends Worker {
     @Override
     public Result doWork() {
 
-        boolean isNetworkAvailable = false;
+        if (HbUtils.getShouldStartDownlaod(getApplicationContext())){
 
-        while (!isNetworkAvailable){
+            boolean isNetworkAvailable = false;
+
+            while (!isNetworkAvailable){
                 isNetworkAvailable = checkNetworkConnectivity();
 
-            if (isNetworkAvailable){
-                Log.d(TAG, "doWork: downloading");
-               return download();
-            }else {
-                Log.d(TAG, "doWork: no internet... notify");
-                setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0, null));
+                if (isNetworkAvailable){
+                    Log.d(TAG, "doWork: downloading");
+                    return download();
+                }else {
+                    Log.d(TAG, "doWork: no internet... notify");
+                    setForegroundAsync(createForegroundInfo(0,0, isNetworkAvailable,0, null));
+                }
+
             }
 
         }
@@ -113,20 +117,49 @@ public class DownloadWorker extends Worker {
 
         for ( int fileRemaining =  Long.valueOf(que.queSize()).intValue(); fileRemaining>0; fileRemaining =   Long.valueOf(que.queSize()).intValue()){
 
+            if (!HbUtils.getShouldStartDownlaod(getApplicationContext())) break;
+
+
+
             List<HbDownloadQue.Item> items = que.enQue(1);
             for (HbDownloadQue.Item item: items){
+
+
+                if (!HbUtils.getShouldStartDownlaod(getApplicationContext())) break;
+
                 try {
                     boolean b = false;
                     while (!b){
+
+
+                        if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
+                            break;
+                        }
+
                         b = checkNetworkConnectivity();
                         if (b){
 
                             //todo: test download............
                             for (int i=0; i<100; i++){
+
+
+                                if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
+                                    break;
+                                }
+
+
+
                                 Thread.sleep(100);
                                 setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i, item));
                             }
-                            if (que.deQue(item))fileDownloaded++;
+
+
+                            if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
+                                break;
+                            }else {
+                                if (que.deQue(item))fileDownloaded++;
+                            }
+
 
                         }else {
                             setForegroundAsync(createForegroundInfo(0,0, b,0, item));

@@ -8,6 +8,10 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.work.WorkManager;
 
+import com.efortshub.holyquran.utils.HbUtils;
+
+import java.security.spec.ECField;
+
 public class CancelDownloadWorkerService extends Service {
     private static final String TAG = "hhbbhb";
 
@@ -21,8 +25,16 @@ public class CancelDownloadWorkerService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
+        HbUtils.setShouldStartDownlaod(getApplicationContext(), false);
+
         WorkManager.getInstance(getApplicationContext())
                 .cancelAllWorkByTag("download_worker");
+        try {
+            WorkManager.getInstance(getApplicationContext())
+                    .cancelUniqueWork("download_worker");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         Log.d(TAG, "onStartCommand: we are cancelling download worker");
 

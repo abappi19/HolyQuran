@@ -109,7 +109,6 @@ public class HbDownloadQue  {
         helper.createNewTable(HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE, "url", "title", "subtitle");
         SQLiteDatabase db = helper.getWritableDatabase();
 
-
         long l =  DatabaseUtils.queryNumEntries(db, HbConst.KEY_TABLE_NAME_DOWNLOAD_QUE);
         db.close();
         return l;

@@ -534,4 +534,11 @@ public class HbUtils {
 
 
     }
+
+    public static void setShouldStartDownlaod(Context context,boolean b) {
+        getSharedPreferences(context).edit().putBoolean("should_st_d", b).apply();
+    }
+    public static boolean getShouldStartDownlaod(Context context) {
+       return getSharedPreferences(context).getBoolean("should_st_d", false);
+    }
 }
