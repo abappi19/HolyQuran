@@ -156,9 +156,8 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
             new Handler(Looper.getMainLooper()).post(()->{
 
-                  binding.llTvPendingDownloadAvailable.setVisibility(View.VISIBLE);
+                binding.llTvPendingDownloadAvailable.setVisibility(View.VISIBLE);
                 binding.tvNoPendingDownload.setVisibility(View.GONE);
-
 
                 binding.tvItemTitle.setText(downloadingItem.getTitle());
                 binding.tvSubtitle.setText(downloadingItem.getSubtitle());
