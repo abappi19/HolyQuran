@@ -138,8 +138,6 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
         if (downloadingItem==null){
             new Handler(Looper.getMainLooper()).post(() -> {
-                binding.llTvPendingDownloadAvailable.setVisibility(View.GONE);
-                binding.tvNoPendingDownload.setVisibility(View.VISIBLE);
 
             });
         }else {
