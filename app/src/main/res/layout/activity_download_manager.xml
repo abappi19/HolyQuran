@@ -157,25 +157,112 @@
 
 
 
-
-
-
-
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <com.efortshub.holyquran.views.HbButton
+            android:id="@+id/btn_resume_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_resume_download"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/btn_batch_download"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.efortshub.holyquran.views.HbButton
+            android:id="@+id/btn_batch_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/txt_batch_download"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ll_down_finished"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:orientation="vertical"
-            android:padding="8dp">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/ll_down_finished"
+            android:background="@drawable/bg_half_transparent_round">
 
+            <com.efortshub.holyquran.views.HbTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_download_finished"
+                android:textStyle="bold"
+                android:paddingTop="4dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:textSize="16sp"/>
+
+
+
+
+
+
+
+            <com.efortshub.holyquran.views.HbTransparentConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp">
+
+                <com.efortshub.holyquran.views.HbTextView
+                    android:id="@+id/tv_item_title_notify"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_cancel_notify"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.efortshub.holyquran.views.HbTextView
+                    android:id="@+id/tv_subtitle_notify"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="subtitle"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_cancel_notify"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_item_title_notify" />
+
+
+
+
+                <com.efortshub.holyquran.views.HbImageButton
+                    android:id="@+id/btn_cancel_notify"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="4dp"
+                    android:layout_margin="4dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:src="@drawable/ic_baseline_cancel_24"/>
+
+
+
+
+
+            </com.efortshub.holyquran.views.HbTransparentConstraintLayout>
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

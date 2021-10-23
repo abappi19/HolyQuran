@@ -157,6 +157,9 @@ public class DownloadWorker extends Worker {
                             if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
                                 break;
                             }else {
+                                if (DownloadManagerActivity.listener!=null){
+                                    DownloadManagerActivity.listener.onDownloadFinished(item);
+                                }
                                 if (que.deQue(item))fileDownloaded++;
                             }
 

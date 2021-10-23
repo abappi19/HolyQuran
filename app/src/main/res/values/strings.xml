@@ -92,6 +92,9 @@
     <string name="txt_download_started">Download Started for HolyQuran</string>
     <string name="txt_no_pending_downloads">No Pending downloads...</string>
     <string name="txt_nothing_to_show">Nothing to show</string>
+    <string name="txt_batch_download">Batch Download</string>
+    <string name="txt_resume_download">Resume Download</string>
+    <string name="txt_download_finished">Download Finished</string>
 
 
 </resources>

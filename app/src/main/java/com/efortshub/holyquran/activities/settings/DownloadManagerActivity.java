@@ -1,16 +1,16 @@
 package com.efortshub.holyquran.activities.settings;
 
-import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.efortshub.holyquran.R;
-import com.efortshub.holyquran.activities.SplashActivity;
 import com.efortshub.holyquran.databinding.ActivityDownloadManagerBinding;
 import com.efortshub.holyquran.interfaces.DownloadFileListener;
 import com.efortshub.holyquran.services.CancelDownloadWorkerService;
@@ -46,6 +46,7 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         }else {
             listener = this;
             binding.getRoot().post(()-> isActivityRunning = true);
+            binding.llDownFinished.setTranslationY(500f);
 
         }
     }
@@ -143,6 +144,68 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
             });
         }else {
+
+            new Handler(Looper.getMainLooper()).post(() -> {
+
+                binding.tvSubtitleNotify.setText(downloadingItem.getSubtitle());
+                binding.tvItemTitleNotify.setText(downloadingItem.getTitle());
+
+
+
+
+                Animation animation = AnimationUtils.loadAnimation(DownloadManagerActivity.this, R.anim.translation_y_to_zero);
+
+                binding.llDownFinished.startAnimation(animation);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        binding.llDownFinished.setTranslationY(0);
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        Animation n2  = AnimationUtils.loadAnimation(DownloadManagerActivity.this, R.anim.translation_y_to_bottom);
+
+
+                        new Handler(Looper.getMainLooper())
+                                .postDelayed(() -> {
+
+                        binding.llDownFinished.startAnimation(n2);
+
+                        n2.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                binding.llDownFinished.setTranslationY(500);
+
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
+
+
+
+
+                    }, 4000);
+
+                }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+
+
+            });
+
 
         }
 
