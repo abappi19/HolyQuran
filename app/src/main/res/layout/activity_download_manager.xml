@@ -162,16 +162,58 @@
         android:layout_height="match_parent">
 
 
-        <com.efortshub.holyquran.views.HbButton
-            android:id="@+id/btn_resume_download"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_resume_download"
-            android:textStyle="bold"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_batch_download"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <com.efortshub.holyquran.views.HbTransparentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/btn_batch_download"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.efortshub.holyquran.views.HbTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_pending_download_available"
+                android:text="No Download Available"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="8dp"
+
+                />
+
+
+            <com.efortshub.holyquran.views.HbButton
+                android:id="@+id/btn_resume_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_resume_download"
+                android:textStyle="bold"/>
+
+
+        </com.efortshub.holyquran.views.HbTransparentLinearLayout>
+
+
+
+
+
+
+
+
 
 
         <com.efortshub.holyquran.views.HbButton
@@ -207,7 +249,7 @@
                 <com.efortshub.holyquran.views.HbTextView
                     android:id="@+id/hbTextView"
                     android:layout_width="0dp"
-                    android:layout_height="21dp"
+                    android:layout_height="wrap_content"
                     android:paddingStart="8dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="8dp"
@@ -225,6 +267,8 @@
                     android:layout_height="wrap_content"
                     android:text="Title"
                     android:textSize="16sp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/btn_cancel_notify"
                     app:layout_constraintStart_toStartOf="parent"
@@ -237,18 +281,20 @@
                     android:layout_height="wrap_content"
                     android:text="subtitle"
                     android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/btn_cancel_notify"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_item_title_notify" />
 
 
-                <com.efortshub.holyquran.views.HbImageButton
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/btn_cancel_notify"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="4dp"
-                    android:padding="4dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
+                    android:background="@color/transparent"
+                    app:tint="?attr/colorPrimary"
                     android:src="@drawable/ic_baseline_cancel_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
