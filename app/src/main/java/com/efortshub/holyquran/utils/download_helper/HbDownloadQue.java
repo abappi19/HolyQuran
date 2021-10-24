@@ -48,8 +48,8 @@ public class HbDownloadQue  {
                 break;
             }
         }
-
         cursor.close();
+
         if (!b){
             ContentValues contentValues = new ContentValues();
             contentValues.put("url", item.getUrl());

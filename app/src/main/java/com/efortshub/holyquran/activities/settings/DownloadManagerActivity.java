@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -17,6 +18,8 @@ import com.efortshub.holyquran.services.CancelDownloadWorkerService;
 import com.efortshub.holyquran.utils.HbUtils;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadQue;
 import com.efortshub.holyquran.utils.download_helper.HbDownloadUtils;
+
+import java.util.List;
 
 /**
  * Created by H. Bappi on  9:36 AM  10/15/21.
@@ -47,6 +50,7 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
             listener = this;
             binding.getRoot().post(()-> isActivityRunning = true);
             binding.llDownFinished.setTranslationY(500f);
+            checkPendingDownload();
 
         }
     }
@@ -62,9 +66,9 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
         listener = this;
         binding.getRoot().post(()-> isActivityRunning = true);
 
-        HbDownloadUtils.getInstance(this)
+   /*     HbDownloadUtils.getInstance(this)
                 .startDownload("", null, null, null);
-
+*/
         binding.includeTitle.tvTitle.setText(getString(R.string.txt_download_manager));
         binding.includeTitle.btnGoBack.setOnClickListener(v -> onBackPressed());
 
@@ -77,6 +81,44 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
             startService(i);
 
         });
+
+        checkPendingDownload();
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    private void checkPendingDownload() {
+        List<HbDownloadQue.Item> queItem = HbDownloadQue.getInstance(getApplicationContext())
+                .enQue(1000);
+
+        if (queItem.size()>0){
+            //pending download available
+            binding.llSecNoPendingItem.setVisibility(View.GONE);
+
+
+
+        }else{
+            //no pending item available
+            binding.llSecNoPendingItem.setVisibility(View.VISIBLE);
+
+
+        }
+
+
+
+        for (HbDownloadQue.Item dq: queItem){
+            Log.d("hhbbhb", "checkPendingDownload: "+dq.getId());
+        }
 
 
 
@@ -130,12 +172,15 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
     @Override
     public void onDownloadStarted(HbDownloadQue.Item downloadingItem) {
+        checkPendingDownload();
 
 
     }
 
     @Override
     public void onDownloadFinished(HbDownloadQue.Item downloadingItem) {
+
+        checkPendingDownload();
 
         if (downloadingItem==null){
             new Handler(Looper.getMainLooper()).post(() -> {
@@ -215,6 +260,10 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
     @Override
     public void onDownloadProgress(HbDownloadQue.Item downloadingItem, int progress) {
+
+
+        checkPendingDownload();
+
         if (isActivityRunning) {
 
             new Handler(Looper.getMainLooper()).post(()->{
@@ -237,6 +286,8 @@ public class DownloadManagerActivity extends AppCompatActivity implements Downlo
 
     @Override
     public void onDownloadFailed(Exception e, boolean isDownloadAlreadyAdded) {
+
+        checkPendingDownload();
 
     }
 }
