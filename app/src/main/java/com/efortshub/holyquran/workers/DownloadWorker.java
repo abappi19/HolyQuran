@@ -139,19 +139,18 @@ public class DownloadWorker extends Worker {
                         b = checkNetworkConnectivity();
                         if (b){
 
+
                             //todo: test download............
                             for (int i=0; i<100; i++){
-
 
                                 if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
                                     break;
                                 }
 
-
-
                                 Thread.sleep(100);
                                 setForegroundAsync(createForegroundInfo( fileDownloaded, fileRemaining, true, i, item));
                             }
+
 
 
                             if (!HbUtils.getShouldStartDownlaod(getApplicationContext())){
