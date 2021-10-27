@@ -3,16 +3,18 @@ Holy Quran Android App by H.Bappi - eFortsHub
 
 
 
-# I Wish if I Die (discontinue the project)  during development, Someone will continue my project. ALL IS UP TO ALMIGHTY ALLAH
-
-# আমি চাই যদি আমি মরে যাই (প্রকল্পটি বিচ্ছিন্ন করি) উন্নয়নের সময়, কেউ আমার প্রকল্পটি চালিয়ে যাবে, সবই মহান আল্লাহর কাছে
-
-
-if you fork my repository or build your own app using my source. Please give me credit. I don't want this Islamic project to be Closed sourced.
-So I made it opensource.
+# Some Important Message
+I am going to make Production from this project. so I am not sharing full project source code here. Instead I am sharing Settings which is completely Ready to apply in your actual arabic and other language. if you can't find downloadable source added in the code. please concider finding some opensource quran resource and use those in your project.
 
 
-# Watch My Work Progress in video at Youtube: 
+You will find Quran and Translation Json from this repository: https://github.com/hbappi/HolyQuranJson
+
+Thanks
+
+
+
+
+# Watch My Work Progress in video at Youtube:
 https://www.youtube.com/watch?v=cg2ugD_TUNw&list=PLMOClCxXHc0N7VmuZaT5BbBlhZ3L-mZ2M&ab_channel=eFortsHub
 
 
@@ -26,7 +28,7 @@ facebook page:  https://www.facebook.com/eFortsHub/
 
 facebook Group: https://www.facebook.com/groups/holyquranusers
 
-linkedIn : https://www.linkedin.com/in/h-bappi/
+linkedIn : https://www.linkedin.com/in/hbappi/
 
 linkedIn Company: https://www.linkedin.com/company/efortshub
 
